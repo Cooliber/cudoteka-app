@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "4–10 lat"
 duration: "60–120 min"
 materials: ["Stroje tematyczne dla animatora","Rekwizyty fabularne","Dyplomy i upominki","Muzyka tematyczna"]
-image: "/images/workshops/animacje-tematyczne.png"
+image: "/images/workshops/animacje-tematyczne.webp"
 imageAlt: "Animacje tematyczne - warsztaty w Cudotece"
 featured: false
 metaTitle: "Tematyczne animacje na urodziny Warszawa | Cudoteka"

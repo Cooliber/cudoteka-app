@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "6+ lat"
 duration: "60 min"
 materials: ["Szklane słoje","Ziemia, węgiel aktywny, keramzyt","Żywe rośliny leśne","Kamienie ozdobne i mech"]
-image: "/images/workshops/las-w-sloiku.png"
+image: "/images/workshops/las-w-sloiku.webp"
 imageAlt: "Las w słoiku - warsztaty w Cudotece"
 featured: false
 metaTitle: "Warsztaty las w słoiku dla dzieci Warszawa | Cudoteka"

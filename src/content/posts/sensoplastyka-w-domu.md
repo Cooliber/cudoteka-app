@@ -4,7 +4,7 @@ slug: "sensoplastyka-w-domu"
 pubDate: 2026-06-20
 category: "Porady dla rodziców"
 excerpt: "Dowiedz się, jak przygotować bezpieczne, jadalne masy plastyczne i zorganizować sensoryczną zabawę we własnej kuchni."
-image: "/images/about/about.png"
+image: "/images/about/about.webp"
 imageAlt: "Kolorowe masy sensoryczne na stole"
 metaTitle: "Sensoplastyka w domu — porady i przepisy | Cudoteka"
 metaDescription: "Jak zorganizować bezpieczną sensoplastykę w domu? Sprawdzone przepisy na jadalne masy sensoryczne dla malucha."

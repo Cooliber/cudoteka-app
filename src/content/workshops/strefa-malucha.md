@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "1,5–4 lata"
 duration: "45–60 min"
 materials: ["Maty piankowe i poduszki","Ścieżki sensoryczne","Instrumenty orffa","Bezpieczne zabawki dotykowe"]
-image: "/images/workshops/strefa-malucha.png"
+image: "/images/workshops/strefa-malucha.webp"
 imageAlt: "Strefa malucha - warsztaty w Cudotece"
 featured: true
 metaTitle: "Zajęcia sensoryczne Strefa Malucha Warszawa | Cudoteka"

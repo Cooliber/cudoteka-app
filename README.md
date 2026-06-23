@@ -41,16 +41,16 @@ Każdy plik zaczyna się od bloku „frontmatter” (między `---`) z polami opi
 Zdjęcia trzymamy w katalogu `public/images/` i wskazujemy je ścieżką zaczynającą się od `/images/...`, np.:
 
 ```
-public/images/workshops/sensoplastyka.png  →  image: "/images/workshops/sensoplastyka.png"
+public/images/workshops/sensoplastyka.webp  →  image: "/images/workshops/sensoplastyka.webp"
 ```
 
-Strona warsztatu automatycznie pokaże zdjęcie `public/images/workshops/<slug>.png`, jeśli taki plik istnieje. Jeśli go nie ma, wyświetli się estetyczny pastelowy placeholder — nie trzeba nic zmieniać w kodzie.
+Strona warsztatu automatycznie pokaże zdjęcie `public/images/workshops/<slug>.webp`, jeśli taki plik istnieje. Jeśli go nie ma, wyświetli się estetyczny pastelowy placeholder — nie trzeba nic zmieniać w kodzie.
 
 ### Dodanie nowego warsztatu — przykład
 
 1. Utwórz plik `src/content/workshops/nowy-warsztat.md`.
 2. Skopiuj frontmatter z istniejącego warsztatu i uzupełnij pola (`title`, `slug`, `category`, `shortDescription`, `fullDescription`, `ageRange`, `duration`, `metaTitle`, `metaDescription`).
-3. (Opcjonalnie) wrzuć zdjęcie `public/images/workshops/nowy-warsztat.png`.
+3. (Opcjonalnie) wrzuć zdjęcie `public/images/workshops/nowy-warsztat.webp`.
 4. Uruchom `npm run build` — nowa podstrona wygeneruje się automatycznie.
 
 ## Wdrożenie

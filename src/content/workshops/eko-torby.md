@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "5–12 lat"
 duration: "45–60 min"
 materials: ["Bawełniane torby","Farby i pisaki do tkanin","Szablony","Stemple z gąbki"]
-image: "/images/workshops/eko-torby.png"
+image: "/images/workshops/eko-torby.webp"
 imageAlt: "Eko-torby - warsztaty w Cudotece"
 featured: false
 metaTitle: "Malowanie ekotoreb warsztaty Warszawa | Cudoteka"

@@ -4,7 +4,7 @@ slug: "banki-mydlane-xxl-atrakcja-na-festyn"
 pubDate: 2026-06-12
 category: "Animacje i atrakcje"
 excerpt: "Gigantyczne bańki mydlane to atrakcja, która zatrzymuje w miejscu dzieci i dorosłych. Podpowiadamy, kiedy się sprawdza i jak ją połączyć z innymi animacjami."
-image: "/images/gallery/gallery-3.png"
+image: "/images/gallery/gallery-3.webp"
 imageAlt: "Pokaz gigantycznych baniek mydlanych podczas animacji dla dzieci"
 metaTitle: "Bańki mydlane XXL na festyn i urodziny | Cudoteka Warszawa"
 metaDescription: "Pokaz baniek mydlanych XXL jako atrakcja na festyn, piknik i urodziny w Warszawie. Sprawdź, dla kogo i kiedy się sprawdza oraz jak zarezerwować termin."

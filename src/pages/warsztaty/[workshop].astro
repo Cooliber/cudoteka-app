@@ -19,7 +19,7 @@ const category = await getEntry(workshop.data.category);
 // Resolved at build time, so it works in both `astro dev` and the static production build
 // (no hardcoded whitelist, no broken /src/... URLs). Workshops without a photo fall back to a
 // pastel placeholder, and any image dropped into the folder later appears automatically.
-const imageRelPath = `images/workshops/${workshop.data.slug}.png`;
+const imageRelPath = `images/workshops/${workshop.data.slug}.webp`;
 const hasImage = fs.existsSync(path.join(process.cwd(), 'public', imageRelPath));
 const imagePath = hasImage ? `/${imageRelPath}` : null;
 

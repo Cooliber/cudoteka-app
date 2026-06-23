@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "4–10 lat"
 duration: "60 min"
 materials: ["Papiery kolorowe i ozdobne","Kliny tekturowe","Masy samoutwardzalne","Koraliki, sznurki, piórka"]
-image: "/images/workshops/warsztaty-plastyczne.png"
+image: "/images/workshops/warsztaty-plastyczne.webp"
 imageAlt: "Warsztaty plastyczne - warsztaty w Cudotece"
 featured: true
 metaTitle: "Twórcze warsztaty plastyczne Warszawa | Cudoteka"

@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "1+ lat"
 duration: "45–60 min"
 materials: ["Profesjonalny koncentrat do baniek","Sznurki i pętle XXL","Zestaw do zamykania w bańce","Dmuchawy ręczne"]
-image: "/images/workshops/banki-mydlane-xxl.png"
+image: "/images/workshops/banki-mydlane-xxl.webp"
 imageAlt: "Bańki mydlane XXL - warsztaty w Cudotece"
 featured: false
 metaTitle: "Gigantyczne bańki mydlane XXL Warszawa | Cudoteka"

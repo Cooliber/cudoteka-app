@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "5+ lat"
 duration: "60–90 min"
 materials: ["Glina rzeźbiarska","Narzędzia modelarskie","Podkładki robocze","Farby do ceramiki / angoby"]
-image: "/images/workshops/ceramika.png"
+image: "/images/workshops/ceramika.webp"
 imageAlt: "Ceramika - warsztaty w Cudotece"
 featured: false
 metaTitle: "Warsztaty ceramiczne dla dzieci Warszawa | Cudoteka"

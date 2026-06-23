@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "5–12 lat"
 duration: "60–90 min"
 materials: ["Karty integracyjne, plansze","Akcesoria do gier zespołowych","Dyplomy super-zespołu"]
-image: "/images/workshops/integracja-dzieci.png"
+image: "/images/workshops/integracja-dzieci.webp"
 imageAlt: "Integracja dzieci - warsztaty w Cudotece"
 featured: false
 metaTitle: "Zabawy i integracja dla grup szkolnych Warszawa | Cudoteka"

@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "2+ lat"
 duration: "ciągła (na życzenie)"
 materials: ["Hipoalergiczne farby Snazaroo / Diamond FX","Gąbki i pędzle kosmetyczne","Kryształki na skórę","Brokat kosmetyczny"]
-image: "/images/workshops/malowanie-twarzy.png"
+image: "/images/workshops/malowanie-twarzy.webp"
 imageAlt: "Malowanie twarzy - warsztaty w Cudotece"
 featured: true
 metaTitle: "Profesjonalne malowanie twarzy Warszawa | Cudoteka"

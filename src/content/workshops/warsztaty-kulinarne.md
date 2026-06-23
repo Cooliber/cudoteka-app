@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "4+ lat"
 duration: "60 min"
 materials: ["Owoce, bakalie, płatki owocowe","Ciasteczka i pierniczki","Posypki naturalne, miód","Fartuszki i czapki kucharskie"]
-image: "/images/workshops/warsztaty-kulinarne.png"
+image: "/images/workshops/warsztaty-kulinarne.webp"
 imageAlt: "Warsztaty kulinarne - warsztaty w Cudotece"
 featured: false
 metaTitle: "Warsztaty kulinarne dla dzieci Warszawa | Cudoteka"

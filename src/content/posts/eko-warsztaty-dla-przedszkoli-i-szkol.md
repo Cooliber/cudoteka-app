@@ -4,7 +4,7 @@ slug: "eko-warsztaty-dla-przedszkoli-i-szkol"
 pubDate: 2026-06-05
 category: "Dla placówek"
 excerpt: "Jak mówić dzieciom o ekologii, żeby naprawdę je to wciągnęło? Pokazujemy, jak wyglądają nasze eko-warsztaty i dlaczego świetnie sprawdzają się w placówkach."
-image: "/images/gallery/gallery-5.png"
+image: "/images/gallery/gallery-5.webp"
 imageAlt: "Dzieci tworzące podczas ekologicznych warsztatów plastycznych"
 metaTitle: "Eko-warsztaty dla przedszkoli i szkół | Cudoteka Warszawa"
 metaDescription: "Ekologiczne warsztaty dla przedszkoli i szkół w Warszawie — eko-torby, kosmetyki, las w słoiku. Nauka ekologii przez zabawę. Zapytaj o ofertę dla placówki."

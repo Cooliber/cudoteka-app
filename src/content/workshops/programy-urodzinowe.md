@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "3–12 lat"
 duration: "120 min"
 materials: ["Zaproszenia urodzinowe","Dekoracje stołu i sali","Balony, czapeczki tematyczne","Upominki dla gości"]
-image: "/images/workshops/programy-urodzinowe.png"
+image: "/images/workshops/programy-urodzinowe.webp"
 imageAlt: "Programy urodzinowe - warsztaty w Cudotece"
 featured: false
 metaTitle: "Organizacja urodzin dla dzieci Warszawa | Cudoteka"

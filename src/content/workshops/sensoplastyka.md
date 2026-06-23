@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "1,5–8 lat"
 duration: "45–60 min"
 materials: ["Mąki różnego rodzaju","Barwniki spożywcze","Nasiona i kasze","Olej kokosowy","Woda"]
-image: "/images/workshops/sensoplastyka.png"
+image: "/images/workshops/sensoplastyka.webp"
 imageAlt: "Sensoplastyka® - warsztaty w Cudotece"
 featured: true
 metaTitle: "Sensoplastyka dla dzieci Warszawa | Cudoteka"

@@ -9,7 +9,7 @@ interface SeoProps {
 export function seo({ title, description, image, canonical, type = 'website' }: SeoProps) {
   const siteTitle = 'Cudoteka';
   const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
-  const ogImage = image || 'https://cudoteka.pl/images/og-default.png';
+  const ogImage = image || 'https://cudoteka.pl/images/og-default.jpg';
   const meta = [
     { name: 'description', content: description },
     { property: 'og:site_name', content: siteTitle },
@@ -46,7 +46,7 @@ export function localBusinessSchema() {
     email: 'biuro@e-cud.waw.pl',
     areaServed: 'Warszawa i okolice',
     priceRange: '$$',
-    image: 'https://cudoteka.pl/images/og-default.png',
+    image: 'https://cudoteka.pl/images/og-default.jpg',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Warszawa',

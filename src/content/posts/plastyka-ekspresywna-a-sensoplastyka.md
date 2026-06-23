@@ -4,7 +4,7 @@ slug: "plastyka-ekspresywna-a-sensoplastyka"
 pubDate: 2026-05-28
 category: "Porady dla rodziców"
 excerpt: "Obie metody rozwijają dziecko przez zabawę, ale działają trochę inaczej. Tłumaczymy różnice i podpowiadamy, którą wybrać dla swojego malucha."
-image: "/images/gallery/gallery-2.png"
+image: "/images/gallery/gallery-2.webp"
 imageAlt: "Dziecko podczas zajęć sensorycznych z kolorową masą plastyczną"
 metaTitle: "Plastyka ekspresywna a sensoplastyka — różnice | Cudoteka"
 metaDescription: "Czym różni się plastyka ekspresywna od sensoplastyki? Wyjaśniamy obie metody i podpowiadamy, którą wybrać dla dziecka. Warsztaty dla dzieci w Warszawie."
