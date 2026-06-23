@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Polityka prywatności"
+  description="Polityka prywatności serwisu Cudoteka.pl — zasady przetwarzania danych osobowych oraz wykorzystania plików cookies."
+>
+  <section class="section privacy-page">
+    <div class="wrap reveal-fade-up">
+      <div class="privacy-content">
+        <h1>Polityka prywatności i plików cookies</h1>
+        <p class="meta-date">Ostatnia aktualizacja: 23 czerwca 2026 r.</p>
+        
+        <h2>1. Informacje ogólne</h2>
+        <p>
+          Administratorem danych osobowych zbieranych za pośrednictwem serwisu Cudoteka.pl jest <strong>Aleksandra Dąbrowska</strong> prowadząca działalność gospodarczą pod nazwą Cudoteka (dawniej E-CUD — Centrum Edukacyjno-Eventowe), e-mail kontaktowy: <strong>biuro@e-cud.waw.pl</strong>.
+        </p>
+
+        <h2>2. Zakres i cel przetwarzania danych</h2>
+        <p>
+          Dane osobowe przetwarzane są w celu:
+        </p>
+        <ul>
+          <li>Obsługi zapytań przesyłanych przez formularz kontaktowy (podstawa prawna: art. 6 ust. 1 lit. f RODO — prawnie uzasadniony interes administratora).</li>
+          <li>Realizacji usług warsztatów i animacji (podstawa prawna: art. 6 ust. 1 lit. b RODO — niezbędność do wykonania umowy).</li>
+          <li>Rozliczeń finansowo-księgowych (podstawa prawna: art. 6 ust. 1 lit. c RODO — obowiązek prawny).</li>
+        </ul>
+
+        <h2>3. Odbiorcy danych i okres przechowywania</h2>
+        <p>
+          Dane osobowe nie są przekazywane podmiotom trzecim, z wyjątkiem podmiotów świadczących usługi na rzecz administratora (np. hostingodawca, obsługa księgowa). Dane przechowywane są przez okres niezbędny do udzielenia odpowiedzi na zapytanie lub realizacji umowy, a po tym czasie przez okres wymagany przepisami prawa.
+        </p>
+
+        <h2>4. Prawa użytkownika</h2>
+        <p>
+          Każdej osobie, której dane dotyczą, przysługuje prawo do:
+        </p>
+        <ul>
+          <li>Dostępu do swoich danych oraz otrzymania ich kopii.</li>
+          <li>Sprostowania (poprawiania) swoich danych.</li>
+          <li>Usunięcia danych („prawo do bycia zapomnianym”).</li>
+          <li>Ograniczenia przetwarzania danych.</li>
+          <li>Wniesienia sprzeciwu wobec przetwarzania.</li>
+          <li>Wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (UODO).</li>
+        </ul>
+
+        <h2>5. Pliki cookies (Ciasteczka)</h2>
+        <p>
+          Serwis wykorzystuje pliki cookies w celu zapewnienia prawidłowego działania strony (cookies techniczne) oraz w celach analitycznych (cookies statystyczne). Użytkownik może w każdej chwili zmienić ustawienia dotyczące cookies w swojej przeglądarce internetowej.
+        </p>
+
+        <h2>6. Kontakt</h2>
+        <p>
+          W razie pytań dotyczących przetwarzania danych prosimy o kontakt pod adresem e-mail: <strong>biuro@e-cud.waw.pl</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .privacy-page {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+    min-height: 80vh;
+  }
+  .privacy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 48px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(62, 137, 176, 0.08);
+  }
+  
+  .privacy-content h1 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 8px;
+  }
+  .meta-date {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+  
+  .privacy-content h2 {
+    font-family: "Fraunces", serif;
+    font-size: 1.45rem;
+    margin: 32px 0 14px;
+    color: var(--ink);
+  }
+  
+  .privacy-content p {
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    font-size: 0.98rem;
+  }
+  .privacy-content ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+  .privacy-content li {
+    margin-bottom: 8px;
+  }
+  .privacy-content strong {
+    color: var(--ink);
+  }
+
+  @media (max-width: 680px) {
+    .privacy-content {
+      padding: 24px;
+    }
+  }
+</style>

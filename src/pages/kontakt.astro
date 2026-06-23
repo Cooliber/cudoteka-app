@@ -1,0 +1,362 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const workshops = await getCollection('workshops');
+---
+
+<BaseLayout
+  title="Kontakt i rezerwacja warsztatów"
+  description="Skontaktuj się z Cudoteką — zarezerwuj termin warsztatów, sensoplastyki lub animacji na urodziny dziecka. Warszawa i okolice."
+>
+  <section class="section contact-page">
+    <div class="wrap reveal-fade-up">
+      <div class="contact-grid">
+        <!-- Contact Info Column -->
+        <div class="contact-info">
+          <span class="eyebrow">Napisz lub zadzwoń</span>
+          <h1>Porozmawiajmy o Twoim wydarzeniu</h1>
+          <p class="intro-desc">Masz pytania dotyczące oferty, chcesz zarezerwować termin lub ustalić indywidualny scenariusz? Chętnie pomożemy!</p>
+          
+          <div class="contact-details">
+            <div class="detail-item">
+              <span class="icon">📞</span>
+              <div class="text">
+                <span class="label">Zadzwoń do nas</span>
+                <a href="tel:607370777" class="val">607 370 777</a>
+              </div>
+            </div>
+            
+            <div class="detail-item">
+              <span class="icon">✉️</span>
+              <div class="text">
+                <span class="label">Napisz e-mail</span>
+                <a href="mailto:biuro@e-cud.waw.pl" class="val">biuro@e-cud.waw.pl</a>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="icon">📍</span>
+              <div class="text">
+                <span class="label">Obszar działania</span>
+                <span class="val">Warszawa i okolice (dojazd do klienta)</span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="icon">👥</span>
+              <div class="text">
+                <span class="label">Znajdź nas na Facebooku</span>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="val">Cudoteka / E-CUD</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form Column -->
+        <div class="contact-form-col double-bezel-outer">
+          <div class="contact-form-inner double-bezel-inner">
+            <h3>Formularz kontaktowy</h3>
+            
+            <!-- Success Message Overlay -->
+            <div class="success-message" id="success-msg">
+              <span class="success-icon">✨</span>
+              <h4>Wiadomość wysłana!</h4>
+              <p>Dziękujemy za kontakt. Odpowiemy na Twoją wiadomość najszybciej jak to możliwe.</p>
+              <button class="btn btn-primary" id="reset-btn">Wyślij kolejną</button>
+            </div>
+
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="name">Imię i nazwisko *</label>
+                <input type="text" id="name" name="name" required placeholder="np. Anna Kowalska" />
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="phone">Telefon *</label>
+                  <input type="tel" id="phone" name="phone" required placeholder="np. 607 370 777" />
+                </div>
+                <div class="form-group">
+                  <label for="email">E-mail *</label>
+                  <input type="email" id="email" name="email" required placeholder="np. anna@przyklad.pl" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="workshop">Interesuje mnie warsztat *</label>
+                <select id="workshop" name="workshop" required>
+                  <option value="">-- Wybierz temat z listy --</option>
+                  <option value="general">Ogólne zapytanie / Inny temat</option>
+                  {workshops.map(w => (
+                    <option value={w.data.slug}>{w.data.title}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Treść wiadomości *</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Opisz swoje wydarzenie (data, szacowana liczba dzieci, wiek, lokalizacja)..."></textarea>
+              </div>
+
+              <div class="form-checkbox">
+                <input type="checkbox" id="consent" name="consent" required />
+                <label for="consent">
+                  Zgadzam się na przetwarzanie danych osobowych w celu udzielenia odpowiedzi na zapytanie. *
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary form-submit-btn">Wyślij wiadomość</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-page {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+    min-height: 80vh;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info h1 {
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    margin: 18px 0 20px;
+  }
+  .intro-desc {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .detail-item .icon {
+    font-size: 1.8rem;
+    width: 52px;
+    height: 52px;
+    background: #fff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+  }
+  .detail-item .text {
+    display: flex;
+    flex-direction: column;
+  }
+  .detail-item .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .detail-item .val {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--blue-deep);
+    transition: color 0.2s;
+  }
+  .detail-item a.val:hover {
+    color: var(--blue);
+  }
+
+  /* Form column styling */
+  .contact-form-inner {
+    position: relative;
+  }
+  .contact-form-inner h3 {
+    font-family: "Fraunces", serif;
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    background: var(--cream);
+    border: 1px solid rgba(62, 137, 176, 0.15);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+    width: 100%;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-soft);
+  }
+  
+  .form-checkbox {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 26px;
+  }
+  .form-checkbox input {
+    margin-top: 5px;
+    accent-color: var(--blue);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  .form-checkbox label {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  .form-submit-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  /* Success msg overlay */
+  .success-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: calc(2rem - 6px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 5;
+  }
+  .success-message.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .success-icon {
+    font-size: 3.5rem;
+    margin-bottom: 16px;
+  }
+  .success-message h4 {
+    font-family: "Fraunces", serif;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .success-message p {
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    max-width: 320px;
+  }
+
+  @media (max-width: 980px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+  }
+  @media (max-width: 680px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .contact-form-inner {
+      padding: 20px !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Prefill subject select field from URL query parameter (?workshop=slug)
+    const urlParams = new URLSearchParams(window.location.search);
+    const workshopSlug = urlParams.get('workshop');
+    if (workshopSlug) {
+      const selectEl = document.getElementById('workshop') as HTMLSelectElement;
+      if (selectEl) {
+        selectEl.value = workshopSlug;
+      }
+    }
+
+    // 2. Form submission simulation
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const successMsg = document.getElementById('success-msg');
+    const resetBtn = document.getElementById('reset-btn');
+
+    if (form && successMsg) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Simulating network request
+        const submitBtn = form.querySelector('.form-submit-btn') as HTMLButtonElement;
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Wysyłanie...';
+        }
+
+        setTimeout(() => {
+          successMsg.classList.add('visible');
+          form.reset();
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Wyślij wiadomość';
+          }
+        }, 1000);
+      });
+    }
+
+    if (resetBtn && successMsg) {
+      resetBtn.addEventListener('click', () => {
+        successMsg.classList.remove('visible');
+      });
+    }
+  });
+</script>

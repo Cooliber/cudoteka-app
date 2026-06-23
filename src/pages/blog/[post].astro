@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((p) => ({
+    params: { post: p.data.slug },
+    props: { post: p },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout
+  title={post.data.metaTitle}
+  description={post.data.metaDescription}
+>
+  <article class="section post-detail">
+    <div class="wrap reveal-fade-up">
+      <a href="/blog/" class="back-link">← Wróć do listy wpisów</a>
+
+      <header class="post-header">
+        <div class="post-meta">
+          <span class="category">{post.data.category}</span>
+          <span class="separator">•</span>
+          <span class="date">{post.data.pubDate.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        </div>
+        <h1>{post.data.title}</h1>
+      </header>
+
+      {post.data.image && (
+        <div class="img-wrapper double-bezel-outer">
+          <img src={post.data.image} alt={post.data.imageAlt} class="post-banner-img" />
+        </div>
+      )}
+
+      <!-- Markdown Content -->
+      <div class="post-body">
+        <Content />
+      </div>
+
+      <!-- Share / Return CTA -->
+      <div class="post-footer">
+        <div class="footer-cta">
+          <h3>Chcesz zorganizować kreatywne zajęcia?</h3>
+          <p>Zapraszamy do kontaktu! Wspólnie dobierzemy idealny program animacji lub warsztatów dla dzieci.</p>
+          <div class="cta-btns">
+            <a href="/kontakt/" class="btn btn-primary">Zarezerwuj termin</a>
+            <a href="tel:607370777" class="btn btn-ghost">Zadzwoń: 607 370 777</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post-detail {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+    min-height: 80vh;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--blue-deep);
+    font-weight: 700;
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .back-link:hover {
+    color: var(--blue);
+    transform: translateX(-4px);
+  }
+  
+  .post-header {
+    max-width: 780px;
+    margin: 0 auto 30px;
+    text-align: center;
+  }
+  .post-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+  }
+  .category {
+    color: var(--blue-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .separator {
+    color: var(--ink-soft);
+  }
+  .date {
+    color: var(--ink-soft);
+  }
+  .post-header h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  /* Banner Image */
+  .img-wrapper {
+    max-width: 860px;
+    margin: 0 auto 48px;
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+  .post-banner-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: calc(2rem - 6px);
+    display: block;
+  }
+
+  /* Markdown post styling */
+  .post-body {
+    max-width: 740px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--ink);
+  }
+  
+  .post-body :global(h2) {
+    font-family: "Fraunces", serif;
+    font-size: 1.7rem;
+    margin: 40px 0 16px;
+    color: var(--ink);
+  }
+  .post-body :global(h3) {
+    font-family: "Fraunces", serif;
+    font-size: 1.35rem;
+    margin: 30px 0 12px;
+    color: var(--ink);
+  }
+  .post-body :global(p) {
+    margin-bottom: 24px;
+    color: var(--ink-soft);
+  }
+  .post-body :global(ul), .post-body :global(ol) {
+    margin-bottom: 24px;
+    padding-left: 24px;
+    color: var(--ink-soft);
+  }
+  .post-body :global(li) {
+    margin-bottom: 8px;
+  }
+  .post-body :global(strong) {
+    color: var(--ink);
+  }
+
+  /* Post footer cta */
+  .post-footer {
+    max-width: 740px;
+    margin: 60px auto 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 48px;
+  }
+  .footer-cta {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 36px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border: 1px solid rgba(62, 137, 176, 0.08);
+  }
+  .footer-cta h3 {
+    font-size: 1.45rem;
+    margin-bottom: 10px;
+  }
+  .footer-cta p {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    margin-bottom: 24px;
+  }
+  .cta-btns {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 680px) {
+    .post-header {
+      text-align: left;
+    }
+    .footer-cta {
+      padding: 24px;
+    }
+    .cta-btns {
+      flex-direction: column;
+    }
+    .cta-btns .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

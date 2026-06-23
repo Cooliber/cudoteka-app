@@ -1,0 +1,22 @@
+:root {
+  --cream: #FBF7F1;
+  --cream-2: #F4ECE0;
+  --ink: #36323B;
+  --ink-soft: #6E6774;
+  --blue: #3E89B0;
+  --blue-deep: #296A8E;
+  --blue-soft: #CBE6F1;
+  --blue-tint: #EAF5FA;
+  --peach: #EF9E80;
+  --peach-soft: #FBE0D4;
+  --peach-tint: #FDEFE8;
+  --mint: #7FC4A6;
+  --mint-soft: #D7EDE1;
+  --mint-tint: #EBF6F0;
+  --gold: #E7B85C;
+  --white: #ffffff;
+  --shadow: 0 22px 48px -22px rgba(41, 106, 142, 0.32);
+  --shadow-sm: 0 10px 26px -16px rgba(41, 106, 142, 0.4);
+  --radius: 30px;
+  --radius-sm: 18px;
+}

@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const galleryItems = await getCollection('gallery');
+
+// Get unique categories for filtering
+const categories = ['Wszystkie', ...new Set(galleryItems.map(item => item.data.category))];
+---
+
+<BaseLayout
+  title="Galeria zdjęć z warsztatów"
+  description="Zobacz zdjęcia z naszych warsztatów plastycznych, sensoplastyki, eksperymentów dla dzieci i animacji urodzinowych w Warszawie."
+>
+  <section class="section gallery-page">
+    <div class="wrap reveal-fade-up">
+      <div class="sec-head">
+        <span class="eyebrow">Nasze realizacje</span>
+        <h1>Galeria uśmiechów i zabawy</h1>
+        <p>Zobacz, jak wyglądają nasze zajęcia sensoryczne, warsztaty oraz animacje w praktyce.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="gallery-filters">
+        {categories.map((cat, idx) => (
+          <button 
+            class={`filter-tab ${idx === 0 ? 'active' : ''}`} 
+            data-filter={cat === 'Wszystkie' ? 'all' : cat}
+          >
+            {cat.charAt(0).toUpperCase() + cat.slice(1)}
+          </button>
+        ))}
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        {galleryItems.map(item => (
+          <div class="gallery-item double-bezel-outer" data-category={item.data.category}>
+            <div class="gallery-inner double-bezel-inner">
+              <img src={item.data.image} alt={item.data.alt} class="gallery-img" />
+              <div class="gallery-hover">
+                <span class="cat-badge">{item.data.category}</span>
+                <p class="img-caption">{item.data.alt}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gallery-page {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+    min-height: 80vh;
+  }
+  .sec-head {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto 48px;
+  }
+  .sec-head h1 {
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    margin: 18px 0 16px;
+  }
+  .sec-head p {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+  }
+
+  .gallery-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .filter-tab {
+    background: #fff;
+    border: 1px solid rgba(62, 137, 176, 0.15);
+    border-radius: 99px;
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: "Nunito Sans", sans-serif;
+    color: var(--ink-soft);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .filter-tab:hover {
+    color: var(--blue-deep);
+    border-color: var(--blue);
+    transform: translateY(-2px);
+  }
+  .filter-tab.active {
+    background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 8px 20px -8px rgba(41, 106, 142, 0.4);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .gallery-item {
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.4s ease;
+  }
+  .gallery-item:hover {
+    transform: scale(1.02);
+  }
+  .gallery-inner {
+    padding: 0 !important;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    border-radius: calc(2rem - 6px);
+  }
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .gallery-hover {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(54, 50, 59, 0.9), transparent);
+    padding: 30px 20px 20px;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  .gallery-item:hover .gallery-hover {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .cat-badge {
+    display: inline-block;
+    background: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .img-caption {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  /* Filter script classes */
+  .gallery-item.hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    position: absolute;
+    pointer-events: none;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  @media (max-width: 980px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 680px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+    .sec-head {
+      margin-bottom: 30px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.filter-tab');
+    const items = document.querySelectorAll('.gallery-item');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.getAttribute('data-filter');
+
+        items.forEach(item => {
+          const cat = item.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>

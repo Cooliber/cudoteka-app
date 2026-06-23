@@ -1,0 +1,295 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const workshops = await getCollection('workshops');
+  return workshops.map(w => ({
+    params: { workshop: w.data.slug },
+    props: { workshop: w },
+  }));
+}
+
+const { workshop } = Astro.props;
+const category = await getEntry(workshop.data.category);
+
+// Check if image exists in assets. Note: we copied PNG files, so we support fallback or direct path if it matches.
+// We can use standard relative paths since the assets are built, but the easiest and safest way in Astro is to reference
+// from build or direct src. Since we copied image to `/src/assets/images/workshops/${w.slug}.png` or `.jpg`,
+// let's resolve if it exists. In the generator we wrote: `/src/assets/images/workshops/${w.slug}.jpg`.
+// However, the actual copied file is a `.png`! Let's handle the image display by using the correct copied `.png`!
+// Wait! Let's check what files were copied:
+// - `sensoplastyka.png`
+// - `warsztaty-plastyczne.png`
+// - `malowanie-twarzy.png`
+// - `strefa-malucha.png`
+// Let's check if the workshop name matches these, else we can display a nice pastel gradient block or default icon as a placeholder!
+// This makes the design super resilient and clean!
+const hasCustomImage = ['sensoplastyka', 'warsztaty-plastyczne', 'malowanie-twarzy', 'strefa-malucha'].includes(workshop.data.slug);
+const imagePath = hasCustomImage 
+  ? `/src/assets/images/workshops/${workshop.data.slug}.png` 
+  : null;
+---
+
+<BaseLayout
+  title={workshop.data.metaTitle}
+  description={workshop.data.metaDescription}
+>
+  <section class="section workshop-detail">
+    <div class="wrap reveal-fade-up">
+      <a href="/warsztaty/" class="back-link">← Wróć do listy warsztatów</a>
+      
+      <div class="detail-layout">
+        <!-- Image / Placeholder Column -->
+        <div class="image-column">
+          {imagePath ? (
+            <div class="img-wrapper double-bezel-outer">
+              <!-- Inline style to resolve path at build time or direct string path -->
+              <img src={imagePath} alt={workshop.data.imageAlt} class="workshop-img" />
+            </div>
+          ) : (
+            <div class="placeholder-img double-bezel-outer">
+              <div class="placeholder-inner">
+                <span class="placeholder-icon">{category?.data.icon || '✨'}</span>
+                <span class="placeholder-text">{workshop.data.title}</span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <!-- Info Column -->
+        <div class="info-column">
+          <div class="info-header">
+            {category && (
+              <a href={`/oferta/${category.data.slug}/`} class="category-tag">
+                {category.data.icon} {category.data.title}
+              </a>
+            )}
+            <h1>{workshop.data.title}</h1>
+          </div>
+
+          <!-- Metadata Pills -->
+          <div class="specs-grid">
+            <div class="spec-card">
+              <span class="spec-icon">👶</span>
+              <div class="spec-text">
+                <span class="spec-label">Wiek</span>
+                <strong>{workshop.data.ageRange}</strong>
+              </div>
+            </div>
+            <div class="spec-card">
+              <span class="spec-icon">⏱️</span>
+              <div class="spec-text">
+                <span class="spec-label">Czas trwania</span>
+                <strong>{workshop.data.duration}</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="description-section">
+            <h3>Opis zajęć</h3>
+            <p class="description-text">{workshop.data.fullDescription}</p>
+          </div>
+
+          <!-- Materials (if any) -->
+          {workshop.data.materials && workshop.data.materials.length > 0 && (
+            <div class="materials-section">
+              <h3>Wykorzystywane materiały</h3>
+              <ul class="materials-list">
+                {workshop.data.materials.map(mat => (
+                  <li>✨ {mat}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Call to Action -->
+          <div class="cta-actions">
+            <a href={`/kontakt/?workshop=${workshop.data.slug}`} class="btn btn-primary">Zarezerwuj ten warsztat</a>
+            <a href="tel:607370777" class="btn btn-ghost">Zadzwoń: 607 370 777</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .workshop-detail {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+    min-height: 80vh;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--blue-deep);
+    font-weight: 700;
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .back-link:hover {
+    color: var(--blue);
+    transform: translateX(-4px);
+  }
+  .detail-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  
+  /* Image styling */
+  .img-wrapper, .placeholder-img {
+    width: 100%;
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+  .workshop-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: calc(2rem - 6px);
+    display: block;
+  }
+  .placeholder-img {
+    aspect-ratio: 4/3;
+  }
+  .placeholder-inner {
+    background: linear-gradient(135deg, var(--blue-soft), var(--peach-soft));
+    width: 100%;
+    height: 100%;
+    border-radius: calc(2rem - 6px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 40px;
+    text-align: center;
+  }
+  .placeholder-icon {
+    font-size: 4rem;
+  }
+  .placeholder-text {
+    font-family: "Fraunces", serif;
+    font-size: 1.6rem;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* Info styling */
+  .category-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--blue-tint);
+    color: var(--blue-deep);
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border-radius: 99px;
+    margin-bottom: 16px;
+  }
+  .info-header h1 {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    margin-bottom: 24px;
+  }
+  
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .spec-card {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(62, 137, 176, 0.08);
+  }
+  .spec-icon {
+    font-size: 2rem;
+  }
+  .spec-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .spec-label {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    font-weight: 700;
+  }
+  .spec-text strong {
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .description-section, .materials-section {
+    margin-bottom: 32px;
+  }
+  .description-section h3, .materials-section h3 {
+    font-family: "Fraunces", serif;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+  .description-text {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+  .materials-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+  }
+  .materials-list li {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 980px) {
+    .detail-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .image-column {
+      max-width: 580px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+  @media (max-width: 680px) {
+    .specs-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .materials-list {
+      grid-template-columns: 1fr;
+    }
+    .cta-actions {
+      flex-direction: column;
+    }
+    .cta-actions .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

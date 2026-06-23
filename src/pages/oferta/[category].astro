@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const categories = await getCollection('categories');
+  const workshops = await getCollection('workshops');
+  
+  return categories.map(cat => {
+    // Filter workshops where category ID matches category ID
+    const catWorkshops = workshops.filter(w => w.data.category.id === cat.id);
+    
+    return {
+      params: { category: cat.data.slug },
+      props: {
+        category: cat,
+        workshops: catWorkshops,
+      },
+    };
+  });
+}
+
+const { category, workshops } = Astro.props;
+---
+
+<BaseLayout
+  title={category.data.metaTitle}
+  description={category.data.metaDescription}
+>
+  <section class="section category-detail">
+    <div class="wrap reveal-fade-up">
+      <div class="category-header">
+        <a href="/oferta/" class="back-link">← Powrót do oferty</a>
+        <div class="category-title-wrapper">
+          <div class="cat-icon">{category.data.icon}</div>
+          <div class="title-meta">
+            <span class="eyebrow">Kategoria</span>
+            <h1>{category.data.title}</h1>
+          </div>
+        </div>
+        <p class="lead-text">{category.data.description}</p>
+      </div>
+
+      <h2 class="section-title">Warsztaty w tej kategorii ({workshops.length})</h2>
+
+      {workshops.length > 0 ? (
+        <div class="workshop-grid">
+          {workshops.map(w => (
+            <div class="double-bezel-outer">
+              <a href={`/warsztaty/${w.data.slug}/`} class="workshop-card double-bezel-inner">
+                <h3>{w.data.title}</h3>
+                <p>{w.data.shortDescription}</p>
+                <div class="card-footer">
+                  <div class="meta-pills">
+                    <span class="pill age">👶 {w.data.ageRange}</span>
+                    <span class="pill time">⏱️ {w.data.duration}</span>
+                  </div>
+                  <span class="btn-arrow">→</span>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <p>Obecnie brak przypisanych warsztatów do tej kategorii. Zapytaj nas o indywidualną ofertę!</p>
+          <a href="/kontakt/" class="btn btn-primary">Skontaktuj się</a>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .category-detail {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+    min-height: 80vh;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--blue-deep);
+    font-weight: 700;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .back-link:hover {
+    color: var(--blue);
+    transform: translateX(-4px);
+  }
+  .category-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+  .cat-icon {
+    font-size: 3rem;
+    background: #fff;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .title-meta h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  .lead-text {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 44rem;
+    margin-bottom: 48px;
+    line-height: 1.6;
+  }
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-family: "Fraunces", serif;
+  }
+  .workshop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .double-bezel-outer {
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .double-bezel-outer:hover {
+    transform: translateY(-6px);
+  }
+  .workshop-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .workshop-card h3 {
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .workshop-card p {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 16px;
+  }
+  .meta-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pill {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 99px;
+    background: var(--cream-2);
+    color: var(--ink-soft);
+  }
+  .btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--blue-tint);
+    color: var(--blue-deep);
+    border-radius: 50%;
+    font-weight: 800;
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.3s;
+  }
+  .double-bezel-outer:hover .btn-arrow {
+    background-color: var(--blue-soft);
+    transform: scale(1.1) translateX(2px);
+  }
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+  .empty-state p {
+    margin-bottom: 20px;
+    color: var(--ink-soft);
+  }
+  
+  @media (max-width: 980px) {
+    .workshop-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 680px) {
+    .workshop-grid {
+      grid-template-columns: 1fr;
+    }
+    .category-title-wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .cat-icon {
+      width: 64px;
+      height: 64px;
+      font-size: 2.2rem;
+      border-radius: 18px;
+    }
+    .lead-text {
+      margin-bottom: 32px;
+    }
+  }
+</style>

@@ -1,0 +1,104 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
+
+interface Props {
+  workshop: CollectionEntry<'workshops'>;
+}
+
+const { workshop } = Astro.props;
+const category = await getEntry(workshop.data.category);
+---
+
+<div class="double-bezel-outer workshop-card-wrapper">
+  <a href={`/warsztaty/${workshop.data.slug}/`} class="workshop-card double-bezel-inner">
+    <div class="card-header">
+      <span class="cat-label">{category?.data.icon} {category?.data.title}</span>
+      <h3 class="card-title">{workshop.data.title}</h3>
+    </div>
+    
+    <p class="card-desc">{workshop.data.shortDescription}</p>
+    
+    <div class="card-footer">
+      <div class="meta-pills">
+        <span class="pill age">👶 {workshop.data.ageRange}</span>
+        <span class="pill time">⏱️ {workshop.data.duration}</span>
+      </div>
+      <span class="arrow-btn">→</span>
+    </div>
+  </a>
+</div>
+
+<style>
+  .workshop-card-wrapper {
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    height: 100%;
+  }
+  .workshop-card-wrapper:hover {
+    transform: translateY(-6px);
+  }
+  .workshop-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .cat-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--blue-deep);
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-family: "Fraunces", serif;
+  }
+  .card-desc {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 16px;
+  }
+  .meta-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .pill {
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 99px;
+    background: var(--cream-2);
+    color: var(--ink-soft);
+  }
+  .arrow-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--blue-tint);
+    color: var(--blue-deep);
+    border-radius: 50%;
+    font-weight: 800;
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.3s;
+  }
+  .workshop-card-wrapper:hover .arrow-btn {
+    background-color: var(--blue-soft);
+    transform: scale(1.1) translateX(2px);
+  }
+</style>

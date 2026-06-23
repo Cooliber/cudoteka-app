@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+// Sort by newest date
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title="Blog z poradami i inspiracjami"
+  description="Czytaj nasz blog — praktyczne porady sensoryczne, przepisy na masy plastyczne, pomysły na kreatywne urodziny i relacje z warsztatów."
+>
+  <section class="section blog-intro">
+    <div class="wrap reveal-fade-up">
+      <div class="sec-head">
+        <span class="eyebrow">Porady i inspiracje</span>
+        <h1>Baza wiedzy i kreatywnych pomysłów</h1>
+        <p>Znajdziesz tu przepisy na domowe masy sensoryczne, inspiracje na przyjęcia urodzinowe oraz nowości z życia Cudoteki.</p>
+      </div>
+
+      <div class="blog-grid">
+        {sortedPosts.map(post => (
+          <div class="double-bezel-outer">
+            <article class="post-card double-bezel-inner">
+              {post.data.image && (
+                <div class="img-container">
+                  <img src={post.data.image} alt={post.data.imageAlt} class="post-img" />
+                </div>
+              )}
+              <div class="post-content">
+                <div class="post-meta">
+                  <span class="category">{post.data.category}</span>
+                  <span class="date">{post.data.pubDate.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                </div>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.excerpt}</p>
+                <a href={`/blog/${post.data.slug}/`} class="read-more">
+                  Czytaj więcej <span>→</span>
+                </a>
+              </div>
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-intro {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+    min-height: 80vh;
+  }
+  .sec-head {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto 60px;
+  }
+  .sec-head h1 {
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    margin: 18px 0 16px;
+  }
+  .sec-head p {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  .double-bezel-outer {
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .double-bezel-outer:hover {
+    transform: translateY(-8px);
+  }
+  
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0; /* Override default inner card padding to handle image correctly */
+    overflow: hidden;
+  }
+  
+  .img-container {
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    border-radius: calc(2rem - 6px) calc(2rem - 6px) 0 0;
+  }
+  .post-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .double-bezel-outer:hover .post-img {
+    transform: scale(1.04);
+  }
+  
+  .post-content {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .category {
+    color: var(--blue-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .date {
+    color: var(--ink-soft);
+  }
+  
+  .post-content h3 {
+    font-size: 1.35rem;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .post-content p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+  
+  .read-more {
+    font-weight: 800;
+    color: var(--blue-deep);
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .read-more span {
+    transition: transform 0.2s;
+  }
+  .double-bezel-outer:hover .read-more {
+    color: var(--blue);
+  }
+  .double-bezel-outer:hover .read-more span {
+    transform: translateX(3px);
+  }
+  
+  @media (max-width: 780px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

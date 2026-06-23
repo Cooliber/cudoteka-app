@@ -1,0 +1,170 @@
+---
+const offerLinks = [
+  { href: '/oferta/tworczosc-i-sztuka/', label: 'Twórczość i sztuka' },
+  { href: '/oferta/animacje-i-atrakcje/', label: 'Animacje i atrakcje' },
+  { href: '/oferta/strefa-malucha/', label: 'Strefa malucha' },
+  { href: '/kontakt/', label: 'Rozwój i logopedia' },
+];
+
+const contactLinks = [
+  { href: 'tel:607370777', label: '607 370 777' },
+  { href: 'mailto:biuro@e-cud.waw.pl', label: 'biuro@e-cud.waw.pl' },
+  { href: 'https://www.facebook.com/', label: 'Facebook', external: true },
+];
+---
+
+<footer>
+  <div class="wrap foot-wrap">
+    <div class="foot-grid">
+      <div class="foot-info">
+        <a href="/" class="logo" aria-label="Cudoteka">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" class="logo-svg">
+            <path d="M16 4c1.6 2.2 1.6 4.6 0 6.8C14.4 8.6 14.4 6.2 16 4Z" fill="#ffffff"/>
+            <path d="M28 16c-2.2 1.6-4.6 1.6-6.8 0 2.2-1.6 4.6-1.6 6.8 0Z" fill="#ffffff"/>
+            <path d="M16 28c-1.6-2.2-1.6-4.6 0-6.8 1.6 2.2 1.6 4.6 0 6.8Z" fill="#ffffff"/>
+            <path d="M4 16c2.2-1.6 4.6-1.6 6.8 0-2.2 1.6-4.6 1.6-6.8 0Z" fill="#ffffff"/>
+            <circle cx="16" cy="16" r="3" fill="#E7B85C"/>
+          </svg>
+          <span class="logo-text">Cudoteka</span>
+        </a>
+        <p class="desc">Twórcze warsztaty, sensoplastyka i animacje dla dzieci i dorosłych. Dawniej E-CUD — Centrum Edukacyjno-Eventowe.</p>
+      </div>
+      <div class="foot-nav">
+        <h5>Oferta</h5>
+        {offerLinks.map(link => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+      </div>
+      <div class="foot-contact">
+        <h5>Kontakt</h5>
+        {contactLinks.map(link => (
+          <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>
+            {link.label}
+          </a>
+        ))}
+        <span class="location">Warszawa i okolice</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cudoteka — Aleksandra Dąbrowska. Wszelkie prawa zastrzeżone.</span>
+      <div class="foot-bottom-links">
+        <a href="/polityka-prywatnosci/">Polityka prywatności</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: var(--blue-deep);
+    color: #fff;
+    padding: 80px 0 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  footer::before {
+    content: "";
+    position: absolute;
+    bottom: -150px;
+    right: -150px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(251, 247, 241, 0.08), transparent 70%);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+  .foot-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .logo-svg {
+    flex: none;
+  }
+  .desc {
+    opacity: 0.82;
+    font-size: 0.95rem;
+    max-width: 320px;
+    line-height: 1.6;
+  }
+  footer h5 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  footer a {
+    color: rgba(255, 255, 255, 0.78);
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+    width: fit-content;
+  }
+  footer a:hover {
+    color: #fff;
+    transform: translateX(3px);
+  }
+  .location {
+    display: block;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.95rem;
+    margin-top: 10px;
+  }
+  .foot-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.65);
+  }
+  .foot-bottom-links a {
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 0;
+    display: inline;
+  }
+  .foot-bottom-links a:hover {
+    color: #fff;
+  }
+  
+  @media (max-width: 980px) {
+    .foot-grid {
+      grid-template-columns: 1.2fr 1fr 1fr;
+    }
+  }
+  @media (max-width: 680px) {
+    footer {
+      padding: 60px 0 24px;
+    }
+    .foot-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .foot-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }
+</style>

@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const testimonials = await getCollection('testimonials');
+---
+
+<BaseLayout
+  title="Opinie naszych klientów"
+  description="Przeczytaj opinie rodziców, dyrektorów przedszkoli i organizatorów eventów o warsztatach i animacjach Cudoteki w Warszawie."
+>
+  <section class="section testimonials-page">
+    <div class="wrap reveal-fade-up">
+      <div class="sec-head">
+        <span class="eyebrow">Nasze opinie</span>
+        <h1>Co mówią o nas rodzice i partnerzy?</h1>
+        <p>Twoje zaufanie jest dla nas najważniejsze. Zobacz opinie osób, które miały okazję z nami współpracować.</p>
+      </div>
+
+      <div class="tst-grid">
+        {testimonials.map(tst => (
+          <div class="double-bezel-outer">
+            <div class="tst-card double-bezel-inner">
+              <div class="stars">
+                {Array.from({ length: tst.data.rating }).map(() => (
+                  <span>⭐</span>
+                ))}
+              </div>
+              <p class="content">"{tst.data.content}"</p>
+              <div class="author-info">
+                <strong>{tst.data.author}</strong>
+                <span class="role">{tst.data.role}</span>
+                {tst.data.source && <span class="source-badge">Opinia z: {tst.data.source}</span>}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="leave-opinion">
+        <h3>Podobały Ci się nasze zajęcia?</h3>
+        <p>Podziel się swoją opinią na Google lub Facebooku i pomóż innym rodzicom odkryć Cudotekę!</p>
+        <div class="opinion-links">
+          <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">⭐ Dodaj opinię na Google</a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">👍 Oceń nas na Facebooku</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .testimonials-page {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+    min-height: 80vh;
+  }
+  .sec-head {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto 54px;
+  }
+  .sec-head h1 {
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    margin: 18px 0 16px;
+  }
+  .sec-head p {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+  }
+
+  .tst-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 70px;
+  }
+  .tst-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .stars {
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+  }
+  .content {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 16px;
+  }
+  .author-info strong {
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .role {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-weight: 700;
+  }
+  .source-badge {
+    align-self: flex-start;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    background: var(--blue-tint);
+    color: var(--blue-deep);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  .leave-opinion {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 40px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(62, 137, 176, 0.08);
+  }
+  .leave-opinion h3 {
+    font-family: "Fraunces", serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .leave-opinion p {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    margin-bottom: 24px;
+  }
+  .opinion-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 980px) {
+    .tst-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+  @media (max-width: 680px) {
+    .tst-grid {
+      grid-template-columns: 1fr;
+    }
+    .leave-opinion {
+      padding: 24px;
+    }
+    .opinion-links {
+      flex-direction: column;
+    }
+    .opinion-links .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
