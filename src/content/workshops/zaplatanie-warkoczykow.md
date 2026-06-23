@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "3+ lat"
 duration: "ciągła"
 materials: ["Kolorowe pasma syntetyczne","Gumeczki silikonowe","Szczotki i grzebienie","Brokatowe spraye do włosów"]
-image: "/src/assets/images/workshops/zaplatanie-warkoczykow.jpg"
+image: "/images/workshops/zaplatanie-warkoczykow.png"
 imageAlt: "Zaplatanie warkoczyków - warsztaty w Cudotece"
 featured: false
 metaTitle: "Kolorowe warkoczyki syntetyczne Warszawa | Cudoteka"

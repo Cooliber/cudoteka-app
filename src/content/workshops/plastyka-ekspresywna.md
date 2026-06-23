@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "3–12 lat"
 duration: "60 min"
 materials: ["Farbki akrylowe i plakatowe","Folia malarska","Wielkoformatowy papier","Pędzle, wałki i gąbki"]
-image: "/src/assets/images/workshops/plastyka-ekspresywna.jpg"
+image: "/images/workshops/plastyka-ekspresywna.png"
 imageAlt: "Plastyka ekspresywna® - warsztaty w Cudotece"
 featured: false
 metaTitle: "Plastyka ekspresywna dla dzieci Warszawa | Cudoteka"

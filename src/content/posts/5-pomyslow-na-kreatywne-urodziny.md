@@ -4,7 +4,7 @@ slug: "5-pomyslow-na-kreatywne-urodziny"
 pubDate: 2026-06-22
 category: "Organizowanie imprez"
 excerpt: "Szukasz alternatywy dla sali zabaw? Odkryj twórcze motywy urodzinowe, które zachwycą małych gości i rozwiną ich wyobraźnię."
-image: "/src/assets/images/hero/hero.png"
+image: "/images/hero/hero.png"
 imageAlt: "Dzieci puszczające gigantyczne bańki mydlane"
 metaTitle: "Jak zorganizować kreatywne urodziny dziecka? | Cudoteka"
 metaDescription: "Sprawdź 5 kreatywnych pomysłów na urodziny dla dzieci w każdym wieku. Warsztaty artystyczne, gry terenowe, eksperymenty i animacje."

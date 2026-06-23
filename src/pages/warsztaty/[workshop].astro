@@ -1,4 +1,6 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, getEntry } from 'astro:content';
 
@@ -13,27 +15,43 @@ export async function getStaticPaths() {
 const { workshop } = Astro.props;
 const category = await getEntry(workshop.data.category);
 
-// Check if image exists in assets. Note: we copied PNG files, so we support fallback or direct path if it matches.
-// We can use standard relative paths since the assets are built, but the easiest and safest way in Astro is to reference
-// from build or direct src. Since we copied image to `/src/assets/images/workshops/${w.slug}.png` or `.jpg`,
-// let's resolve if it exists. In the generator we wrote: `/src/assets/images/workshops/${w.slug}.jpg`.
-// However, the actual copied file is a `.png`! Let's handle the image display by using the correct copied `.png`!
-// Wait! Let's check what files were copied:
-// - `sensoplastyka.png`
-// - `warsztaty-plastyczne.png`
-// - `malowanie-twarzy.png`
-// - `strefa-malucha.png`
-// Let's check if the workshop name matches these, else we can display a nice pastel gradient block or default icon as a placeholder!
-// This makes the design super resilient and clean!
-const hasCustomImage = ['sensoplastyka', 'warsztaty-plastyczne', 'malowanie-twarzy', 'strefa-malucha'].includes(workshop.data.slug);
-const imagePath = hasCustomImage 
-  ? `/src/assets/images/workshops/${workshop.data.slug}.png` 
-  : null;
+// Auto-detect whether a real photo exists for this workshop in /public/images/workshops/.
+// Resolved at build time, so it works in both `astro dev` and the static production build
+// (no hardcoded whitelist, no broken /src/... URLs). Workshops without a photo fall back to a
+// pastel placeholder, and any image dropped into the folder later appears automatically.
+const imageRelPath = `images/workshops/${workshop.data.slug}.png`;
+const hasImage = fs.existsSync(path.join(process.cwd(), 'public', imageRelPath));
+const imagePath = hasImage ? `/${imageRelPath}` : null;
+
+const pageUrl = new URL(`/warsztaty/${workshop.data.slug}/`, Astro.site).toString();
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Strona główna', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Warsztaty', item: new URL('/warsztaty/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: workshop.data.title, item: pageUrl },
+  ],
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: workshop.data.title,
+  description: workshop.data.shortDescription,
+  serviceType: category?.data.title ?? 'Warsztaty kreatywne',
+  areaServed: 'Warszawa i okolice',
+  provider: { '@type': 'LocalBusiness', name: 'Cudoteka', telephone: '+48-607-370-777' },
+  audience: { '@type': 'Audience', audienceType: workshop.data.ageRange },
+  ...(imagePath ? { image: new URL(imagePath, Astro.site).toString() } : {}),
+};
 ---
 
 <BaseLayout
   title={workshop.data.metaTitle}
   description={workshop.data.metaDescription}
+  type="article"
+  image={imagePath ? new URL(imagePath, Astro.site).toString() : undefined}
+  schemas={[breadcrumbSchema, serviceSchema]}
 >
   <section class="section workshop-detail">
     <div class="wrap reveal-fade-up">

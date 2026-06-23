@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "5+ lat"
 duration: "30–45 min"
 materials: ["Stół świetlny do trików","Wytwornica dymu (safe)","Gaz palny (bezpieczny pokaz)","Światło UV"]
-image: "/src/assets/images/workshops/pokaz-baniek-dymnych-i-ogniowych.jpg"
+image: "/images/workshops/pokaz-baniek-dymnych-i-ogniowych.png"
 imageAlt: "Pokaz baniek dymnych i ogniowych - warsztaty w Cudotece"
 featured: false
 metaTitle: "Pokaz baniek ogniowych i dymnych Warszawa | Cudoteka"

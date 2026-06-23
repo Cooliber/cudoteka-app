@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "3+ lat"
 duration: "60 min"
 materials: ["Bazy styropianowe i drewniane","Gałązki świerkowe","Tasiemki, brokaty, cekiny","Zapachowe susze"]
-image: "/src/assets/images/workshops/warsztaty-swiateczne.jpg"
+image: "/images/workshops/warsztaty-swiateczne.png"
 imageAlt: "Warsztaty świąteczne - warsztaty w Cudotece"
 featured: false
 metaTitle: "Kreatywne warsztaty świąteczne Warszawa | Cudoteka"

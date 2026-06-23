@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "6+ lat"
 duration: "60 min"
 materials: ["Gliceryna kosmetyczna","Soda oczyszczona, kwas cytrynowy","Naturalne barwniki i olejki zapachowe","Suszone kwiaty"]
-image: "/src/assets/images/workshops/eko-kosmetyki.jpg"
+image: "/images/workshops/eko-kosmetyki.png"
 imageAlt: "Eko kosmetyki - warsztaty w Cudotece"
 featured: false
 metaTitle: "Warsztaty robienia ekokosmetyków Warszawa | Cudoteka"

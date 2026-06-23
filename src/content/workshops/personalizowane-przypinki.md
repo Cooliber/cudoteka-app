@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "4+ lat"
 duration: "45 min"
 materials: ["Szablony papierowe","Kredki i pisaki","Komponenty metalowe przypinek","Prasa do przypinek"]
-image: "/src/assets/images/workshops/personalizowane-przypinki.jpg"
+image: "/images/workshops/personalizowane-przypinki.png"
 imageAlt: "Personalizowane przypinki - warsztaty w Cudotece"
 featured: false
 metaTitle: "Warsztaty robienia przypinek Warszawa | Cudoteka"

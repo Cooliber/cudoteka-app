@@ -11,10 +11,14 @@ interface Props {
   image?: string;
   canonical?: string;
   type?: string;
+  schemas?: Record<string, unknown>[];
 }
 
-const { title, description, image, canonical, type } = Astro.props;
-const seoData = seo({ title, description, image, canonical, type });
+const { title, description, image, canonical, type, schemas = [] } = Astro.props;
+
+// Always emit an absolute canonical URL derived from the current route unless one is passed explicitly.
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+const seoData = seo({ title, description, image, canonical: canonicalURL, type });
 const schema = localBusinessSchema();
 ---
 
@@ -33,13 +37,16 @@ const schema = localBusinessSchema();
       return <meta property={m.property} content={m.content} />;
     }
   })}
-  {canonical && <link rel="canonical" href={canonical} />}
-  
+  <link rel="canonical" href={canonicalURL} />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  
+
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  {schemas.map((s) => (
+    <script type="application/ld+json" set:html={JSON.stringify(s)} />
+  ))}
 </head>
 <body>
   <Header />

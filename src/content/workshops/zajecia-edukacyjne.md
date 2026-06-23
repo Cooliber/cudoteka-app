@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "5–10 lat"
 duration: "60 min"
 materials: ["Mapy i plansze edukacyjne","Materiały konstrukcyjne","Karty pracy","Model kosmosu / globu"]
-image: "/src/assets/images/workshops/zajecia-edukacyjne.jpg"
+image: "/images/workshops/zajecia-edukacyjne.png"
 imageAlt: "Zajęcia edukacyjne - warsztaty w Cudotece"
 featured: false
 metaTitle: "Ciekawe zajęcia edukacyjne dla dzieci Warszawa | Cudoteka"

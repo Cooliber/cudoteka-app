@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "dorośli"
 duration: "90–120 min"
 materials: ["Materiały rękodzielnicze premium","Instrukcje krok-po-kroku","Kawa / herbata poczęstunek"]
-image: "/src/assets/images/workshops/integracja-doroslych.jpg"
+image: "/images/workshops/integracja-doroslych.png"
 imageAlt: "Integracja dorosłych - warsztaty w Cudotece"
 featured: false
 metaTitle: "Warsztaty integracyjne dla dorosłych Warszawa | Cudoteka"

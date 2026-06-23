@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "3+ lat"
 duration: "45–90 min"
 materials: ["Chusta animacyjna Klanza","Tunel animacyjny","Worki do skoków","Pachołki, szarfy, piłki"]
-image: "/src/assets/images/workshops/animacje-ruchowe.jpg"
+image: "/images/workshops/animacje-ruchowe.png"
 imageAlt: "Animacje ruchowe - warsztaty w Cudotece"
 featured: false
 metaTitle: "Zabawy i animacje ruchowe dla dzieci Warszawa | Cudoteka"

@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "5–12 lat"
 duration: "60 min"
 materials: ["Probówki, zlewki, pipety","Soda, ocet, barwniki","Olej roślinny, tabletki musujące","Okulary ochronne"]
-image: "/src/assets/images/workshops/eksperymenty.jpg"
+image: "/images/workshops/eksperymenty.png"
 imageAlt: "Eksperymenty - warsztaty w Cudotece"
 featured: false
 metaTitle: "Pokazy i warsztaty eksperymentów Warszawa | Cudoteka"

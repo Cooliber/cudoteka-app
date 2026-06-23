@@ -12,11 +12,39 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const pageUrl = new URL(`/blog/${post.data.slug}/`, Astro.site).toString();
+const postImage = post.data.image ? new URL(post.data.image, Astro.site).toString() : undefined;
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Strona główna', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: new URL('/blog/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: pageUrl },
+  ],
+};
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.excerpt,
+  datePublished: post.data.pubDate.toISOString(),
+  articleSection: post.data.category,
+  inLanguage: 'pl-PL',
+  mainEntityOfPage: pageUrl,
+  author: { '@type': 'Organization', name: 'Cudoteka' },
+  publisher: { '@type': 'Organization', name: 'Cudoteka' },
+  ...(postImage ? { image: postImage } : {}),
+};
 ---
 
 <BaseLayout
   title={post.data.metaTitle}
   description={post.data.metaDescription}
+  type="article"
+  image={postImage}
+  schemas={[breadcrumbSchema, articleSchema]}
 >
   <article class="section post-detail">
     <div class="wrap reveal-fade-up">
@@ -156,6 +184,43 @@ const { Content } = await render(post);
   }
   .post-body :global(strong) {
     color: var(--ink);
+  }
+  .post-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    font-size: 0.98rem;
+    background: #fff;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .post-body :global(th),
+  .post-body :global(td) {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(62, 137, 176, 0.12);
+    vertical-align: top;
+  }
+  .post-body :global(thead th) {
+    background: var(--blue-tint);
+    color: var(--blue-deep);
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 800;
+  }
+  .post-body :global(tbody tr:last-child td) {
+    border-bottom: none;
+  }
+  .post-body :global(a) {
+    color: var(--blue-deep);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--blue-soft);
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+  .post-body :global(a:hover) {
+    color: var(--blue);
   }
 
   /* Post footer cta */

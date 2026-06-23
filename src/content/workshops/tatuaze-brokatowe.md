@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "3+ lat"
 duration: "ciągła"
 materials: ["Szablony z wzorami","Hipoalergiczny klej kosmetyczny","Tęczowy brokat sypki","Pędzelki do aplikacji"]
-image: "/src/assets/images/workshops/tatuaze-brokatowe.jpg"
+image: "/images/workshops/tatuaze-brokatowe.png"
 imageAlt: "Tatuaże brokatowe - warsztaty w Cudotece"
 featured: false
 metaTitle: "Tatuaże brokatowe dla dzieci Warszawa | Cudoteka"

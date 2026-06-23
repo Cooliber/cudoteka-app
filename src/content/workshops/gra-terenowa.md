@@ -8,7 +8,7 @@ fullDescription: |
 ageRange: "6+ lat"
 duration: "90 min"
 materials: ["Mapy stylizowane, kompasy","Skrzynie z kłódkami i szyframi","Łamigłówki, listy","Skarb finałowy dla każdego"]
-image: "/src/assets/images/workshops/gra-terenowa.jpg"
+image: "/images/workshops/gra-terenowa.png"
 imageAlt: "Gra terenowa - warsztaty w Cudotece"
 featured: false
 metaTitle: "Gry terenowe i podchody dla dzieci Warszawa | Cudoteka"
