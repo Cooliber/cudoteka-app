@@ -1,0 +1,102 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  item: CollectionEntry<'downloads'>;
+}
+
+const { item } = Astro.props;
+const { title, description, file, fileSize, icon, category } = item.data;
+
+const categoryLabels: Record<string, string> = {
+  wakacje: 'Wyzwania wakacyjne',
+  artykulacja: 'Artykulacja',
+  logopedia: 'Logopedia',
+  inne: 'Inne',
+};
+
+const categoryColors: Record<string, string> = {
+  wakacje: 'var(--peach)',
+  artykulacja: 'var(--blue)',
+  logopedia: 'var(--mint)',
+  inne: 'var(--gold)',
+};
+---
+
+<div class="double-bezel-outer">
+  <div class="download-card double-bezel-inner">
+    <div class="download-icon">{icon}</div>
+    <div class="download-content">
+      <span class="download-tag" style={`color: ${categoryColors[category]}`}>
+        {categoryLabels[category]}
+      </span>
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+    <div class="download-footer">
+      <span class="download-size">PDF · {fileSize}</span>
+      <span class="download-soon">Wkrótce</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .download-card {
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  .download-icon {
+    font-size: 2.4rem;
+    margin-bottom: 4px;
+  }
+
+  .download-content {
+    flex-grow: 1;
+  }
+
+  .download-tag {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+  }
+
+  .download-content h3 {
+    font-size: 1.15rem;
+    margin: 6px 0 8px;
+  }
+
+  .download-content p {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .download-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 14px;
+    margin-top: auto;
+  }
+
+  .download-size {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+
+  .download-soon {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.02em;
+  }
+</style>

@@ -362,9 +362,9 @@ cudoteka-astro/
 
 ## 13. Decyzje do potwierdzenia
 
-1. **Nazwa domeny:** czy zakup i podpięcie domeny `cudoteka.pl` jest w planie?
+1. **Nazwa domeny:**cudoteka.pl`  juz zakupiona
 2. **Formularz:** Formspree czy Netlify Forms?
-3. **Hosting:** Netlify czy Vercel?
+3. **Hosting:** vercel
 4. **Realne zdjęcia:** czy będą dostępne do podmiany wygenerowanych grafik?
 5. **Blog:** czy od razu tworzymy pierwsze 2-3 wpisy, czy zostawiamy pusty szkielet?
 

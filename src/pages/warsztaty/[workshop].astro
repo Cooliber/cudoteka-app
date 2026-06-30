@@ -15,13 +15,21 @@ export async function getStaticPaths() {
 const { workshop } = Astro.props;
 const category = await getEntry(workshop.data.category);
 
+// Get related workshops from same category (excluding current)
+const allWorkshops = await getCollection('workshops');
+const relatedWorkshops = allWorkshops
+  .filter(w => w.data.category.id === workshop.data.category.id && w.data.slug !== workshop.data.slug)
+  .slice(0, 3);
+
 // Auto-detect whether a real photo exists for this workshop in /public/images/workshops/.
 // Resolved at build time, so it works in both `astro dev` and the static production build
 // (no hardcoded whitelist, no broken /src/... URLs). Workshops without a photo fall back to a
 // pastel placeholder, and any image dropped into the folder later appears automatically.
 const imageRelPath = `images/workshops/${workshop.data.slug}.webp`;
-const hasImage = fs.existsSync(path.join(process.cwd(), 'public', imageRelPath));
-const imagePath = hasImage ? `/${imageRelPath}` : null;
+const imageSvgPath = `images/workshops/${workshop.data.slug}.svg`;
+const hasWebp = fs.existsSync(path.join(process.cwd(), 'public', imageRelPath));
+const hasSvg = fs.existsSync(path.join(process.cwd(), 'public', imageSvgPath));
+const imagePath = hasWebp ? `/${imageRelPath}` : hasSvg ? `/${imageSvgPath}` : null;
 
 const pageUrl = new URL(`/warsztaty/${workshop.data.slug}/`, Astro.site).toString();
 const breadcrumbSchema = {
@@ -129,6 +137,24 @@ const serviceSchema = {
           </div>
         </div>
       </div>
+
+      <!-- Related Workshops -->
+      {relatedWorkshops.length > 0 && (
+        <div class="related-section reveal-fade-up">
+          <h2 class="related-title">Powiązane warsztaty</h2>
+          <div class="related-grid">
+            {relatedWorkshops.map(rel => (
+              <a href={`/warsztaty/${rel.data.slug}/`} class="related-card double-bezel-outer">
+                <div class="related-inner double-bezel-inner">
+                  <span class="related-icon">{category?.data.icon || '✨'}</span>
+                  <h3>{rel.data.title}</h3>
+                  <p>{rel.data.shortDescription}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   </section>
 </BaseLayout>
@@ -309,5 +335,50 @@ const serviceSchema = {
       width: 100%;
       justify-content: center;
     }
+  }
+
+  /* Related workshops */
+  .related-section {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid rgba(62, 137, 176, 0.12);
+  }
+  .related-title {
+    font-family: "Fraunces", serif;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .related-card {
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .related-card:hover {
+    transform: translateY(-4px);
+  }
+  .related-inner {
+    text-align: center;
+    padding: 28px 24px;
+  }
+  .related-icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .related-inner h3 {
+    font-family: "Fraunces", serif;
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .related-inner p {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
   }
 </style>
