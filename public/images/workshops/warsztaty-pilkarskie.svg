@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#7FC4A6"/>
+  <circle cx="400" cy="220" r="80" fill="none" stroke="#fff" stroke-width="4"/>
+  <path d="M400 140 L420 180 L460 180 L428 205 L440 245 L400 220 L360 245 L372 205 L340 180 L380 180 Z" fill="#fff"/>
+  <text x="400" y="340" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#fff" font-weight="700">Warsztaty piłkarskie</text>
+  <text x="400" y="375" text-anchor="middle" font-family="sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">Zdjęcie wkrótce</text>
+</svg>

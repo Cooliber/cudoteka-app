@@ -69,4 +69,19 @@ const gallery = defineCollection({
   }),
 });
 
-export const collections = { categories, workshops, testimonials, posts, gallery };
+const downloads = defineCollection({
+  loader: glob({ base: './src/content/downloads', pattern: '**/*.md' }),
+  schema: z.object({
+    title: z.string(),
+    slug: z.string(),
+    description: z.string(),
+    category: z.enum(['wakacje', 'artykulacja', 'logopedia', 'inne']),
+    file: z.string(),
+    fileSize: z.string(),
+    icon: z.string(),
+    metaTitle: z.string(),
+    metaDescription: z.string(),
+  }),
+});
+
+export const collections = { categories, workshops, testimonials, posts, gallery, downloads };

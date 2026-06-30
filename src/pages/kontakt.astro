@@ -66,7 +66,7 @@ const workshops = await getCollection('workshops');
               <button class="btn btn-primary" id="reset-btn">Wyślij kolejną</button>
             </div>
 
-            <form id="contact-form">
+            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
               <div class="form-group">
                 <label for="name">Imię i nazwisko *</label>
                 <input type="text" id="name" name="name" required placeholder="np. Anna Kowalska" />
@@ -105,6 +105,9 @@ const workshops = await getCollection('workshops');
                   Zgadzam się na przetwarzanie danych osobowych w celu udzielenia odpowiedzi na zapytanie. *
                 </label>
               </div>
+
+              <input type="hidden" name="_subject" value="Nowa wiadomość z formularza kontaktowego Cudoteka" />
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
               <button type="submit" class="btn btn-primary form-submit-btn">Wyślij wiadomość</button>
             </form>
@@ -326,30 +329,47 @@ const workshops = await getCollection('workshops');
       }
     }
 
-    // 2. Form submission simulation
+    // 2. Form submission via Formspree
     const form = document.getElementById('contact-form') as HTMLFormElement;
     const successMsg = document.getElementById('success-msg');
     const resetBtn = document.getElementById('reset-btn');
 
     if (form && successMsg) {
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Simulating network request
         const submitBtn = form.querySelector('.form-submit-btn') as HTMLButtonElement;
         if (submitBtn) {
           submitBtn.disabled = true;
           submitBtn.textContent = 'Wysyłanie...';
         }
 
-        setTimeout(() => {
-          successMsg.classList.add('visible');
-          form.reset();
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+
+          if (response.ok) {
+            successMsg.classList.add('visible');
+            form.reset();
+          } else {
+            const data = await response.json();
+            if (data.errors) {
+              alert(data.errors.map((err: {message: string}) => err.message).join('\n'));
+            } else {
+              alert('Wystąpił błąd. Spróbuj ponownie lub zadzwoń do nas.');
+            }
+          }
+        } catch {
+          alert('Brak połączenia z internetem. Spróbuj ponownie.');
+        } finally {
           if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Wyślij wiadomość';
           }
-        }, 1000);
+        }
       });
     }
 

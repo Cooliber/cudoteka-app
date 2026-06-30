@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import DownloadCard from '../components/downloads/DownloadCard.astro';
+
+const downloads = (await getCollection('downloads'));
+
+const wakacje = downloads.filter(d => d.data.category === 'wakacje');
+const artykulacja = downloads.filter(d => d.data.category === 'artykulacja');
+const logopedia = downloads.filter(d => d.data.category === 'logopedia');
+---
+
+<BaseLayout
+  title="Materiały do pobrania -- darmowe ćwiczenia i karty pracy | Cudoteka"
+  description="Bezpłatne materiały PDF do pobrania: wyzwania wakacyjne, ćwiczenia artykulacji głosków, materiały logopedyczne. Pobierz i korzystaj!"
+>
+  <section class="section hero-section">
+    <div class="wrap">
+      <div class="reveal-fade-up sec-head">
+        <span class="eyebrow">Materiały do pobrania</span>
+        <h1>Darmowe materiały dla dzieci i rodziców</h1>
+        <p>Karty pracy, ćwiczenia logopedyczne i kreatywne wyzwania — już wkrótce dostępne do pobrania. Zapisz się, aby otrzymać powiadomienie!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal-fade-up sec-head">
+        <span class="eyebrow">Lato i wakacje</span>
+        <h2>Wyzwania wakacyjne</h2>
+        <p>Kreatywne aktywności na letnie dni -- zabawy na świeżym powietrzu, eksperymenty i plastyka.</p>
+      </div>
+      <div class="downloads-grid">
+        {wakacje.map(item => (
+          <DownloadCard item={item} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="reveal-fade-up sec-head">
+        <span class="eyebrow">Logopedia</span>
+        <h2>Ćwiczenia artykulacji głosków</h2>
+        <p>Profesjonalne materiały do pracy nad prawidłową wymową. Szeregi głoskowe, kappacyzm, gammacyzm, rotacyzm, lambdacyzm.</p>
+      </div>
+      <div class="downloads-grid">
+        {artykulacja.map(item => (
+          <DownloadCard item={item} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {logopedia.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <div class="reveal-fade-up sec-head">
+          <span class="eyebrow">Dla specjalistów</span>
+          <h2>Materiały logopedyczne</h2>
+        </div>
+        <div class="downloads-grid">
+          {logopedia.map(item => (
+            <DownloadCard item={item} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section cta-section">
+    <div class="wrap text-center">
+      <div class="reveal-fade-up">
+        <h2>Bądź pierwszy, który pobierze materiały</h2>
+        <p>Zapisz się na listę oczekujących — powiadomimy Cię, gdy materiały będą gotowe do pobrania.</p>
+        <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="email" name="email" placeholder="Twój adres e-mail" required class="newsletter-input" />
+          <button type="submit" class="btn btn-primary">Zapisz mnie</button>
+        </form>
+        <p class="newsletter-note">Nie wysyłamy spamu. Tylko powiadomienia o nowych materiałach.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    background: linear-gradient(145deg, var(--cream) 0%, var(--cream-2) 100%);
+  }
+
+  .sec-head {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto 40px;
+  }
+
+  .sec-head h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin: 16px 0 14px;
+  }
+
+  .sec-head h2 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin: 14px 0 12px;
+  }
+
+  .sec-head p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .section-alt {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+  }
+
+  .downloads-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .cta-section {
+    background: var(--blue-deep);
+    color: #fff;
+    border-radius: 2rem;
+    margin: 0 24px 96px;
+    padding: 64px 24px;
+  }
+
+  .cta-section h2 {
+    color: #fff;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin-bottom: 14px;
+  }
+
+  .cta-section p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+    max-width: 48ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 10px;
+    max-width: 440px;
+    margin: 0 auto 16px;
+  }
+
+  .newsletter-input {
+    flex: 1;
+    padding: 12px 18px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .newsletter-input:focus {
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .newsletter-note {
+    font-size: 0.8rem !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    margin-bottom: 0 !important;
+  }
+
+  @media (max-width: 480px) {
+    .newsletter-form {
+      flex-direction: column;
+    }
+  }
+
+  @media (min-width: 680px) {
+    .downloads-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 980px) {
+    .downloads-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

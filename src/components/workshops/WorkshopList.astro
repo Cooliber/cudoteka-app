@@ -4,23 +4,36 @@ import WorkshopCard from './WorkshopCard.astro';
 
 const workshops = await getCollection('workshops');
 const categories = await getCollection('categories');
+
+// Count workshops per category
+const categoryCounts: Record<string, number> = {};
+workshops.forEach(w => {
+  const catId = w.data.category.id;
+  categoryCounts[catId] = (categoryCounts[catId] || 0) + 1;
+});
 ---
 
 <div class="workshop-list-container">
   <!-- Interactive Category Filter Tabs -->
   <div class="filters-tabs">
-    <button class="filter-btn active" data-filter="all">Wszystkie</button>
+    <button class="filter-btn active" data-filter="all">
+      Wszystkie <span class="count-badge">{workshops.length}</span>
+    </button>
     {categories.map(cat => (
       <button class="filter-btn" data-filter={cat.data.slug}>
         {cat.data.icon} {cat.data.title}
+        <span class="count-badge">{categoryCounts[cat.data.slug] || 0}</span>
       </button>
     ))}
   </div>
 
+  <!-- Workshop Count -->
+  <p class="workshop-count" id="workshop-count">Wyświetlono {workshops.length} warsztatów</p>
+
   <!-- Workshop Grid -->
   <div class="workshop-grid" id="workshops-grid">
-    {workshops.map(w => (
-      <div class="grid-item" data-category={w.data.category.id}>
+    {workshops.map((w, i) => (
+      <div class="grid-item" data-category={w.data.category.id} style={`animation-delay: ${i * 40}ms`}>
         <WorkshopCard workshop={w} />
       </div>
     ))}
@@ -31,27 +44,29 @@ const categories = await getCollection('categories');
   .workshop-list-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 24px;
   }
   .filters-tabs {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 10px;
   }
   .filter-btn {
     background: #fff;
     border: 1px solid rgba(62, 137, 176, 0.15);
     border-radius: 99px;
-    padding: 10px 20px;
-    font-size: 0.9rem;
+    padding: 8px 16px;
+    font-size: 0.85rem;
     font-weight: 700;
     font-family: "Nunito Sans", sans-serif;
     color: var(--ink-soft);
     cursor: pointer;
     box-shadow: var(--shadow-sm);
     transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
   .filter-btn:hover {
     color: var(--blue-deep);
@@ -64,14 +79,38 @@ const categories = await getCollection('categories');
     border-color: transparent;
     box-shadow: 0 8px 20px -8px rgba(41, 106, 142, 0.4);
   }
+  .count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    background: rgba(62, 137, 176, 0.1);
+    color: var(--blue-deep);
+    padding: 0 6px;
+  }
+  .filter-btn.active .count-badge {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+  }
+  .workshop-count {
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin: 0;
+  }
   .workshop-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 26px;
-    transition: all 0.5s ease;
   }
   
   .grid-item {
+    animation: fadeInUp 0.5s cubic-bezier(0.32, 0.72, 0, 1) both;
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
     opacity: 1;
     transform: scale(1);
@@ -91,21 +130,34 @@ const categories = await getCollection('categories');
     border: none;
   }
 
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @media (max-width: 680px) {
     .filters-tabs {
       justify-content: flex-start;
       overflow-x: auto;
       white-space: nowrap;
       padding-bottom: 10px;
-      margin-bottom: 10px;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; /* Hide scrollbar Firefox */
+      scrollbar-width: none;
     }
     .filters-tabs::-webkit-scrollbar {
-      display: none; /* Hide scrollbar Chrome/Safari */
+      display: none;
     }
     .filter-btn {
       flex: 0 0 auto;
+    }
+    .workshop-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -114,24 +166,35 @@ const categories = await getCollection('categories');
   document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const gridItems = document.querySelectorAll('.grid-item');
+    const countEl = document.getElementById('workshop-count');
 
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Toggle active button class
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
         const filterValue = btn.getAttribute('data-filter');
+        let visibleCount = 0;
 
-        gridItems.forEach(item => {
+        gridItems.forEach((item, i) => {
           const itemCategory = item.getAttribute('data-category');
+          const shouldShow = filterValue === 'all' || itemCategory === filterValue;
           
-          if (filterValue === 'all' || itemCategory === filterValue) {
+          if (shouldShow) {
             item.classList.remove('hidden');
+            item.style.animationDelay = `${visibleCount * 40}ms`;
+            item.style.animation = 'none';
+            item.offsetHeight; // trigger reflow
+            item.style.animation = '';
+            visibleCount++;
           } else {
             item.classList.add('hidden');
           }
         });
+
+        if (countEl) {
+          countEl.textContent = `Wyświetlono ${visibleCount} warsztat${visibleCount === 1 ? '' : visibleCount < 5 ? 'y' : 'ów'}`;
+        }
       });
     });
   });

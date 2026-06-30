@@ -1,0 +1,604 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const courseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'Szkolenia z opóźnionego rozwoju mowy',
+  description: 'Praktyczne szkolenia online i stacjonarne z zakresu opóźnionego rozwoju mowy. Jak postępować, kiedy zareagować.',
+  provider: { '@type': 'LocalBusiness', name: 'Cudoteka', telephone: '+48-607-370-777' },
+  areaServed: 'Warszawa i okolice',
+  offers: [
+    { '@type': 'Offer', name: 'Szkolenie online', price: '79', priceCurrency: 'PLN', availability: 'https://schema.org/InStock' },
+    { '@type': 'Offer', name: 'Szkolenie stacjonarne', price: '199', priceCurrency: 'PLN', availability: 'https://schema.org/InStock' },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Kiedy powinienem zareagować, jeśli dziecko nie mówi?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pierwsze sygnały niepokoju powinny pojawić się, gdy dziecko w wieku 2 lat nie mówi prostych słów (mama, tata, bam), a w wieku 3 lat nie buduje prostych zdań.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Czy opóźniony rozwój mowy to to samo co zaburzenie mowy?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nie. Opóźniony rozwój mowy (ORM) oznacza, że dziecko rozwija mowę prawidłowo, ale z opóźnieniem w stosunku do rówieśników.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Czy szkolenie jest odpowiednie dla mnie, jeśli nie jestem specjalistą?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Tak! Szkolenia są prowadzone w przystępny sposób, z naciskiem na praktyczne wskazówki. Rodzice i nauczyciele stanowią znaczną część naszych uczestników.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Jak wygląda szkolenie online?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Po zapisaniu się otrzymasz link do transmisji na żywo. Podczas szkolenia możesz zadawać pytania na czacie. Po zakończeniu dostaniesz dostęp do nagrania (7 dni), materiały PDF i zaświadczenie.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Czy otrzymam zaświadczenie?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Tak. Każdy uczestnik otrzymuje elektroniczne zaświadczenie o ukończeniu szkolenia.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Szkolenia z opóźnionego rozwoju mowy dla dzieci i rodziców | Cudoteka"
+  description="Szkolenia online i stacjonarne z zakresu opóźnionego rozwoju mowy. Jak postepować, kiedy zareagować. Dla rodziców i nauczycieli."
+  schemas={[courseSchema, faqSchema]}
+>
+  <section class="section hero-section">
+    <div class="wrap">
+      <div class="reveal-fade-up sec-head">
+        <span class="eyebrow">Szkolenia</span>
+        <h1>Opóźniony rozwój mowy -- jak rozpoznać i wspierać dziecko</h1>
+        <p>Praktyczne szkolenia online i stacjonarne dla rodziców, nauczycieli i specjalistów. Dowiedz się, kiedy zareagować i jak prawidłowo wspierać rozwój mowy Twojego dziecka.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal-fade-up sec-head">
+        <span class="eyebrow">Dla kogo?</span>
+        <h2>Szkolenia skierowane są do:</h2>
+      </div>
+      <div class="target-grid">
+        <div class="target-card double-bezel-outer">
+          <div class="double-bezel-inner">
+            <span class="target-icon">👨‍👩‍👧</span>
+            <h3>Rodziców</h3>
+            <p>Którzy chcą zrozumieć rozwój mowy swojego dziecka i wiedzieć, jak prawidłowo reagować na sygnały opóźnienia.</p>
+          </div>
+        </div>
+        <div class="target-card double-bezel-outer">
+          <div class="double-bezel-inner">
+            <span class="target-icon">👩‍🏫</span>
+            <h3>Nauczycieli</h3>
+            <p>Pracujących z dziećmi w wieku przedszkolnym i wczesnoszkolnym, którzy chcą lepiej rozpoznawać trudności komunikacyjne.</p>
+          </div>
+        </div>
+        <div class="target-card double-bezel-outer">
+          <div class="double-bezel-inner">
+            <span class="target-icon">🧑‍⚕️</span>
+            <h3>Specjalistów</h3>
+            <p>Logopedów, terapeutów i pedagogów chcących usystematyzować wiedzę i poznać nowe metody pracy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="format-grid">
+        <div class="format-card reveal-fade-up">
+          <div class="format-badge">ONLINE</div>
+          <h2>Szkolenie online</h2>
+          <p class="format-subtitle">Wygodna forma -- ucz się z domu</p>
+          <ul class="format-features">
+            <li>Transmisja na żywo + dostęp do nagrania</li>
+            <li>Materiały szkoleniowe w formie PDF</li>
+            <li>Zaświadczenie uczestnictwa</li>
+            <li>Możliwość zadawania pytań na żywo</li>
+            <li>Czas trwania: ok. 3 godzin</li>
+          </ul>
+          <div class="format-price">
+            <span class="price">od 79 zł</span>
+            <span class="price-note">od osoby</span>
+          </div>
+          <a href="/kontakt/?subject=Szkolenie+online" class="btn btn-primary">Zapisz się na szkolenie online</a>
+        </div>
+
+        <div class="format-card reveal-fade-up">
+          <div class="format-badge format-badge-alt">STACJONARNIE</div>
+          <h2>Szkolenie stacjonarne</h2>
+          <p class="format-subtitle">Spotkanie na żywo w Warszawie</p>
+          <ul class="format-features">
+            <li>Interaktywne warsztaty z prowadzącym</li>
+            <li>Praktyczne ćwiczenia i case study</li>
+            <li>Materiały drukowane + PDF</li>
+            <li>Certyfikat uczestnictwa</li>
+            <li>Czas trwania: 6-7 godzin (z przerwą)</li>
+          </ul>
+          <div class="format-price">
+            <span class="price">od 199 zł</span>
+            <span class="price-note">od osoby</span>
+          </div>
+          <a href="/kontakt/?subject=Szkolenie+stacjonarne" class="btn btn-primary">Zapisz się na szkolenie stacjonarne</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal-fade-up sec-head">
+        <span class="eyebrow">Co zyskasz</span>
+        <h2>Dlaczego warto wziąć udział?</h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <span class="benefit-icon">🧠</span>
+          <div>
+            <strong>Rozpoznasz sygnały</strong>
+            <p>Dowiesz się, jakie objawy wskazują na opóźniony rozwój mowy i kiedy konieczna jest konsultacja ze specjalistą.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">🛠️</span>
+          <div>
+            <strong>Poznasz metody</strong>
+            <p>Otrzymasz konkretne techniki i ćwiczenia, które możesz stosować od razu w pracy z dzieckiem.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">📋</span>
+          <div>
+            <strong>Dostaniesz plan działania</strong>
+            <p>Przygotujemy dla Ciebie schemat postępowania krok po kroku -- od diagnozy po terapię.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">💬</span>
+          <div>
+            <strong>Zadasz pytania</strong>
+            <p>Podczas szkolenia będziesz mógł skonsultować konkretne przypadki i uzyskać indywidualne wskazówki.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">📄</span>
+          <div>
+            <strong>Otrzymasz materiały</strong>
+            <p>Prezentację, karty pracy i materiały edukacyjne -- wszystko w formie PDF do wydrukowania.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">🎓</span>
+          <div>
+            <strong>Zaświadczenie</strong>
+            <p>Otrzymasz elektroniczne zaświadczenie o ukończeniu szkolenia, ważne w placówkach oświatowych.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="reveal-fade-up sec-head">
+        <span class="eyebrow">Program szkolenia</span>
+        <h2>Co omawiamy na szkoleniu?</h2>
+      </div>
+      <div class="program-grid">
+        <div class="program-item">
+          <span class="program-num">01</span>
+          <h3>Prawidłowy rozwój mowy</h3>
+          <p>Etapy rozwoju mowy od urodzenia do 6. roku życia. Kiedy mowa dziecka jest prawidłowa, a kiedy wymaga interwencji.</p>
+        </div>
+        <div class="program-item">
+          <span class="program-num">02</span>
+          <h3>Opóźniony rozwój mowy (ORM)</h3>
+          <p>Czym jest ORM, jakie są jego przyczyny i jak odróżnić je od innych zaburzeń rozwojowych.</p>
+        </div>
+        <div class="program-item">
+          <span class="program-num">03</span>
+          <h3>Rozpoznawanie objawów</h3>
+          <p>Praktyczne wskazówki jak obserwować dziecko, jakie sygnały alarmować i kiedy szukać pomocy.</p>
+        </div>
+        <div class="program-item">
+          <span class="program-num">04</span>
+          <h3>Stymulacja mowy w domu</h3>
+          <p>Gotowe ćwiczenia i zabawy, które rodzice mogą stosować na co dzień, aby wspierać rozwój mowy dziecka.</p>
+        </div>
+        <div class="program-item">
+          <span class="program-num">05</span>
+          <h3>Współpraca z logopedą</h3>
+          <p>Jak wybrać logopedę, jak wygląda terapia i czego spodziewać się po pierwszych wizytach.</p>
+        </div>
+        <div class="program-item">
+          <span class="program-num">06</span>
+          <h3>Pytania i konsultacje</h3>
+          <p>Otwarta dyskusja, odpowiedzi na pytania uczestników i indywidualne konsultacje przypadków.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal-fade-up sec-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Najczęściej zadawane pytania</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Kiedy powinienem zareagować, jeśli dziecko nie mówi?</summary>
+          <p>Pierwsze sygnały niepokoju powinny pojawić się, gdy dziecko w wieku 2 lat nie mówi prostych słów (mama, tata, bam), a w wieku 3 lat nie buduje prostych zdań. Jeśli masz wątpliwości -- skonsultuj się z logopedą. Lepiej zareagować za wcześnie niż za późno.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Czy opóźniony rozwój mowy to to samo co zaburzenie mowy?</summary>
+          <p>Nie. Opóźniony rozwój mowy (ORM) oznacza, że dziecko rozwija mowę prawidłowo, ale z opóźnieniem w stosunku do rówieśników. Zaburzenia mowy to bardziej złożone trudności, które wymagają specjalistycznej terapii.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Czy szkolenie jest odpowiednie dla mnie, jeśli nie jestem specjalistą?</summary>
+          <p>Tak! Szkolenia są prowadzone w przystępny sposób, z naciskiem na praktyczne wskazówki. Rodzice i nauczyciele stanowią znaczną część naszych uczestników.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Jak wygląda szkolenie online?</summary>
+          <p>Po zapisaniu się otrzymasz link do transmisji na żywo. Podczas szkolenia możesz zadawać pytania na czacie. Po zakończeniu dostaniesz dostęp do nagrania (7 dni), materiały PDF i zaświadczenie.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Czy otrzymam zaświadczenie?</summary>
+          <p>Tak. Każdy uczestnik otrzymuje elektroniczne zaświadczenie o ukończeniu szkolenia, które może być przedłożone w placówce oświatowej.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="wrap text-center">
+      <div class="reveal-fade-up">
+        <h2>Gotowy, żeby dowiedzieć się więcej?</h2>
+        <p>Skontaktuj się z nami, aby poznać terminy najbliższych szkoleń lub zarezerwować miejsce.</p>
+        <div class="cta-actions">
+          <a href="tel:607370777" class="btn btn-ghost">Zadzwoń: 607 370 777</a>
+          <a href="/kontakt/?subject=Szkolenie+ORM" class="btn btn-primary">Napisz do nas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    background: linear-gradient(145deg, var(--cream) 0%, var(--cream-2) 100%);
+  }
+
+  .sec-head {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto 40px;
+  }
+
+  .sec-head h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin: 16px 0 14px;
+  }
+
+  .sec-head h2 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin: 14px 0 12px;
+  }
+
+  .sec-head p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .section-alt {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+  }
+
+  /* Target cards */
+  .target-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .target-card .double-bezel-inner {
+    text-align: center;
+    gap: 12px;
+  }
+
+  .target-icon {
+    font-size: 2.4rem;
+  }
+
+  .target-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .target-card p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Format cards */
+  .format-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .format-card {
+    background: #fff;
+    border-radius: 1.6rem;
+    padding: 36px 28px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .format-badge {
+    display: inline-block;
+    background: var(--blue);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .format-badge-alt {
+    background: var(--mint);
+  }
+
+  .format-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .format-subtitle {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .format-features {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+  }
+
+  .format-features li {
+    padding-left: 24px;
+    position: relative;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .format-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--mint);
+    font-weight: 800;
+  }
+
+  .format-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 8px 0;
+  }
+
+  .price {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+  }
+
+  .price-note {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  /* Benefits */
+  .benefits-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 16px;
+  }
+
+  .benefit-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .benefit-item strong {
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+
+  .benefit-item p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Program */
+  .program-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .program-item {
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .program-num {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--blue);
+    flex-shrink: 0;
+    min-width: 2ch;
+  }
+
+  .program-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+
+  .program-item p {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 20px 24px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .faq-item summary {
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .faq-item summary::after {
+    content: "+";
+    font-size: 1.3rem;
+    color: var(--blue);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-item p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-top: 14px;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--blue-deep);
+    color: #fff;
+    border-radius: 2rem;
+    margin: 0 24px 96px;
+    padding: 64px 24px;
+  }
+
+  .cta-section h2 {
+    color: #fff;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin-bottom: 14px;
+  }
+
+  .cta-section p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+    max-width: 48ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .cta-section .btn-ghost {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-section .btn-ghost:hover {
+    border-color: #fff;
+  }
+
+  @media (min-width: 680px) {
+    .target-grid,
+    .format-grid,
+    .benefits-grid,
+    .program-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 980px) {
+    .target-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .format-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
