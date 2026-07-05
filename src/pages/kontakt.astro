@@ -6,8 +6,8 @@ const workshops = await getCollection('workshops');
 ---
 
 <BaseLayout
-  title="Kontakt i rezerwacja warsztatów"
-  description="Skontaktuj się z Cudoteką — zarezerwuj termin warsztatów, sensoplastyki lub animacji na urodziny dziecka. Warszawa i okolice."
+  title="Kontakt i rezerwacja warsztatów"
+  description="Skontaktuj się z Cudoteką - zarezerwuj termin warsztatów, sensoplastyki lub animacji na urodziny dziecka. Warszawa i okolice."
 >
   <section class="section contact-page">
     <div class="wrap reveal-fade-up">
@@ -15,9 +15,9 @@ const workshops = await getCollection('workshops');
         <!-- Contact Info Column -->
         <div class="contact-info">
           <span class="eyebrow">Napisz lub zadzwoń</span>
-          <h1>Porozmawiajmy o Twoim wydarzeniu</h1>
+          <h1>Porozmawiajmy o Twoim wydarzeniu</h1>
           <p class="intro-desc">Masz pytania dotyczące oferty, chcesz zarezerwować termin lub ustalić indywidualny scenariusz? Chętnie pomożemy!</p>
-          
+
           <div class="contact-details">
             <div class="detail-item">
               <span class="icon">📞</span>
@@ -26,7 +26,7 @@ const workshops = await getCollection('workshops');
                 <a href="tel:607370777" class="val">607 370 777</a>
               </div>
             </div>
-            
+
             <div class="detail-item">
               <span class="icon">✉️</span>
               <div class="text">
@@ -39,7 +39,7 @@ const workshops = await getCollection('workshops');
               <span class="icon">📍</span>
               <div class="text">
                 <span class="label">Obszar działania</span>
-                <span class="val">Warszawa i okolice (dojazd do klienta)</span>
+                <span class="val">Warszawa i okolice (dojazd do klienta)</span>
               </div>
             </div>
 
@@ -57,7 +57,7 @@ const workshops = await getCollection('workshops');
         <div class="contact-form-col double-bezel-outer">
           <div class="contact-form-inner double-bezel-inner">
             <h3>Formularz kontaktowy</h3>
-            
+
             <!-- Success Message Overlay -->
             <div class="success-message" id="success-msg">
               <span class="success-icon">✨</span>
@@ -68,7 +68,7 @@ const workshops = await getCollection('workshops');
 
             <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
               <div class="form-group">
-                <label for="name">Imię i nazwisko *</label>
+                <label for="name">Imię i nazwisko *</label>
                 <input type="text" id="name" name="name" required placeholder="np. Anna Kowalska" />
               </div>
 
@@ -86,7 +86,7 @@ const workshops = await getCollection('workshops');
               <div class="form-group">
                 <label for="workshop">Interesuje mnie warsztat *</label>
                 <select id="workshop" name="workshop" required>
-                  <option value="">-- Wybierz temat z listy --</option>
+                  <option value="">-- Wybierz temat z listy --</option>
                   <option value="general">Ogólne zapytanie / Inny temat</option>
                   {workshops.map(w => (
                     <option value={w.data.slug}>{w.data.title}</option>
@@ -102,11 +102,11 @@ const workshops = await getCollection('workshops');
               <div class="form-checkbox">
                 <input type="checkbox" id="consent" name="consent" required />
                 <label for="consent">
-                  Zgadzam się na przetwarzanie danych osobowych w celu udzielenia odpowiedzi na zapytanie. *
+                  Zgadzam się na przetwarzanie danych osobowych w celu udzielenia odpowiedzi na zapytanie. *
                 </label>
               </div>
 
-              <input type="hidden" name="_subject" value="Nowa wiadomość z formularza kontaktowego Cudoteka" />
+              <input type="hidden" name="_subject" value="Nowa wiadomość z formularza kontaktowego Cudoteka" />
               <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
               <button type="submit" class="btn btn-primary form-submit-btn">Wyślij wiadomość</button>
@@ -206,13 +206,13 @@ const workshops = await getCollection('workshops');
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
-  
+
   label {
     font-size: 0.88rem;
     font-weight: 700;
     color: var(--ink);
   }
-  
+
   input[type="text"],
   input[type="email"],
   input[type="tel"],
@@ -233,7 +233,7 @@ const workshops = await getCollection('workshops');
     border-color: var(--blue);
     box-shadow: 0 0 0 3px var(--blue-soft);
   }
-  
+
   .form-checkbox {
     display: flex;
     gap: 12px;
@@ -337,7 +337,7 @@ const workshops = await getCollection('workshops');
     if (form && successMsg) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const submitBtn = form.querySelector('.form-submit-btn') as HTMLButtonElement;
         if (submitBtn) {
           submitBtn.disabled = true;

@@ -37,6 +37,20 @@ img {
   height: auto;
 }
 
+/* Image distortion guard — applied to all image containers that have
+   a fixed aspect-ratio. `object-fit: cover` prevents stretching when
+   an image's intrinsic ratio differs from the container's. */
+.gallery-img,
+.workshop-img,
+.post-img,
+.post-banner-img,
+.about-photo,
+.hero-shell img,
+.about-shell img {
+  object-fit: cover;
+  width: 100%;
+}
+
 .wrap {
   width: 90%;
   max-width: 1180px;

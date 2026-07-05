@@ -1,0 +1,12 @@
+# Cudoteka — Netlify redirects
+# Canonical: https://cudoteka.pl (no www)
+
+# 1. Force non-www: https://www.cudoteka.pl/* → https://cudoteka.pl/*
+https://www.cudoteka.pl/*  https://cudoteka.pl/:splat  301!
+
+# 2. Optional: trailing-slash normalization handled by Astro (output static + trailingSlash)
+# Astro's static output normalizes internal links; we keep this as defensive measure.
+# /oferta → /oferta/ etc. is handled by link generation in pages; no extra rule needed here.
+
+# 3. Status / security
+/status  https://status.cudoteka.pl  302

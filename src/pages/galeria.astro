@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
 const galleryItems = await getCollection('gallery');
 
@@ -9,22 +10,22 @@ const categories = ['Wszystkie', ...new Set(galleryItems.map(item => item.data.c
 ---
 
 <BaseLayout
-  title="Galeria zdjęć z warsztatów"
-  description="Zobacz zdjęcia z naszych warsztatów plastycznych, sensoplastyki, eksperymentów dla dzieci i animacji urodzinowych w Warszawie."
+  title="Galeria zdjęć z warsztatów"
+  description="Zobacz zdjęcia z naszych warsztatów plastycznych, sensoplastyki, eksperymentów dla dzieci i animacji urodzinowych w Warszawie."
 >
   <section class="section gallery-page">
     <div class="wrap reveal-fade-up">
       <div class="sec-head">
         <span class="eyebrow">Nasze realizacje</span>
-        <h1>Galeria uśmiechów i zabawy</h1>
-        <p>Zobacz, jak wyglądają nasze zajęcia sensoryczne, warsztaty oraz animacje w praktyce.</p>
+        <h1>Galeria uśmiechów i zabawy</h1>
+        <p>Zobacz, jak wyglądają nasze zajęcia sensoryczne, warsztaty oraz animacje w praktyce.</p>
       </div>
 
       <!-- Filter Tabs -->
       <div class="gallery-filters">
         {categories.map((cat, idx) => (
-          <button 
-            class={`filter-tab ${idx === 0 ? 'active' : ''}`} 
+          <button
+            class={`filter-tab ${idx === 0 ? 'active' : ''}`}
             data-filter={cat === 'Wszystkie' ? 'all' : cat}
           >
             {cat.charAt(0).toUpperCase() + cat.slice(1)}
@@ -37,7 +38,7 @@ const categories = ['Wszystkie', ...new Set(galleryItems.map(item => item.data.c
         {galleryItems.map(item => (
           <div class="gallery-item double-bezel-outer" data-category={item.data.category}>
             <div class="gallery-inner double-bezel-inner">
-              <img src={item.data.image} alt={item.data.alt} class="gallery-img" />
+              <Image formats={['avif', 'webp']} src={item.data.image} alt={item.data.alt} class="gallery-img" widths={[400, 600, 900]} sizes="(max-width: 680px) 100vw, (max-width: 980px) 50vw, 33vw" />
               <div class="gallery-hover">
                 <span class="cat-badge">{item.data.category}</span>
                 <p class="img-caption">{item.data.alt}</p>
@@ -125,7 +126,7 @@ const categories = ['Wszystkie', ...new Set(galleryItems.map(item => item.data.c
     object-fit: cover;
     display: block;
   }
-  
+
   .gallery-hover {
     position: absolute;
     bottom: 0;

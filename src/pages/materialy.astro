@@ -11,15 +11,15 @@ const logopedia = downloads.filter(d => d.data.category === 'logopedia');
 ---
 
 <BaseLayout
-  title="Materiały do pobrania -- darmowe ćwiczenia i karty pracy | Cudoteka"
-  description="Bezpłatne materiały PDF do pobrania: wyzwania wakacyjne, ćwiczenia artykulacji głosków, materiały logopedyczne. Pobierz i korzystaj!"
+  title="Materiały do pobrania - darmowe ćwiczenia i karty pracy | Cudoteka"
+  description="Bezpłatne materiały PDF do pobrania: wyzwania wakacyjne, ćwiczenia artykulacji głosków, materiały logopedyczne. Pobierz i korzystaj!"
 >
   <section class="section hero-section">
     <div class="wrap">
       <div class="reveal-fade-up sec-head">
         <span class="eyebrow">Materiały do pobrania</span>
-        <h1>Darmowe materiały dla dzieci i rodziców</h1>
-        <p>Karty pracy, ćwiczenia logopedyczne i kreatywne wyzwania — już wkrótce dostępne do pobrania. Zapisz się, aby otrzymać powiadomienie!</p>
+        <h1>Darmowe materiały dla dzieci i rodziców</h1>
+        <p>Karty pracy, ćwiczenia logopedyczne i kreatywne wyzwania gotowe do pobrania i wydrukowania.</p>
       </div>
     </div>
   </section>
@@ -27,9 +27,9 @@ const logopedia = downloads.filter(d => d.data.category === 'logopedia');
   <section class="section">
     <div class="wrap">
       <div class="reveal-fade-up sec-head">
-        <span class="eyebrow">Lato i wakacje</span>
+        <span class="eyebrow">Lato i wakacje</span>
         <h2>Wyzwania wakacyjne</h2>
-        <p>Kreatywne aktywności na letnie dni -- zabawy na świeżym powietrzu, eksperymenty i plastyka.</p>
+        <p>Kreatywne aktywności na letnie dni - zabawy na świeżym powietrzu, eksperymenty i plastyka.</p>
       </div>
       <div class="downloads-grid">
         {wakacje.map(item => (
@@ -44,7 +44,7 @@ const logopedia = downloads.filter(d => d.data.category === 'logopedia');
       <div class="reveal-fade-up sec-head">
         <span class="eyebrow">Logopedia</span>
         <h2>Ćwiczenia artykulacji głosków</h2>
-        <p>Profesjonalne materiały do pracy nad prawidłową wymową. Szeregi głoskowe, kappacyzm, gammacyzm, rotacyzm, lambdacyzm.</p>
+        <p>Profesjonalne materiały do pracy nad prawidłową wymową. Szeregi głoskowe, kappacyzm, gammacyzm, rotacyzm, lambdacyzm.</p>
       </div>
       <div class="downloads-grid">
         {artykulacja.map(item => (
@@ -74,12 +74,12 @@ const logopedia = downloads.filter(d => d.data.category === 'logopedia');
     <div class="wrap text-center">
       <div class="reveal-fade-up">
         <h2>Bądź pierwszy, który pobierze materiały</h2>
-        <p>Zapisz się na listę oczekujących — powiadomimy Cię, gdy materiały będą gotowe do pobrania.</p>
+        <p>Zapisz się na listę - powiadomimy Cię, gdy pojawią się nowe karty pracy i ćwiczenia.</p>
         <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <input type="email" name="email" placeholder="Twój adres e-mail" required class="newsletter-input" />
           <button type="submit" class="btn btn-primary">Zapisz mnie</button>
         </form>
-        <p class="newsletter-note">Nie wysyłamy spamu. Tylko powiadomienia o nowych materiałach.</p>
+        <p class="newsletter-note">Nie wysyłamy spamu. Tylko powiadomienia o nowych materiałach.</p>
       </div>
     </div>
   </section>

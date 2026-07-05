@@ -146,7 +146,7 @@ const navLinks = [
     padding: 10px 22px;
     font-size: 0.9rem;
   }
-  
+
   /* Hamburger Menu */
   .burger {
     display: none;
@@ -293,7 +293,7 @@ const navLinks = [
         const isOpen = burger.classList.toggle('open');
         overlay.classList.toggle('open');
         burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        
+
         // Prevent body scroll when menu is open
         document.body.style.overflow = isOpen ? 'hidden' : '';
       };

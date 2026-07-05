@@ -35,7 +35,7 @@ const categoryColors: Record<string, string> = {
     </div>
     <div class="download-footer">
       <span class="download-size">PDF · {fileSize}</span>
-      <span class="download-soon">Wkrótce</span>
+      <a class="download-link" href={file} download>Pobierz PDF</a>
     </div>
   </div>
 </div>
@@ -88,15 +88,21 @@ const categoryColors: Record<string, string> = {
     color: var(--ink-soft);
   }
 
-  .download-soon {
+  .download-link {
     display: inline-flex;
     align-items: center;
     padding: 8px 16px;
     font-size: 0.82rem;
     font-weight: 700;
-    color: var(--ink-soft);
-    background: rgba(0, 0, 0, 0.04);
+    color: #fff;
+    background: var(--blue-deep);
     border-radius: var(--radius-sm);
     letter-spacing: 0.02em;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .download-link:hover {
+    background: var(--blue);
+    transform: translateY(-1px);
   }
 </style>

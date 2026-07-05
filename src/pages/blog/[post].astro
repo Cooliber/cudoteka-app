@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -61,7 +62,7 @@ const articleSchema = {
 
       {post.data.image && (
         <div class="img-wrapper double-bezel-outer">
-          <img src={post.data.image} alt={post.data.imageAlt} class="post-banner-img" />
+          <Image formats={['avif', 'webp']} src={post.data.image} alt={post.data.imageAlt} class="post-banner-img" widths={[600, 900, 1200]} sizes="(max-width: 860px) 100vw, 860px" />
         </div>
       )}
 
@@ -74,7 +75,7 @@ const articleSchema = {
       <div class="post-footer">
         <div class="footer-cta">
           <h3>Chcesz zorganizować kreatywne zajęcia?</h3>
-          <p>Zapraszamy do kontaktu! Wspólnie dobierzemy idealny program animacji lub warsztatów dla dzieci.</p>
+          <p>Zapraszamy do kontaktu! Wspólnie dobierzemy idealny program animacji lub warsztatów dla dzieci.</p>
           <div class="cta-btns">
             <a href="/kontakt/" class="btn btn-primary">Zarezerwuj termin</a>
             <a href="tel:607370777" class="btn btn-ghost">Zadzwoń: 607 370 777</a>
@@ -103,7 +104,7 @@ const articleSchema = {
     color: var(--blue);
     transform: translateX(-4px);
   }
-  
+
   .post-header {
     max-width: 780px;
     margin: 0 auto 30px;
@@ -157,7 +158,7 @@ const articleSchema = {
     line-height: 1.8;
     color: var(--ink);
   }
-  
+
   .post-body :global(h2) {
     font-family: "Fraunces", serif;
     font-size: 1.7rem;

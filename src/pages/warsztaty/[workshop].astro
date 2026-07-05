@@ -1,7 +1,6 @@
 ---
-import fs from 'node:fs';
-import path from 'node:path';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
 import { getCollection, getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -21,15 +20,14 @@ const relatedWorkshops = allWorkshops
   .filter(w => w.data.category.id === workshop.data.category.id && w.data.slug !== workshop.data.slug)
   .slice(0, 3);
 
-// Auto-detect whether a real photo exists for this workshop in /public/images/workshops/.
-// Resolved at build time, so it works in both `astro dev` and the static production build
-// (no hardcoded whitelist, no broken /src/... URLs). Workshops without a photo fall back to a
-// pastel placeholder, and any image dropped into the folder later appears automatically.
-const imageRelPath = `images/workshops/${workshop.data.slug}.webp`;
-const imageSvgPath = `images/workshops/${workshop.data.slug}.svg`;
-const hasWebp = fs.existsSync(path.join(process.cwd(), 'public', imageRelPath));
-const hasSvg = fs.existsSync(path.join(process.cwd(), 'public', imageSvgPath));
-const imagePath = hasWebp ? `/${imageRelPath}` : hasSvg ? `/${imageSvgPath}` : null;
+// Workshop image comes from the `image()` schema (src/assets/images/workshops/*.webp).
+// Schema marks `image` as optional, so we keep the pastel placeholder fallback for
+// any future workshop that is added without a photo.
+const workshopImage = workshop.data.image;
+const workshopImageAlt = workshop.data.imageAlt || workshop.data.title;
+const workshopImageUrl = workshopImage
+  ? new URL(workshopImage.src, Astro.site).toString()
+  : undefined;
 
 const pageUrl = new URL(`/warsztaty/${workshop.data.slug}/`, Astro.site).toString();
 const breadcrumbSchema = {
@@ -50,7 +48,7 @@ const serviceSchema = {
   areaServed: 'Warszawa i okolice',
   provider: { '@type': 'LocalBusiness', name: 'Cudoteka', telephone: '+48-607-370-777' },
   audience: { '@type': 'Audience', audienceType: workshop.data.ageRange },
-  ...(imagePath ? { image: new URL(imagePath, Astro.site).toString() } : {}),
+  ...(workshopImageUrl ? { image: workshopImageUrl } : {}),
 };
 ---
 
@@ -58,20 +56,25 @@ const serviceSchema = {
   title={workshop.data.metaTitle}
   description={workshop.data.metaDescription}
   type="article"
-  image={imagePath ? new URL(imagePath, Astro.site).toString() : undefined}
+  image={workshopImageUrl}
   schemas={[breadcrumbSchema, serviceSchema]}
 >
   <section class="section workshop-detail">
     <div class="wrap reveal-fade-up">
       <a href="/warsztaty/" class="back-link">← Wróć do listy warsztatów</a>
-      
+
       <div class="detail-layout">
         <!-- Image / Placeholder Column -->
         <div class="image-column">
-          {imagePath ? (
+          {workshopImage ? (
             <div class="img-wrapper double-bezel-outer">
-              <!-- Inline style to resolve path at build time or direct string path -->
-              <img src={imagePath} alt={workshop.data.imageAlt} class="workshop-img" />
+              <Image formats={['avif', 'webp']}
+                src={workshopImage}
+                alt={workshopImageAlt}
+                class="workshop-img"
+                widths={[400, 600, 900]}
+                sizes="(max-width: 980px) 100vw, 50vw"
+              />
             </div>
           ) : (
             <div class="placeholder-img double-bezel-outer">
@@ -183,7 +186,7 @@ const serviceSchema = {
     gap: 60px;
     align-items: start;
   }
-  
+
   /* Image styling */
   .img-wrapper, .placeholder-img {
     width: 100%;
@@ -242,7 +245,7 @@ const serviceSchema = {
     font-size: clamp(2.2rem, 4vw, 3rem);
     margin-bottom: 24px;
   }
-  
+
   .specs-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -308,7 +311,7 @@ const serviceSchema = {
     margin-top: 40px;
     flex-wrap: wrap;
   }
-  
+
   @media (max-width: 980px) {
     .detail-layout {
       grid-template-columns: 1fr;
