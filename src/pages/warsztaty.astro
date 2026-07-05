@@ -12,7 +12,12 @@ import WorkshopList from '../components/workshops/WorkshopList.astro';
       <div class="sec-head">
         <span class="eyebrow">Nasze zajęcia</span>
         <h1>Odkryj kreatywny świat Cudoteki</h1>
-        <p>Wszystkie nasze warsztaty prowadzimy z pasją, dbając o pełne bezpieczeństwo uczestników. Wybierz zajęcia i sprawdź szczegóły.</p>
+        <p>Wszystkie nasze warsztaty prowadzimy z pasją, dbając o pełne bezpieczeństwo uczestników. Wybierz zajęcia i sprawdź szczegóły.</p>
+      </div>
+
+      <div class="listing-header">
+        <h2>Wszystkie warsztaty</h2>
+        <p>33 propozycje w 7 kategoriach — kliknij filtr, aby zobaczyć wybrane.</p>
       </div>
 
       <!-- Workshop List Component with Client Filter -->
@@ -39,9 +44,26 @@ import WorkshopList from '../components/workshops/WorkshopList.astro';
     color: var(--ink-soft);
     font-size: 1.1rem;
   }
+  .listing-header {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto 32px;
+  }
+  .listing-header h2 {
+    font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .listing-header p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
   @media (max-width: 680px) {
     .sec-head {
       margin-bottom: 34px;
+    }
+    .listing-header {
+      margin-bottom: 24px;
     }
   }
 </style>

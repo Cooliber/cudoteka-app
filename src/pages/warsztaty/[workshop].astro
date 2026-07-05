@@ -140,14 +140,14 @@ const serviceSchema = {
 
           <!-- Description -->
           <div class="description-section">
-            <h3>Opis zajęć</h3>
+            <h2>Opis zajęć</h2>
             <p class="description-text">{workshop.data.fullDescription}</p>
           </div>
 
           <!-- Materials (if any) -->
           {workshop.data.materials && workshop.data.materials.length > 0 && (
             <div class="materials-section">
-              <h3>Wykorzystywane materiały</h3>
+              <h2>Wykorzystywane materiały</h2>
               <ul class="materials-list">
                 {workshop.data.materials.map(mat => (
                   <li>✨ {mat}</li>
@@ -158,7 +158,7 @@ const serviceSchema = {
 
           <!-- What kids take home -->
           <div class="outcomes-section">
-            <h3>Co dzieci zabierają po zajęciach</h3>
+            <h2>Co dzieci zabierają po zajęciach</h2>
             <p>
               {/* TODO(FOUNDER): uzupełnij opis efektów — docs/dane-dla-zalozycielki.md sekcja 4 (FAQ Pytanie 6) */}
               Każde dziecko zabiera własnoręcznie wykonaną pracę oraz pozytywne emocje związane ze wspólnym tworzeniem. W przypadku warsztatów kulinarnych — własne wypieki do domu.
@@ -167,7 +167,7 @@ const serviceSchema = {
 
           <!-- Travel & setup -->
           <div class="logistics-section">
-            <h3>Logistyka i dojazd</h3>
+            <h2>Logistyka i dojazd</h2>
             <ul class="logistics-list">
               <li>📍 <strong>Obszar:</strong> Warszawa i okolice (do 30 km) — dojazd GRATIS</li>
               <li>🚗 <strong>Wyjazdy:</strong> cała Polska — wycena indywidualna</li>
@@ -339,11 +339,12 @@ const serviceSchema = {
   .description-section, .materials-section, .outcomes-section, .logistics-section {
     margin-bottom: 32px;
   }
-  .description-section h3, .materials-section h3, .outcomes-section h3, .logistics-section h3 {
+  .description-section h2, .materials-section h2, .outcomes-section h2, .logistics-section h2 {
     font-family: "Fraunces", serif;
     font-size: 1.3rem;
     margin-bottom: 12px;
     color: var(--ink);
+    margin-top: 0;
   }
   .outcomes-section p, .logistics-section p {
     color: var(--ink-soft);

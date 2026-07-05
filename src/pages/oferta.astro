@@ -13,8 +13,12 @@ const categories = await getCollection('categories');
     <div class="wrap reveal-fade-up">
       <div class="sec-head">
         <span class="eyebrow">Nasze atrakcje</span>
-        <h1>Warsztaty i atrakcje na każdą okazję</h1>
-        <p>Wybierz interesującą Cię kategorię i znajdź idealną rozrywkę dla swojej grupy lub na swoje wydarzenie.</p>
+        <h1>Warsztaty i atrakcje na każdą okazję</h1>
+        <p>Wybierz interesującą Cię kategorię i znajdź idealną rozrywkę dla swojej grupy lub na swoje wydarzenie.</p>
+      </div>
+
+      <div class="listing-header">
+        <h2>Wszystkie kategorie</h2>
       </div>
 
       <div class="cat-grid">
@@ -54,6 +58,15 @@ const categories = await getCollection('categories');
   .sec-head p {
     color: var(--ink-soft);
     font-size: 1.1rem;
+  }
+  .listing-header {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto 40px;
+  }
+  .listing-header h2 {
+    font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+    color: var(--ink);
   }
   .cat-grid {
     display: grid;
