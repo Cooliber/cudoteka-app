@@ -17,11 +17,17 @@ export function seo({ title, description, image, canonical, type = 'website' }: 
     { property: 'og:description', content: description },
     { property: 'og:type', content: type },
     { property: 'og:image', content: ogImage },
+    { property: 'og:image:secure_url', content: ogImage },
+    { property: 'og:image:width', content: '1200' },
+    { property: 'og:image:height', content: '630' },
+    { property: 'og:image:alt', content: 'Cudoteka - twórcze warsztaty i animacje dla dzieci' },
     { property: 'og:locale', content: 'pl_PL' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: fullTitle },
     { name: 'twitter:description', content: description },
     { name: 'twitter:image', content: ogImage },
+    // TODO(FOUNDER): set twitter:site once you have a Twitter/X handle
+    // { name: 'twitter:site', content: '@cudoteka' },
   ];
   if (canonical) {
     meta.push({ property: 'og:url', content: canonical });

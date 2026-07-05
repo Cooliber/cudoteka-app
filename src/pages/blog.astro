@@ -15,9 +15,13 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
   <section class="section blog-intro">
     <div class="wrap reveal-fade-up">
       <div class="sec-head">
-        <span class="eyebrow">Porady i inspiracje</span>
-        <h1>Baza wiedzy i kreatywnych pomysłów</h1>
-        <p>Znajdziesz tu przepisy na domowe masy sensoryczne, inspiracje na przyjęcia urodzinowe oraz nowości z życia Cudoteki.</p>
+        <span class="eyebrow">Porady i inspiracje</span>
+        <h1>Baza wiedzy i kreatywnych pomysłów</h1>
+        <p>Znajdziesz tu przepisy na domowe masy sensoryczne, inspiracje na przyjęcia urodzinowe oraz nowości z życia Cudoteki.</p>
+      </div>
+
+      <div class="listing-header">
+        <h2>Najnowsze artykuły</h2>
       </div>
 
       <div class="blog-grid">
@@ -65,6 +69,15 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
   .sec-head p {
     color: var(--ink-soft);
     font-size: 1.1rem;
+  }
+  .listing-header {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto 40px;
+  }
+  .listing-header h2 {
+    font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+    color: var(--ink);
   }
 
   .blog-grid {
