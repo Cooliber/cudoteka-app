@@ -29,6 +29,21 @@ const workshopImageUrl = workshopImage
   ? new URL(workshopImage.src, Astro.site).toString()
   : undefined;
 
+// Price tier rendering. Falls back to a clear "Zapytaj o cenę" hint when founder
+// has not yet filled in priceFrom/priceTo. This keeps the section visible and
+// SEO-valuable (PriceSpecification schema, FAQ-style answer) without lying.
+const priceFrom = workshop.data.priceFrom;
+const priceTo = workshop.data.priceTo;
+const priceNote = workshop.data.priceNote;
+const priceLabel = priceNote
+  ? priceNote
+  : priceFrom != null && priceTo != null
+    ? `${priceFrom}–${priceTo} zł`
+    : priceFrom != null
+      ? `od ${priceFrom} zł`
+      : 'Zapytaj o cenę';
+const hasPrice = priceFrom != null || priceNote != null;
+
 const pageUrl = new URL(`/warsztaty/${workshop.data.slug}/`, Astro.site).toString();
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -113,6 +128,14 @@ const serviceSchema = {
                 <strong>{workshop.data.duration}</strong>
               </div>
             </div>
+            <div class="spec-card spec-card-price">
+              <span class="spec-icon">💰</span>
+              <div class="spec-text">
+                <span class="spec-label">Cena</span>
+                <strong>{priceLabel}</strong>
+                {!hasPrice && <span class="spec-hint">uzależniona od grupy i lokalizacji</span>}
+              </div>
+            </div>
           </div>
 
           <!-- Description -->
@@ -132,6 +155,27 @@ const serviceSchema = {
               </ul>
             </div>
           )}
+
+          <!-- What kids take home -->
+          <div class="outcomes-section">
+            <h3>Co dzieci zabierają po zajęciach</h3>
+            <p>
+              {/* TODO(FOUNDER): uzupełnij opis efektów — docs/dane-dla-zalozycielki.md sekcja 4 (FAQ Pytanie 6) */}
+              Każde dziecko zabiera własnoręcznie wykonaną pracę oraz pozytywne emocje związane ze wspólnym tworzeniem. W przypadku warsztatów kulinarnych — własne wypieki do domu.
+            </p>
+          </div>
+
+          <!-- Travel & setup -->
+          <div class="logistics-section">
+            <h3>Logistyka i dojazd</h3>
+            <ul class="logistics-list">
+              <li>📍 <strong>Obszar:</strong> Warszawa i okolice (do 30 km) — dojazd GRATIS</li>
+              <li>🚗 <strong>Wyjazdy:</strong> cała Polska — wycena indywidualna</li>
+              <li>⏰ <strong>Przyjazd animatora:</strong> 30 min przed rozpoczęciem</li>
+              <li>🎨 <strong>Materiały:</strong> wszystko przywozimy ze sobą</li>
+              <li>🪑 <strong>Potrzebujesz:</strong> tylko stoły, krzesła i dostęp do wody</li>
+            </ul>
+          </div>
 
           <!-- Call to Action -->
           <div class="cta-actions">
@@ -248,8 +292,8 @@ const serviceSchema = {
 
   .specs-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
     margin-bottom: 32px;
   }
   .spec-card {
@@ -262,6 +306,10 @@ const serviceSchema = {
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(62, 137, 176, 0.08);
   }
+  .spec-card-price {
+    background: linear-gradient(135deg, var(--mint-tint), var(--peach-tint));
+    border-color: rgba(231, 184, 92, 0.3);
+  }
   .spec-icon {
     font-size: 2rem;
   }
@@ -270,22 +318,52 @@ const serviceSchema = {
     flex-direction: column;
   }
   .spec-label {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--ink-soft);
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
   .spec-text strong {
     font-size: 1rem;
     color: var(--ink);
   }
+  .spec-hint {
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-top: 2px;
+    font-style: italic;
+  }
 
-  .description-section, .materials-section {
+  .description-section, .materials-section, .outcomes-section, .logistics-section {
     margin-bottom: 32px;
   }
-  .description-section h3, .materials-section h3 {
+  .description-section h3, .materials-section h3, .outcomes-section h3, .logistics-section h3 {
     font-family: "Fraunces", serif;
     font-size: 1.3rem;
     margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .outcomes-section p, .logistics-section p {
+    color: var(--ink-soft);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+  .logistics-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .logistics-list li {
+    color: var(--ink-soft);
+    line-height: 1.6;
+    font-size: 0.98rem;
+    padding: 10px 14px;
+    background: rgba(251, 247, 241, 0.6);
+    border-radius: 12px;
   }
   .description-text {
     color: var(--ink-soft);
@@ -321,6 +399,11 @@ const serviceSchema = {
       max-width: 580px;
       margin: 0 auto;
       width: 100%;
+    }
+  }
+  @media (max-width: 980px) {
+    .specs-grid {
+      grid-template-columns: 1fr 1fr;
     }
   }
   @media (max-width: 680px) {

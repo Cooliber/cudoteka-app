@@ -1,10 +1,10 @@
 ---
 const offerLinks = [
-  { href: '/oferta/tworczosc-i-sztuka/', label: 'Twórczość i sztuka' },
-  { href: '/oferta/animacje-i-atrakcje/', label: 'Animacje i atrakcje' },
+  { href: '/oferta/tworczosc-i-sztuka/', label: 'Twórczość i sztuka' },
+  { href: '/oferta/animacje-i-atrakcje/', label: 'Animacje i atrakcje' },
   { href: '/oferta/strefa-malucha/', label: 'Strefa malucha' },
   { href: '/warsztaty/warsztaty-pilkarskie/', label: 'Warsztaty piłkarskie' },
-  { href: '/kontakt/', label: 'Rozwój i logopedia' },
+  { href: '/kontakt/', label: 'Rozwój i logopedia' },
 ];
 
 const resourceLinks = [
@@ -19,6 +19,10 @@ const contactLinks = [
   { href: 'mailto:biuro@e-cud.waw.pl', label: 'biuro@e-cud.waw.pl' },
   { href: 'https://www.facebook.com/', label: 'Facebook', external: true },
 ];
+
+// TODO(FOUNDER): uzupełnij street + postalCode (docs/dane-dla-zalozycielki.md sekcja 1.1)
+const streetAddress = ''; // np. 'ul. Przykładowa 12/3'
+const postalCode = '';     // np. '02-100'
 ---
 
 <footer>
@@ -56,7 +60,16 @@ const contactLinks = [
             {link.label}
           </a>
         ))}
-        <span class="location">Warszawa i okolice</span>
+        <address class="location" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+          <span itemprop="streetAddress">{streetAddress || 'ul. ___________'}</span>
+          <br />
+          <span itemprop="postalCode">{postalCode || '__-___'}</span>{' '}
+          <span itemprop="addressLocality">Warszawa</span>
+          <br />
+          <span itemprop="addressCountry">Polska</span>
+        </address>
+        <span class="area">Obszar: Warszawa i okolice (do 30 km)</span>
+        {/* TODO(FOUNDER): dane prawne (NIP, REGON) — docs/dane-dla-zalozycielki.md sekcja 6 */}
       </div>
     </div>
     <div class="foot-bottom">
@@ -140,7 +153,16 @@ const contactLinks = [
     display: block;
     color: rgba(255, 255, 255, 0.78);
     font-size: 0.95rem;
+    margin-top: 14px;
+    font-style: normal;
+    line-height: 1.5;
+  }
+  .area {
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
     margin-top: 10px;
+    font-style: italic;
   }
   .foot-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.15);

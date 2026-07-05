@@ -8,6 +8,21 @@ interface Props {
 
 const { workshop } = Astro.props;
 const category = await getEntry(workshop.data.category);
+
+// Price tier rendering. Three states:
+// - both set:  "80–120 zł" (range)
+// - only from: "od 80 zł"
+// - neither:  no pill rendered
+const priceFrom = workshop.data.priceFrom;
+const priceTo = workshop.data.priceTo;
+const priceNote = workshop.data.priceNote;
+const priceLabel = priceNote
+  ? priceNote
+  : priceFrom != null && priceTo != null
+    ? `${priceFrom}–${priceTo} zł`
+    : priceFrom != null
+      ? `od ${priceFrom} zł`
+      : null;
 ---
 
 <div class="double-bezel-outer workshop-card-wrapper">
@@ -23,6 +38,7 @@ const category = await getEntry(workshop.data.category);
       <div class="meta-pills">
         <span class="pill age">👶 {workshop.data.ageRange}</span>
         <span class="pill time">⏱️ {workshop.data.duration}</span>
+        {priceLabel && <span class="pill price">💰 {priceLabel}</span>}
       </div>
       <span class="arrow-btn">→</span>
     </div>
@@ -84,6 +100,11 @@ const category = await getEntry(workshop.data.category);
     border-radius: 99px;
     background: var(--cream-2);
     color: var(--ink-soft);
+  }
+  .pill.price {
+    background: linear-gradient(135deg, var(--mint-tint), var(--peach-tint));
+    color: var(--ink);
+    border: 1px solid rgba(231, 184, 92, 0.25);
   }
   .arrow-btn {
     display: inline-flex;

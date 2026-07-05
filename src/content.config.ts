@@ -9,6 +9,10 @@ const categories = defineCollection({
     icon: z.string(),
     description: z.string(),
     color: z.enum(['blue', 'mint', 'peach', 'gold', 'lilac']),
+    // Optional category-level price range (displayed on /oferta/[category]/)
+    priceFrom: z.number().nonnegative().optional(),
+    priceTo: z.number().nonnegative().optional(),
+    priceNote: z.string().optional(),
     metaTitle: z.string(),
     metaDescription: z.string(),
   }),
@@ -25,6 +29,13 @@ const workshops = defineCollection({
     ageRange: z.string(),
     duration: z.string(),
     materials: z.array(z.string()).optional(),
+    // Price tier (optional — founder fills per workshop)
+    // Examples: priceFrom=80, priceTo=120, priceNote='od 80 zł / dziecko'
+    // Display policy: if priceFrom undefined, badge is hidden. If only
+    // priceFrom set, show "od XX zł". If both set, show "XX–YY zł".
+    priceFrom: z.number().nonnegative().optional(),
+    priceTo: z.number().nonnegative().optional(),
+    priceNote: z.string().optional(),
     image: image().optional(),
     imageAlt: z.string().optional(),
     featured: z.boolean().default(false),
