@@ -54,18 +54,47 @@
   flex-direction: column;
 }
 
-/* Scroll Reveals helper styles */
+/* Scroll Reveals helper styles
+   History: previously used `filter: blur(4px)` for a depth effect. The `.active`
+   variant wrote `filter: blur()` (no argument) which is invalid CSS — the browser
+   silently dropped it, leaving the inherited blur in place. Combined with the
+   IntersectionObserver race, the blog page could render with content trapped at
+   `opacity: 0; filter: blur(4px)`.
+
+   Fix:
+   1. Drop the blur effect entirely. Pure opacity + transform is the standard
+      reveal pattern and never silently breaks.
+   2. Add a 2 s animation safety net so content can never stay invisible if the
+      observer never fires (CSP block, slow network, ad-blocker, JS error).
+   3. Honor `prefers-reduced-motion` — show content immediately, no animation. */
 .reveal-fade-up {
   opacity: 0;
   transform: translateY(20px);
-  filter: blur(4px);
   transition: opacity 0.8s cubic-bezier(0.32, 0.72, 0, 1),
-              transform 0.8s cubic-bezier(0.32, 0.72, 0, 1),
-              filter 0.8s cubic-bezier(0.32, 0.72, 0, 1);
+              transform 0.8s cubic-bezier(0.32, 0.72, 0, 1);
+  /* Safety net: if the IntersectionObserver never adds .active, force visibility
+     after 2 s. The animation runs from `to { opacity: 1; transform: none }` with
+     `forwards` so the final state persists. */
+  animation: reveal-fade-up-fallback 0.01s linear 2s forwards;
 }
 
 .reveal-fade-up.active {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
+  /* When the observer fires, cancel the safety-net animation. */
+  animation: none;
+}
+
+@keyframes reveal-fade-up-fallback {
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-fade-up,
+  .reveal-fade-up.active {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
 }

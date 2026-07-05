@@ -1,0 +1,78 @@
+# Force LF line endings for all text files in this repo.
+# Required for MacOS / Linux compatibility, even when contributors work on Windows.
+# See https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings
+
+# Default for everything (treat as text, normalize to LF on commit)
+* text=auto eol=lf
+
+# Explicit overrides for common text formats
+*.md       text eol=lf
+*.mdx      text eol=lf
+*.markdown text eol=lf
+*.txt      text eol=lf
+*.json     text eol=lf
+*.jsonc    text eol=lf
+*.yml      text eol=lf
+*.yaml     text eol=lf
+*.toml     text eol=lf
+*.css      text eol=lf
+*.scss     text eol=lf
+*.sass     text eol=lf
+*.less     text eol=lf
+*.html     text eol=lf
+*.htm      text eol=lf
+*.svg      text eol=lf
+*.xml      text eol=lf
+*.js       text eol=lf
+*.mjs      text eol=lf
+*.cjs      text eol=lf
+*.ts       text eol=lf
+*.tsx      text eol=lf
+*.jsx      text eol=lf
+*.astro    text eol=lf
+*.vue      text eol=lf
+*.svelte   text eol=lf
+*.sh       text eol=lf
+*.bash     text eol=lf
+*.zsh      text eol=lf
+*.ps1      text eol=lf
+*.py       text eol=lf
+*.rb       text eol=lf
+*.go       text eol=lf
+*.rs       text eol=lf
+*.java     text eol=lf
+*.kt       text eol=lf
+*.swift    text eol=lf
+*.php      text eol=lf
+*.c        text eol=lf
+*.cpp      text eol=lf
+*.h        text eol=lf
+*.hpp      text eol=lf
+*.md       text eol=lf
+
+# Binary files (no conversion, no diff)
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.webp     binary
+*.avif     binary
+*.ico      binary
+*.pdf      binary
+*.zip      binary
+*.tar      binary
+*.gz       binary
+*.woff     binary
+*.woff2    binary
+*.ttf      binary
+*.otf      binary
+*.eot      binary
+*.mp4      binary
+*.mp3      binary
+*.wav      binary
+
+# Lockfiles: keep platform-native for compatibility with package managers
+package-lock.json -text
+pnpm-lock.yaml    -text
+yarn.lock         -text
+bun.lockb         binary
