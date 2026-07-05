@@ -1,0 +1,49 @@
+# Cudoteka — Netlify configuration
+# Site: https://cudoteka.pl (canonical, non-www)
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--prefer-offline --no-audit"
+
+# ─── 1. URL canonicalization: www → non-www (301) ──────────────────────────
+# NOTE: this MUST be the first rule. Netlify processes redirects top→bottom.
+[[redirects]]
+  from = "https://www.cudoteka.pl/*"
+  to = "https://cudoteka.pl/:splat"
+  status = 301
+  force = true
+
+# ─── 2. Security headers (applies to all routes) ───────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
+# Long-cache hashed assets under /_astro/
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Short-cache HTML / sitemap / robots
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sitemap*.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# ─── 3. Astro static output — no SSR functions ────────────────────────────
+# (placeholder for future Netlify Functions if backend is ever added)

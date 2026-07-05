@@ -6,15 +6,15 @@ const categories = await getCollection('categories');
 ---
 
 <BaseLayout
-  title="Oferta warsztatów i animacji"
-  description="Poznaj ofertę Cudoteki — sensoplastyka, warsztaty plastyczne, eksperymenty, strefa malucha i animacje na eventy w Warszawie i okolicach."
+  title="Oferta warsztatów i animacji"
+  description="Poznaj ofertę Cudoteki - sensoplastyka, warsztaty plastyczne, eksperymenty, strefa malucha i animacje na wydarzenia w Warszawie i okolicach."
 >
   <section class="section offer-intro">
     <div class="wrap reveal-fade-up">
       <div class="sec-head">
         <span class="eyebrow">Nasze atrakcje</span>
-        <h1>Warsztaty i atrakcje na każdą okazję</h1>
-        <p>Wybierz interesującą Cię kategorię i znajdź idealną rozrywkę dla swojej grupy lub na swoje wydarzenie.</p>
+        <h1>Warsztaty i atrakcje na każdą okazję</h1>
+        <p>Wybierz interesującą Cię kategorię i znajdź idealną rozrywkę dla swojej grupy lub na swoje wydarzenie.</p>
       </div>
 
       <div class="cat-grid">
@@ -25,7 +25,7 @@ const categories = await getCollection('categories');
               <h3>{cat.data.title}</h3>
               <p>{cat.data.description}</p>
               <div class="btn-more">
-                Zobacz warsztaty 
+                Zobacz warsztaty
                 <span class="arrow-wrapper">
                   <span class="arrow">→</span>
                 </span>
@@ -60,7 +60,7 @@ const categories = await getCollection('categories');
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
   }
-  
+
   /* Double bezel layout tweaks */
   .double-bezel-outer {
     transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
@@ -68,7 +68,7 @@ const categories = await getCollection('categories');
   .double-bezel-outer:hover {
     transform: translateY(-8px);
   }
-  
+
   .cat-card {
     display: flex;
     flex-direction: column;
@@ -76,7 +76,7 @@ const categories = await getCollection('categories');
     justify-content: space-between;
     transition: all 0.3s ease;
   }
-  
+
   .ic {
     width: 60px;
     height: 60px;
@@ -91,14 +91,14 @@ const categories = await getCollection('categories');
   .double-bezel-outer:hover .ic {
     transform: scale(1.1) rotate(6deg);
   }
-  
+
   /* Curated HSL Soft Pastels */
   .blue .ic { background: var(--blue-tint); }
   .mint .ic { background: var(--mint-tint); }
   .peach .ic { background: var(--peach-tint); }
   .gold .ic { background: #faf1dc; }
   .lilac .ic { background: #efe7f6; }
-  
+
   .cat-card h3 {
     font-size: 1.35rem;
     color: var(--ink);
@@ -111,7 +111,7 @@ const categories = await getCollection('categories');
     margin-bottom: 24px;
     flex-grow: 1;
   }
-  
+
   /* Nested Button/Arrow effect */
   .btn-more {
     font-weight: 800;
@@ -146,7 +146,7 @@ const categories = await getCollection('categories');
   .double-bezel-outer:hover .arrow {
     transform: translateX(3px);
   }
-  
+
   @media (max-width: 980px) {
     .cat-grid {
       grid-template-columns: repeat(2, 1fr);

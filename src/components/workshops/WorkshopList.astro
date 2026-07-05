@@ -108,14 +108,15 @@ workshops.forEach(w => {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 26px;
   }
-  
+
   .grid-item {
     animation: fadeInUp 0.5s cubic-bezier(0.32, 0.72, 0, 1) both;
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    transition-delay: var(--filter-delay, 0ms);
     opacity: 1;
     transform: scale(1);
   }
-  
+
   .grid-item.hidden {
     opacity: 0;
     transform: scale(0.92);
@@ -179,15 +180,13 @@ workshops.forEach(w => {
         gridItems.forEach((item, i) => {
           const itemCategory = item.getAttribute('data-category');
           const shouldShow = filterValue === 'all' || itemCategory === filterValue;
-          
+
           if (shouldShow) {
             item.classList.remove('hidden');
-            item.style.animationDelay = `${visibleCount * 40}ms`;
-            item.style.animation = 'none';
-            item.offsetHeight; // trigger reflow
-            item.style.animation = '';
+            item.style.setProperty('--filter-delay', `${visibleCount * 40}ms`);
             visibleCount++;
           } else {
+            item.style.removeProperty('--filter-delay');
             item.classList.add('hidden');
           }
         });

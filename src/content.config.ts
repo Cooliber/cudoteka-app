@@ -16,7 +16,7 @@ const categories = defineCollection({
 
 const workshops = defineCollection({
   loader: glob({ base: './src/content/workshops', pattern: '**/*.md' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     slug: z.string(),
     category: reference('categories'),
@@ -25,7 +25,7 @@ const workshops = defineCollection({
     ageRange: z.string(),
     duration: z.string(),
     materials: z.array(z.string()).optional(),
-    image: z.string().optional(),
+    image: image().optional(),
     imageAlt: z.string().optional(),
     featured: z.boolean().default(false),
     metaTitle: z.string(),
@@ -46,13 +46,13 @@ const testimonials = defineCollection({
 
 const posts = defineCollection({
   loader: glob({ base: './src/content/posts', pattern: '**/*.md' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     slug: z.string(),
     pubDate: z.coerce.date(),
     category: z.string(),
     excerpt: z.string(),
-    image: z.string().optional(),
+    image: image().optional(),
     imageAlt: z.string().optional(),
     metaTitle: z.string(),
     metaDescription: z.string(),
@@ -61,8 +61,8 @@ const posts = defineCollection({
 
 const gallery = defineCollection({
   loader: glob({ base: './src/content/gallery', pattern: '**/*.md' }),
-  schema: z.object({
-    image: z.string(),
+  schema: ({ image }) => z.object({
+    image: image(),
     alt: z.string(),
     category: z.string(),
     featured: z.boolean().default(false),

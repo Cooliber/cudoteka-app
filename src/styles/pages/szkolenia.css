@@ -1,0 +1,310 @@
+.hero-section {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    background: linear-gradient(145deg, var(--cream) 0%, var(--cream-2) 100%);
+  }
+
+  .sec-head {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto 40px;
+  }
+
+  .sec-head h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin: 16px 0 14px;
+  }
+
+  .sec-head h2 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin: 14px 0 12px;
+  }
+
+  .sec-head p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .section-alt {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+  }
+
+  /* Target cards */
+  .target-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .target-card .double-bezel-inner {
+    text-align: center;
+    gap: 12px;
+  }
+
+  .target-icon {
+    font-size: 2.4rem;
+  }
+
+  .target-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .target-card p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Format cards */
+  .format-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .format-card {
+    background: #fff;
+    border-radius: 1.6rem;
+    padding: 36px 28px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .format-badge {
+    display: inline-block;
+    background: var(--blue);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .format-badge-alt {
+    background: var(--mint);
+  }
+
+  .format-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .format-subtitle {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .format-features {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+  }
+
+  .format-features li {
+    padding-left: 24px;
+    position: relative;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .format-features li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--mint);
+    font-weight: 800;
+  }
+
+  .format-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 8px 0;
+  }
+
+  .price {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+  }
+
+  .price-note {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  /* Benefits */
+  .benefits-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 16px;
+  }
+
+  .benefit-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .benefit-item strong {
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+
+  .benefit-item p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Program */
+  .program-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .program-item {
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .program-num {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--blue);
+    flex-shrink: 0;
+    min-width: 2ch;
+  }
+
+  .program-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+
+  .program-item p {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 20px 24px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .faq-item summary {
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .faq-item summary::after {
+    content: "+";
+    font-size: 1.3rem;
+    color: var(--blue);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-item p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-top: 14px;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--blue-deep);
+    color: #fff;
+    border-radius: 2rem;
+    margin: 0 24px 96px;
+    padding: 64px 24px;
+  }
+
+  .cta-section h2 {
+    color: #fff;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin-bottom: 14px;
+  }
+
+  .cta-section p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+    max-width: 48ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .cta-section .btn-ghost {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-section .btn-ghost:hover {
+    border-color: #fff;
+  }
+
+  @media (min-width: 680px) {
+    .target-grid,
+    .format-grid,
+    .benefits-grid,
+    .program-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 980px) {
+    .target-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .format-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }

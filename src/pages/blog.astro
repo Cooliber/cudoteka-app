@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
 const posts = await getCollection('posts');
 // Sort by newest date
@@ -8,15 +9,15 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
 ---
 
 <BaseLayout
-  title="Blog z poradami i inspiracjami"
-  description="Czytaj nasz blog — praktyczne porady sensoryczne, przepisy na masy plastyczne, pomysły na kreatywne urodziny i relacje z warsztatów."
+  title="Blog z poradami i inspiracjami"
+  description="Czytaj nasz blog - praktyczne porady sensoryczne, przepisy na masy plastyczne, pomysły na kreatywne urodziny i relacje z warsztatów."
 >
   <section class="section blog-intro">
     <div class="wrap reveal-fade-up">
       <div class="sec-head">
-        <span class="eyebrow">Porady i inspiracje</span>
-        <h1>Baza wiedzy i kreatywnych pomysłów</h1>
-        <p>Znajdziesz tu przepisy na domowe masy sensoryczne, inspiracje na przyjęcia urodzinowe oraz nowości z życia Cudoteki.</p>
+        <span class="eyebrow">Porady i inspiracje</span>
+        <h1>Baza wiedzy i kreatywnych pomysłów</h1>
+        <p>Znajdziesz tu przepisy na domowe masy sensoryczne, inspiracje na przyjęcia urodzinowe oraz nowości z życia Cudoteki.</p>
       </div>
 
       <div class="blog-grid">
@@ -25,7 +26,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
             <article class="post-card double-bezel-inner">
               {post.data.image && (
                 <div class="img-container">
-                  <img src={post.data.image} alt={post.data.imageAlt} class="post-img" />
+                  <Image formats={['avif', 'webp']} src={post.data.image} alt={post.data.imageAlt} class="post-img" widths={[400, 600, 800]} sizes="(max-width: 780px) 100vw, 50vw" />
                 </div>
               )}
               <div class="post-content">
@@ -65,7 +66,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
     color: var(--ink-soft);
     font-size: 1.1rem;
   }
-  
+
   .blog-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -77,7 +78,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
   .double-bezel-outer:hover {
     transform: translateY(-8px);
   }
-  
+
   .post-card {
     display: flex;
     flex-direction: column;
@@ -85,7 +86,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
     padding: 0; /* Override default inner card padding to handle image correctly */
     overflow: hidden;
   }
-  
+
   .img-container {
     width: 100%;
     aspect-ratio: 16/10;
@@ -101,7 +102,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
   .double-bezel-outer:hover .post-img {
     transform: scale(1.04);
   }
-  
+
   .post-content {
     padding: 28px;
     display: flex;
@@ -123,7 +124,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
   .date {
     color: var(--ink-soft);
   }
-  
+
   .post-content h3 {
     font-size: 1.35rem;
     color: var(--ink);
@@ -137,7 +138,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
     margin-bottom: 24px;
     flex-grow: 1;
   }
-  
+
   .read-more {
     font-weight: 800;
     color: var(--blue-deep);
@@ -156,7 +157,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
   .double-bezel-outer:hover .read-more span {
     transform: translateX(3px);
   }
-  
+
   @media (max-width: 780px) {
     .blog-grid {
       grid-template-columns: 1fr;

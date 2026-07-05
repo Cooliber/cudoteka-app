@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import aboutPhoto from '../assets/images/about/about.webp';
 ---
 
 <BaseLayout
-  title="O nas — Aleksandra Dąbrowska"
-  description="Poznaj historię Cudoteki (dawniej E-CUD) i jej założycielki, Aleksandry Dąbrowskiej. Dowiedz się więcej o naszej misji i wartościach."
+  title="O nas - Aleksandra Dąbrowska"
+  description="Poznaj historię Cudoteki (dawniej E-CUD) i jej założycielki, Aleksandry Dąbrowskiej. Dowiedz się więcej o naszej misji i wartościach."
 >
   <section class="section about-page">
     <div class="wrap reveal-fade-up">
@@ -13,33 +15,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="about-text">
           <span class="eyebrow">Nasza historia</span>
           <h1>Poznajmy się bliżej</h1>
-          <p class="lead">Nazywam się <strong>Aleksandra Dąbrowska</strong> i jestem założycielką Cudoteki.</p>
-          
+          <p class="lead">Nazywam się <strong>Aleksandra Dąbrowska</strong> i jestem założycielką Cudoteki.</p>
+
           <p>
-            Cudoteka (powstała z rebrandingu znanej i lubianej marki <strong>E-CUD — Centrum Edukacyjno-Eventowe</strong>) to urzeczywistnienie moich marzeń o stworzeniu miejsca, w którym nauka spotyka się z czystą radością tworzenia. 
+            Cudoteka (powstała z rebrandingu znanej i lubianej marki <strong>E-CUD - Centrum Edukacyjno-Eventowe</strong>) to urzeczywistnienie moich marzeń o stworzeniu miejsca, w którym nauka spotyka się z czystą radością tworzenia.
           </p>
-          
+
           <p>
-            Z wykształcenia jestem pedagogiem, logopedą oraz certyfikowanym trenerem Sensoplastyki® i Plastyki Ekspresywnej®. Od lat pracuję z dziećmi, obserwując jak niesamowity potencjał drzemie w każdym maluchu. Wierzę, że najlepszą formą nauki jest swobodne doświadczanie świata przez zmysły.
+            Z wykształcenia jestem pedagogiem, logopedą oraz certyfikowanym trenerem Sensoplastyki® i Plastyki Ekspresywnej®. Od lat pracuję z dziećmi, obserwując jak niesamowity potencjał drzemie w każdym maluchu. Wierzę, że najlepszą formą nauki jest swobodne doświadczanie świata przez zmysły.
           </p>
 
           <div class="about-values">
             <h3>Nasze wartości:</h3>
             <ul class="values-list">
               <li>
-                <strong>🛡️ Bezpieczeństwo:</strong> Używamy wyłącznie certyfikowanych i w 100% naturalnych (często spożywczych) składników.
+                <strong>🛡️ Bezpieczeństwo:</strong> Używamy wyłącznie certyfikowanych i w 100% naturalnych (często spożywczych) składników.
               </li>
               <li>
-                <strong>🎨 Swoboda twórcza:</strong> Nie oceniamy, nie narzucamy sztywnych szablonów. Liczy się proces i radość z działania.
+                <strong>🎨 Swoboda twórcza:</strong> Nie oceniamy, nie narzucamy sztywnych szablonów. Liczy się proces i radość z działania.
               </li>
               <li>
-                <strong>❤️ Pasja i serce:</strong> Każde zajęcia i animacje projektujemy tak, jakbyśmy przygotowywali je dla własnych dzieci.
+                <strong>❤️ Pasja i serce:</strong> Każde zajęcia i animacje projektujemy tak, jakbyśmy przygotowywali je dla własnych dzieci.
               </li>
             </ul>
           </div>
 
           <div class="about-cta">
-            <a href="/kontakt/" class="btn btn-primary">Porozmawiajmy o Twoim evencie</a>
+            <a href="/kontakt/" class="btn btn-primary">Porozmawiajmy o Twoim wydarzeniu</a>
           </div>
         </div>
 
@@ -47,7 +49,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="about-image-col">
           <div class="double-bezel-outer">
             <div class="img-inner double-bezel-inner">
-              <img src="/images/about/about.webp" alt="Aleksandra Dąbrowska - Założycielka Cudoteki" width="500" height="560" loading="lazy" decoding="async" class="about-photo" />
+              <Image formats={['avif', 'webp']} src={aboutPhoto} alt="Aleksandra Dąbrowska - Założycielka Cudoteki" width={500} height={560} widths={[400, 500, 700]} sizes="(max-width: 980px) 100vw, 500px" loading="lazy" decoding="async" class="about-photo" />
             </div>
           </div>
         </div>
@@ -67,7 +69,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     gap: 60px;
     align-items: center;
   }
-  
+
   .about-text h1 {
     font-size: clamp(2.5rem, 4.5vw, 3.5rem);
     margin: 18px 0 20px;
@@ -84,7 +86,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 1.7;
     margin-bottom: 18px;
   }
-  
+
   .about-values {
     margin-top: 30px;
     background: #fff;
@@ -109,7 +111,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--ink-soft);
     line-height: 1.5;
   }
-  
+
   .about-cta {
     margin-top: 36px;
   }
