@@ -14,11 +14,56 @@ const galleryItems = (await getCollection('gallery'))
   .filter((item) => item.data.featured)
   .slice(0, 4);
 const testimonials = (await getCollection('testimonials')).slice(0, 3);
+
+// FAQ — featured snippet targeting + AI citation source (FAQPage schema).
+// Answers below are DEFAULTS drafted from the existing site copy. They are
+// editable in this single block — if the founder changes wording, both the
+// visible UI and the JSON-LD schema update in lockstep.
+const faqItems = [
+  {
+    q: 'Dla jakich grup wiekowych są warsztaty?',
+    a: 'Warsztaty dostosowujemy do grup od 3 do 14 lat. Dla młodszych (3-6) oferujemy sensoplastykę, plastykę ekspresywną i strefę malucha. Dla starszych (7-14) — ceramikę, eko-kosmetyki, warsztaty kulinarne i eksperymenty. Animacje eventowe obsługujemy bez ograniczeń wiekowych — program dobieramy do grupy.',
+  },
+  {
+    q: 'Czy materiały są bezpieczne dla dzieci?',
+    a: 'Tak. Używamy wyłącznie certyfikowanych i w 100% naturalnych (często spożywczych) składników. Wszystkie narzędzia i farby są przeznaczone do kontaktu z dziećmi. Każdy warsztat prowadzi doświadczony animator z przeszkoleniem z pierwszej pomocy. Posiadamy ubezpieczenie OC.',
+  },
+  {
+    q: 'Jaki jest obszar dojazdu i koszt transportu?',
+    a: 'Realizujemy warsztaty w całej Warszawie i okolicznych miejscowościach (Pruszków, Legionowo, Piaseczno, Otwock, Wołomin i okolice — do 30 km od centrum). Przy większych eventach wyjeżdżamy w całą Polskę — wycena indywidualna.',
+  },
+  {
+    q: 'Ile trwają warsztaty i jak wygląda organizacja?',
+    a: 'Standardowe warsztaty: 60-90 minut. Animacje eventowe: 2-3 godziny. Pełne eventy (kilka stref): 3-5 godzin. Czas trwania zawsze dopasowujemy do scenariusza Twojego wydarzenia — wystarczy napisać lub zadzwonić, a ułożymy program.',
+  },
+  {
+    q: 'Jak zarezerwować termin?',
+    a: 'Trzy sposoby: (1) napisz na biuro@e-cud.waw.pl, (2) zadzwoń +48 607 370 777, (3) wypełnij formularz na stronie /kontakt/. Odpowiadamy w ciągu 24 h i przesyłamy ofertę dostosowaną do Twojego eventu — bezpłatną i bez zobowiązań.',
+  },
+  {
+    q: 'Co dziecko zabiera z warsztatów?',
+    a: 'Każde dziecko zabiera własnoręcznie wykonaną pracę (zabawkę, obraz, biżuterię, eko-kosmetyk, sensoplastyczną figurkę itp.) oraz, w przypadku warsztatów kulinarnych, własne wypieki. Dla grup organizujemy też pamiątkowe zdjęcia i krótkie filmy z realizacji.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: a,
+    },
+  })),
+};
 ---
 
 <BaseLayout
   title='Cudoteka - twórcze warsztaty i animacje dla dzieci | Warszawa'
   description='Cudoteka to warsztaty rozwojowe i artystyczne, sensoplastyka, animacje i atrakcje dla dzieci i dorosłych. Warszawa i okolice.'
+  schemas={[faqSchema]}
 >
   {/*
     Critical home-page responsive overrides — inlined for instant first paint
@@ -207,7 +252,7 @@ const testimonials = (await getCollection('testimonials')).slice(0, 3);
     <div class='wrap'>
       <div class='reveal-fade-up sec-head'>
         <span class='eyebrow'>Opinie</span>
-        <h2>Co mówią o nas rodzice i organizatorzy</h2>
+        <h2>Co mówią o nas rodzice i organizatorzy</h2>
       </div>
 
       <div class='testimonial-grid'>
@@ -226,4 +271,106 @@ const testimonials = (await getCollection('testimonials')).slice(0, 3);
       </div>
     </div>
   </section>
+
+  <section class='section faq-section' id='faq'>
+    <div class='wrap reveal-fade-up'>
+      <div class='sec-head'>
+        <span class='eyebrow'>FAQ</span>
+        <h2>Najczęściej zadawane pytania</h2>
+        <p>Krótkie odpowiedzi na to, co pytają rodzice i organizatorzy eventów.</p>
+      </div>
+
+      <div class='faq-list'>
+        {faqItems.map((item) => (
+          <details class='faq-item'>
+            <summary>{item.q}</summary>
+            <div class='faq-answer'>
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class='section-cta'>
+        <a href='/kontakt/' class='btn btn-primary'>Masz inne pytanie? Napisz do nas</a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .faq-section {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+  }
+  .faq-list {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .faq-item {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(62, 137, 176, 0.08);
+    overflow: hidden;
+    transition: box-shadow 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .faq-item[open] {
+    box-shadow: var(--shadow);
+  }
+  .faq-item summary {
+    cursor: pointer;
+    padding: 22px 28px;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: var(--ink);
+    list-style: none;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--blue);
+    line-height: 1;
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .faq-item[open] summary::after {
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .faq-item summary:hover {
+    color: var(--blue-deep);
+  }
+  .faq-answer {
+    padding: 0 28px 22px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .faq-answer p {
+    margin: 0;
+  }
+
+  @media (max-width: 680px) {
+    .faq-item summary {
+      padding: 18px 22px;
+      font-size: 1rem;
+    }
+    .faq-item summary::after {
+      right: 22px;
+    }
+    .faq-answer {
+      padding: 0 22px 18px;
+    }
+  }
+</style>

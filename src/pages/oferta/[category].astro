@@ -70,21 +70,31 @@ const itemListSchema = {
 
       {workshops.length > 0 ? (
         <div class="workshop-grid">
-          {workshops.map(w => (
-            <div class="double-bezel-outer">
-              <a href={`/warsztaty/${w.data.slug}/`} class="workshop-card double-bezel-inner">
-                <h3>{w.data.title}</h3>
-                <p>{w.data.shortDescription}</p>
-                <div class="card-footer">
-                  <div class="meta-pills">
-                    <span class="pill age">👶 {w.data.ageRange}</span>
-                    <span class="pill time">⏱️ {w.data.duration}</span>
+          {workshops.map(w => {
+            const priceLabel = w.data.priceNote
+              ? w.data.priceNote
+              : w.data.priceFrom != null && w.data.priceTo != null
+                ? `${w.data.priceFrom}–${w.data.priceTo} zł`
+                : w.data.priceFrom != null
+                  ? `od ${w.data.priceFrom} zł`
+                  : null;
+            return (
+              <div class="double-bezel-outer">
+                <a href={`/warsztaty/${w.data.slug}/`} class="workshop-card double-bezel-inner">
+                  <h3>{w.data.title}</h3>
+                  <p>{w.data.shortDescription}</p>
+                  <div class="card-footer">
+                    <div class="meta-pills">
+                      <span class="pill age">👶 {w.data.ageRange}</span>
+                      <span class="pill time">⏱️ {w.data.duration}</span>
+                      {priceLabel && <span class="pill price">💰 {priceLabel}</span>}
+                    </div>
+                    <span class="btn-arrow">→</span>
                   </div>
-                  <span class="btn-arrow">→</span>
-                </div>
-              </a>
-            </div>
-          ))}
+                </a>
+              </div>
+            );
+          })}
         </div>
       ) : (
         <div class="empty-state">
@@ -194,6 +204,11 @@ const itemListSchema = {
     border-radius: 99px;
     background: var(--cream-2);
     color: var(--ink-soft);
+  }
+  .pill.price {
+    background: linear-gradient(135deg, var(--mint-tint), var(--peach-tint));
+    color: var(--ink);
+    border: 1px solid rgba(231, 184, 92, 0.25);
   }
   .btn-arrow {
     display: inline-flex;
