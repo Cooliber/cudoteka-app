@@ -67,6 +67,10 @@ const posts = defineCollection({
     imageAlt: z.string().optional(),
     metaTitle: z.string(),
     metaDescription: z.string(),
+    // Polish names of Calyx-grounded knowledge areas used as source.
+    // Optional: legacy/MVP posts may not have it; new grounded posts SHOULD include.
+    // Do not expose Calyx cx_ids in public content - use public-facing names only.
+    usedConstellations: z.array(z.string()).optional(),
   }),
 });
 
