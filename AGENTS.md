@@ -123,7 +123,7 @@ npm run preview      # Preview built site locally
 
 ### Pre-commit Checks
 1. **Build:** `npm run build` completes with 0 errors and all routes generated
-2. **Route Count:** Confirm page count = 42 (1 home + 6 offer + 24 workshops + 6 category pages + 2 blog posts + 1 blog list + 1 gallery + 1 testimonials + 1 about + 1 contact + 1 privacy + 1 404)
+2. **Route Count:** Confirm build output page count (last verified 2026-09-19: 105 pages, including 53 blog posts); spot-check that home, offer, workshops, blog index and a sample post all generate
 3. **Sitemap:** Post-build: verify `dist/sitemap-index.xml` and individual sitemaps exist
 4. **No Console Errors:** Run `npm run preview` and check browser console for errors
 5. **Image Assets:** All images resolve from `public/` or `src/assets/images/`
@@ -189,7 +189,7 @@ npm run preview      # Preview built site locally
 - **Subfolders:**
   - `categories/` — Service categories (6 items)
   - `workshops/` — Workshop definitions (24 items)
-  - `posts/` — Blog articles (2 MVP items, expandable)
+  - `posts/` — Blog articles (45 posts as of 2026-09-19; grounded posts carry `usedConstellations`, new grounded posts SHOULD include it)
   - `testimonials/` — Customer reviews (3+ items)
   - `gallery/` — Photo grid items (5+ items)
 
@@ -218,6 +218,7 @@ npm run preview      # Preview built site locally
   - `about/` — About page founder photo
   - `workshops/` — Workshop category images (24+)
   - `gallery/` — Gallery item photos (5+)
+  - `blog/` — HD blog covers (photorealistic, generated via `F:\code\logopedia\anim` wrapper: FLUX.1-dev/replicate → center-crop 16:10 → webp; one cover per grounded post, named `<slug>.webp`)
 
 ### Config Files
 - **astro.config.mjs** — Astro runtime (site URL, static output, sitemap integration)
