@@ -110,6 +110,17 @@ All content files are scanned from their collection folder during build and vali
 - Images: `min-h-[100dvh]` (not `h-screen`), flexible grids with `minmax()`
 - No fixed widths; all text responsive via `clamp()` for font sizes
 
+### Booking vs. Contact — Two Separate Paths
+
+Two distinct booking flows exist; do not conflate them:
+
+| Flow | Destination | Used by |
+|---|---|---|
+| **Wizyta indywidualna** (diagnoza, terapia, konsultacje) | `BOOKING_URL` (Bookero, Fundacja Atypowi) — external, `target="_blank" rel="noopener noreferrer"` | Header CTA, Footer contact list, home FAQ CTA, `/kontakt/` info column |
+| **Warsztaty i eventy** (wycena indywidualna) | `/kontakt/` form (Formspree) — pre-fills the workshop via `?workshop=slug` | Header CTA, workshop detail pages, `/kontakt/` form |
+
+Always import `BOOKING_URL` / `BOOKING_LABEL` from `src/lib/booking.ts` rather than hardcoding the Bookero URL.
+
 ### Development Server
 ```bash
 npm run dev          # Start Astro dev server on localhost:4321
@@ -204,6 +215,7 @@ npm run preview      # Preview built site locally
 - **Purpose:** Utility functions and helpers
 - **Files:**
   - `seo.ts` — SEO helper (title, meta tags, Open Graph, LocalBusiness schema)
+  - `booking.ts` — `BOOKING_URL` / `BOOKING_LABEL` for online visit booking via Bookero (Fundacja Atypowi). Single source of truth: import these instead of hardcoding the URL.
 
 ### Folder: `public/`
 - **Purpose:** Static assets served as-is

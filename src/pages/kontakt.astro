@@ -1,13 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { BOOKING_URL } from '../lib/booking';
 
 const workshops = await getCollection('workshops');
 ---
 
 <BaseLayout
-  title="Kontakt i rezerwacja warsztatów"
-  description="Skontaktuj się z Cudoteką - zarezerwuj termin warsztatów, sensoplastyki lub animacji na urodziny dziecka. Warszawa i okolice."
+  title="Kontakt, rezerwacja wizyty i terminów warsztatów"
+  description="Umów wizytę online przez Bookero albo zarezerwuj termin warsztatów, sensoplastyki lub animacji na urodziny dziecka. Warszawa i okolice."
 >
   <section class="section contact-page">
     <div class="wrap reveal-fade-up">
@@ -40,6 +41,14 @@ const workshops = await getCollection('workshops');
               <div class="text">
                 <span class="label">Obszar działania</span>
                 <span class="val">Warszawa i okolice (dojazd do klienta)</span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="icon">📅</span>
+              <div class="text">
+                <span class="label">Umów wizytę</span>
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" class="val">Rezerwacja online → Bookero</a>
               </div>
             </div>
 

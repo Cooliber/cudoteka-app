@@ -1,5 +1,7 @@
 ---
-const navLinks = [
+import { BOOKING_URL, BOOKING_LABEL } from '../../lib/booking';
+
+const allLinks = [
   { href: '/o-nas/', label: 'O nas' },
   { href: '/oferta/', label: 'Oferta' },
   { href: '/warsztaty/', label: 'Warsztaty' },
@@ -10,6 +12,14 @@ const navLinks = [
   { href: '/opinie/', label: 'Opinie' },
   { href: '/kontakt/', label: 'Kontakt' },
 ];
+
+// The desktop pill caps at 6 links: logo + nav + phone + 2 CTAs measured 1332px
+// against 1074px of available width, which forced links to wrap onto two lines.
+// The remaining 3 stay reachable via the footer and the mobile overlay, which
+// has room for the full list.
+const desktopNavLinks = allLinks.filter(l =>
+  ['/o-nas/', '/oferta/', '/warsztaty/', '/materialy/', '/blog/', '/kontakt/'].includes(l.href)
+);
 ---
 
 <header class="header-container">
@@ -29,12 +39,13 @@ const navLinks = [
       <span class="logo-text">Cudoteka</span>
     </a>
     <nav class="nav-links" aria-label="Nawigacja główna">
-      {navLinks.map(link => (
+      {desktopNavLinks.map(link => (
         <a href={link.href}>{link.label}</a>
       ))}
     </nav>
     <div class="nav-cta">
       <a href="tel:607370777" class="phone-link">607 370 777</a>
+      <a href={BOOKING_URL} class="btn btn-ghost" target="_blank" rel="noopener noreferrer">{BOOKING_LABEL}</a>
       <a href="/kontakt/" class="btn btn-primary">Zarezerwuj termin</a>
     </div>
     <button class="burger" id="burger-button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile-menu-overlay">
@@ -49,11 +60,12 @@ const navLinks = [
 <div class="mobile-overlay" id="mobile-menu-overlay">
   <div class="mobile-overlay-bg"></div>
   <nav class="mobile-nav-links">
-    {navLinks.map((link, index) => (
+    {allLinks.map((link, index) => (
       <a href={link.href} style={`--stagger-index: ${index};`}>{link.label}</a>
     ))}
-    <div class="mobile-nav-cta" style={`--stagger-index: ${navLinks.length};`}>
+    <div class="mobile-nav-cta" style={`--stagger-index: ${allLinks.length};`}>
       <a href="tel:607370777" class="btn btn-ghost">Zadzwoń: 607 370 777</a>
+      <a href={BOOKING_URL} class="btn btn-ghost" target="_blank" rel="noopener noreferrer">{BOOKING_LABEL}</a>
       <a href="/kontakt/" class="btn btn-primary">Zarezerwuj termin</a>
     </div>
   </nav>
@@ -104,6 +116,9 @@ const navLinks = [
     align-items: center;
     gap: 24px;
     font-weight: 700;
+    /* No wrapping: the pill is width-capped, so a flex item that wraps would
+       silently render on two lines instead of overflowing visibly. */
+    flex-wrap: nowrap;
   }
   .nav-links a {
     color: var(--ink-soft);
@@ -111,6 +126,7 @@ const navLinks = [
     position: relative;
     padding: 6px 0;
     transition: color 0.2s;
+    white-space: nowrap;
   }
   .nav-links a::after {
     content: '';
@@ -132,12 +148,15 @@ const navLinks = [
     display: flex;
     align-items: center;
     gap: 18px;
+    flex: none;
   }
   .phone-link {
     font-weight: 800;
     color: var(--blue-deep);
     font-size: 0.95rem;
     transition: color 0.2s;
+    /* A phone number must never split across lines — "607 370" / "777". */
+    white-space: nowrap;
   }
   .phone-link:hover {
     color: var(--blue);
@@ -267,7 +286,12 @@ const navLinks = [
     transform: translateY(0);
   }
 
-  @media (max-width: 980px) {
+  @media (max-width: 1240px) {
+    /* Measured, not guessed: logo + 6 nav links + phone + 2 CTAs need ~1089px of
+       intrinsic width. At a 1181px viewport the gaps between logo/nav/CTA
+       measure 0px — the elements touch. Collapse the whole nav into the burger
+       below 1240px instead. Every link stays reachable there and in the footer.
+       Raise this together with the nav list — check with the browser, not by eye. */
     .nav-links, .nav-cta {
       display: none;
     }
