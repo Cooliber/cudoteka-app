@@ -1,4 +1,6 @@
 ---
+import { BOOKING_URL, BOOKING_LABEL } from '../../lib/booking';
+
 const offerLinks = [
   { href: '/oferta/tworczosc-i-sztuka/', label: 'Twórczość i sztuka' },
   { href: '/oferta/animacje-i-atrakcje/', label: 'Animacje i atrakcje' },
@@ -18,6 +20,7 @@ const contactLinks = [
   { href: 'tel:607370777', label: '607 370 777' },
   { href: 'mailto:biuro@e-cud.waw.pl', label: 'biuro@e-cud.waw.pl' },
   { href: 'https://www.facebook.com/', label: 'Facebook', external: true },
+  { href: BOOKING_URL, label: BOOKING_LABEL, external: true },
 ];
 
 // TODO(FOUNDER): uzupełnij street + postalCode (docs/dane-dla-zalozycielki.md sekcja 1.1)
