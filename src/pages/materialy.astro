@@ -6,20 +6,21 @@ import DownloadCard from '../components/downloads/DownloadCard.astro';
 const downloads = (await getCollection('downloads'));
 
 const wakacje = downloads.filter(d => d.data.category === 'wakacje');
+const sezony = downloads.filter(d => d.data.category === 'sezony');
 const artykulacja = downloads.filter(d => d.data.category === 'artykulacja');
 const logopedia = downloads.filter(d => d.data.category === 'logopedia');
 ---
 
 <BaseLayout
   title="Materiały do pobrania - darmowe ćwiczenia i karty pracy | Cudoteka"
-  description="Bezpłatne materiały PDF do pobrania: wyzwania wakacyjne, ćwiczenia artykulacji głosków, materiały logopedyczne. Pobierz i korzystaj!"
+  description="Bezpłatne materiały PDF do pobrania: ćwiczonka na pory roku, wyzwania wakacyjne, ćwiczenia artykulacji głosków i materiały logopedyczne. Pobierz i korzystaj!"
 >
   <section class="section hero-section">
     <div class="wrap">
       <div class="reveal-fade-up sec-head">
         <span class="eyebrow">Materiały do pobrania</span>
         <h1>Darmowe materiały dla dzieci i rodziców</h1>
-        <p>Karty pracy, ćwiczenia logopedyczne i kreatywne wyzwania gotowe do pobrania i wydrukowania.</p>
+        <p>Karty pracy, ćwiczonka na pory roku, ćwiczenia logopedyczne i kreatywne wyzwania gotowe do pobrania i wydrukowania.</p>
       </div>
     </div>
   </section>
@@ -42,6 +43,21 @@ const logopedia = downloads.filter(d => d.data.category === 'logopedia');
   <section class="section section-alt">
     <div class="wrap">
       <div class="reveal-fade-up sec-head">
+        <span class="eyebrow">Pory roku</span>
+        <h2>Ćwiczonka na każdą porę roku</h2>
+        <p>Jesień, lato, wiosna i zima - słowa, oddech i zabawy dopasowane do pory roku. Znajdź i nazwij, kolorowanki i gra planszowa.</p>
+      </div>
+      <div class="downloads-grid">
+        {sezony.map(item => (
+          <DownloadCard item={item} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal-fade-up sec-head">
         <span class="eyebrow">Logopedia</span>
         <h2>Ćwiczenia artykulacji głosków</h2>
         <p>Profesjonalne materiały do pracy nad prawidłową wymową. Szeregi głoskowe, kappacyzm, gammacyzm, rotacyzm, lambdacyzm.</p>
@@ -55,7 +71,7 @@ const logopedia = downloads.filter(d => d.data.category === 'logopedia');
   </section>
 
   {logopedia.length > 0 && (
-    <section class="section">
+    <section class="section section-alt">
       <div class="wrap">
         <div class="reveal-fade-up sec-head">
           <span class="eyebrow">Dla specjalistów</span>

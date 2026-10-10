@@ -90,7 +90,7 @@ const downloads = defineCollection({
     title: z.string(),
     slug: z.string(),
     description: z.string(),
-    category: z.enum(['wakacje', 'artykulacja', 'logopedia', 'inne']),
+    category: z.enum(['wakacje', 'artykulacja', 'logopedia', 'sezony', 'inne']),
     file: z.string(),
     fileSize: z.string(),
     icon: z.string(),
