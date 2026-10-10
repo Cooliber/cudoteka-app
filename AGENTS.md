@@ -161,6 +161,13 @@ npm run preview      # Preview built site locally
 
 ## Child DOX Index
 
+### Folder: `docs/superpowers/plans/`
+- **Purpose:** Design and implementation plans for approved work
+- **Contracts:** Each plan states its decision, evidence, and acceptance criteria. Plans are proposals until status changes to approved.
+- **Files:**
+  - `2026-06-23-cudoteka-astro-mvp-plan.md` — Astro MVP migration plan (implemented)
+  - `2026-10-03-sklep-materialow-logopedycznych-plan.md` — Paid materials shop: Stripe Checkout over Shopify, 4-step rollout. **Status: proposal** — pending VAT confirmation with an accountant
+
 ### Folder: `src/`
 - **Purpose:** Source code root
 - **Contents:** Astro components, layouts, pages, content collections, styling, utilities
@@ -203,6 +210,7 @@ npm run preview      # Preview built site locally
   - `posts/` — Blog articles (45 posts as of 2026-09-19; grounded posts carry `usedConstellations`, new grounded posts SHOULD include it)
   - `testimonials/` — Customer reviews (3+ items)
   - `gallery/` — Photo grid items (5+ items)
+  - `downloads/` — Free PDF downloads (8 items). Do NOT modify for paid products
 
 ### Folder: `src/styles/`
 - **Purpose:** Global design system and utilities
