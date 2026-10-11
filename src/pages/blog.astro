@@ -20,6 +20,10 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
         <p>Znajdziesz tu przepisy na domowe masy sensoryczne, inspiracje na przyjęcia urodzinowe oraz nowości z życia Cudoteki.</p>
       </div>
 
+      <p class="guide-callout">
+        Nie wiesz, od czego zacząć? Zobacz przewodnik: <a href="/rozwoj-mowy/">Rozwój mowy dziecka 0-7 lat →</a>
+      </p>
+
       <div class="listing-header">
         <h2>Najnowsze artykuły</h2>
       </div>
@@ -70,6 +74,18 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
     color: var(--ink-soft);
     font-size: 1.1rem;
   }
+  .guide-callout {
+    text-align: center;
+    max-width: 46rem;
+    margin: -34px auto 40px;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+  .guide-callout a {
+    color: var(--blue-deep);
+    font-weight: 800;
+  }
+
   .listing-header {
     text-align: center;
     max-width: 46rem;

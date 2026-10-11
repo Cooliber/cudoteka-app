@@ -1,0 +1,503 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const BASE = 'https://cudoteka.pl';
+
+const stages = [
+  {
+    id: '0-6',
+    label: '0-6 miesięcy',
+    title: 'Pierwsze dźwięki i kontakt',
+    lead: 'Niemowlę uczy się mowy, zanim powie pierwsze słowo: słucha, naśladuje i odpowiada spojrzeniem.',
+    what: 'Dużo mówcie do dziecka, naśladujcie jego głużenie, odpowiadajcie na każde "aaa" jak na prawdziwą rozmowę.',
+    posts: [
+      { name: 'Komunikacja niewerbalna niemowlęcia', path: '/blog/komunikacja-niewerbalna-niemowlecia/' },
+      { name: 'Mów do dziecka codziennie', path: '/blog/mow-do-dziecka-codziennie/' },
+    ],
+  },
+  {
+    id: '6-12',
+    label: '6-12 miesięcy',
+    title: 'Gaworzenie i pierwsze słowa',
+    lead: 'Pojawiają się sylaby (ba-ba, ma-ma), a pod koniec roku pierwsze prawdziwe słowa.',
+    what: 'Książeczki z obrazkami, wspólne nazywanie, proste zabawy paluszkowe. Bez "poprawiania" - wystarczy powtarzać po dziecku i rozwijać.',
+    posts: [
+      { name: 'Od słuchania do opowiadania - etapy', path: '/blog/od-sluchania-do-opowiadania-etapy/' },
+      { name: 'Rymowanki i wyliczanki', path: '/blog/rymowanki-i-wyliczanki/' },
+    ],
+  },
+  {
+    id: '1-2',
+    label: '1-2 lata',
+    title: 'Słowa łączą się w zdania',
+    lead: 'Słownik rośnie skokowo, a ok. 2. urodzin pojawiają się pierwsze zdania z dwóch słów ("mama idzie").',
+    what: 'Czytajcie codziennie, opowiadajcie to, co robicie ("wkładamy klocki do pudełka"), odpowiadajcie pełnym zdaniem na pytania.',
+    posts: [
+      { name: 'Dialogowe czytanie z dzieckiem', path: '/blog/dialogowe-czytanie-z-dzieckiem/' },
+      { name: 'Rymowanki i wyliczanki', path: '/blog/rymowanki-i-wyliczanki/' },
+      { name: 'Od słuchania do opowiadania - etapy', path: '/blog/od-sluchania-do-opowiadania-etapy/' },
+    ],
+  },
+  {
+    id: '2-3',
+    label: '2-3 lata',
+    title: 'Zdania, pytania i pierwsze gry',
+    lead: 'Dziecko buduje dłuższe zdania, pyta "dlaczego?", lubi śpiew i rymowanki. Wymowa jest jeszcze niepełna - to normalne.',
+    what: 'Wspólne muzykowanie, zabawy słuchowe (co słyszysz?), zagadki dźwiękowe. To złoty czas na fundament słuchu fonemowego.',
+    posts: [
+      { name: 'Dziecko myli głoski - zabawy słuchowe', path: '/blog/dziecko-myli-gloski-zabawy-sluchowe/' },
+      { name: 'Muzyka, rytm i mowa', path: '/blog/muzyka-rytm-i-mowa/' },
+      { name: 'Pierwszy dzień w przedszkolu', path: '/blog/pierwszy-dzien-w-przedszkolu/' },
+    ],
+  },
+  {
+    id: '3-5',
+    label: '3-5 lat',
+    title: 'Wyraźna mowa i rozgrzewka buzi',
+    lead: 'Mowa staje się coraz bardziej zrozumiała, pojawiają się trudniejsze głoski (s, z, sz, ś). Na R przyjdzie jeszcze czas.',
+    what: 'Gimnastyka buzi i języka (2-3 min dziennie), nazywanie obrazków, ćwiczenia oddechowe. To też moment, w którym warto zwrócić uwagę na sygnały opóźnienia.',
+    posts: [
+      { name: 'Gimnastyka buzi i języka - 15 ćwiczeń', path: '/blog/gimnastyka-buzi-i-jezyka-cwiczenia/' },
+      { name: 'Ćwiczenia oddechowe dla dzieci', path: '/blog/cwiczenia-oddechowe-dla-dzieci/' },
+      { name: 'Motoryka mała i oralna', path: '/blog/motoryka-mala-i-oralna/' },
+      { name: 'Opóźniony rozwój mowy - kiedy zareagować', path: '/blog/opozniony-rozwoj-mowy-kiedy-zareagowac/' },
+    ],
+  },
+  {
+    id: '5-7',
+    label: '5-7 lat',
+    title: 'Trudne głoski i przygotowanie do szkoły',
+    lead: 'Większość głosek powinna już brzmieć poprawnie. Ostatnia w kolejce jest głoska R - czasem pojawia się dopiero w 6.-7. roku życia.',
+    what: 'Krótkie, codzienne sesje (10 minut!), karty pracy i utrwalanie wywołanych głosek. To czas, gdy warto domknąć wymowę przed nauką pisania.',
+    posts: [
+      { name: 'Jak nauczyć dziecko mówić R', path: '/blog/jak-nauczyc-dziecko-mowic-r/' },
+      { name: 'Głoski s, sz, ś - od czego zacząć', path: '/blog/gloski-s-sz-s-od-czego-zaczac/' },
+      { name: 'Karty pracy - jak wybrać i jak pracować', path: '/blog/karty-pracy-jak-wybrac-i-pracowac/' },
+      { name: 'Ćwiczenia wymowy w domu', path: '/blog/cwiczenia-wymowy-w-domu/' },
+      { name: 'Krótko i często - jak ćwiczyć', path: '/blog/krotko-i-czesto-jak-cwiczyc-z-dzieckiem/' },
+      { name: 'Jak zmotywować dziecko do ćwiczeń', path: '/blog/jak-motywowac-dziecko-do-cwiczen/' },
+    ],
+  },
+];
+
+const crossTopics = [
+  { name: '7 sygnałów, że dziecko potrzebuje logopedy', path: '/blog/7-sygnalow-ze-dziecko-potrzebuje-logopedy/' },
+  { name: 'Opóźniony rozwój mowy - kiedy zareagować', path: '/blog/opozniony-rozwoj-mowy-kiedy-zareagowac/' },
+  { name: 'Jąkanie rozwojowe - co robić', path: '/blog/jakanie-rozwojowe-co-robic/' },
+  { name: 'Więź emocjonalna a rozwój mowy', path: '/blog/wiez-emocjonalna-rozwoj-mowy/' },
+  { name: 'Jak rodzina wspiera rozwój mowy', path: '/blog/jak-rodzina-wspiera-rozwoj-mowy-dziecka/' },
+  { name: 'Ekrany a rozwój mowy', path: '/blog/ekrany-a-rozwoj-mowy/' },
+  { name: 'Ekrany bez wojny', path: '/blog/ekrany-bez-wojny/' },
+  { name: 'Komunikacja alternatywna AAC / PECS', path: '/blog/komunikacja-alternatywna-aac-pecs/' },
+  { name: 'Dwujęzyczność w domu - mity i fakty', path: '/blog/dwujezycznosc-w-domu-mity-i-fakty/' },
+  { name: 'Jedzenie a mowa', path: '/blog/jak-jedzenie-wspiera-mowe/' },
+];
+
+// ItemList: prowadzi Google po tematycznych wpisach przewodnika.
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Rozwój mowy dziecka 0-7 lat - przewodnik',
+  numberOfItems: stages.reduce((sum, stage) => sum + stage.posts.length, 0) + crossTopics.length,
+  itemListElement: [
+    ...stages.flatMap((stage) => stage.posts),
+    ...crossTopics,
+  ].map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    url: new URL(item.path, BASE).toString(),
+  })),
+};
+---
+
+<BaseLayout
+  title="Rozwój mowy dziecka 0-7 lat - kompletny przewodnik | Cudoteka"
+  description="Przewodnik po rozwoju mowy dziecka od 0 do 7 lat: kamienie milowe, co robić na każdym etapie, czerwone flagi i linki do ćwiczeń. Od logopedów z Warszawy."
+  breadcrumb={[{ name: 'Strona główna', path: '/' }, { name: 'Rozwój mowy 0-7 lat', path: '/rozwoj-mowy/' }]}
+  schemas={[itemListSchema]}
+>
+  <section class="section guide-hero">
+    <div class="wrap reveal-fade-up">
+      <div class="sec-head">
+        <span class="eyebrow">Przewodnik dla rodziców</span>
+        <h1>Rozwój mowy dziecka od 0 do 7 lat</h1>
+        <p>
+          Cała wiedza z naszego bloga w jednym miejscu: co dzieje się na każdym etapie, co możesz robić w domu
+          i po czym poznać, że warto skonsultować się z logopedą. Bez straszenia - z konkretami.
+        </p>
+      </div>
+
+      <nav class="toc" aria-label="Skocz do etapu">
+        {stages.map((stage) => (
+          <a class="toc-link" href={`#etap-${stage.id}`}>{stage.label}</a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <section class="section guide-stages">
+    <div class="wrap">
+      {stages.map((stage) => (
+        <article id={`etap-${stage.id}`} class="stage reveal-fade-up">
+          <header class="stage-head">
+            <span class="stage-badge">{stage.label}</span>
+            <h2>{stage.title}</h2>
+            <p>{stage.lead}</p>
+          </header>
+          <div class="stage-body double-bezel-outer">
+            <div class="stage-inner double-bezel-inner">
+              <p class="stage-what">{stage.what}</p>
+              <ul class="stage-links">
+                {stage.posts.map((post) => (
+                  <li>
+                    <a href={post.path}>{post.name} →</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section guide-flags">
+    <div class="wrap reveal-fade-up">
+      <div class="sec-head">
+        <span class="eyebrow">Czerwone flagi</span>
+        <h2>Kiedy nie czekać - sygnały do konsultacji</h2>
+        <p>Kamienie milowe to orientacja, nie sztywny grafik - każde dziecko ma swoje tempo. Ale są sygnały, przy których lepiej nie czekać.</p>
+      </div>
+      <div class="flags-card double-bezel-outer">
+        <div class="flags-inner double-bezel-inner">
+          <ul class="flags-list">
+            <li>Brak reakcji na dźwięki i głos w pierwszych miesiącach życia.</li>
+            <li>Brak gaworzenia około 9.-10. miesiąca, brak pierwszych słów około 18. miesiąca.</li>
+            <li>Po 2. urodzinach dziecko nie łączy słów i mówi mniej niż rówieśnicy.</li>
+            <li>Po 3. urodzinach mowa jest niezrozumiała dla osób spoza rodziny.</li>
+            <li>Po 5.-6. urodzinach wciąż brakuje głosek lub dziecko zamienia je konsekwentnie (np. R, sz, s).</li>
+            <li>Niepokoi Cię cokolwiek - instynkt rodzica to dobry sygnał, żeby zapytać.</li>
+          </ul>
+          <div class="flags-links">
+            <a class="btn btn-primary" href="/kontakt/">Umów konsultację</a>
+            <a class="btn btn-ghost" href="/blog/7-sygnalow-ze-dziecko-potrzebuje-logopedy/">Przeczytaj: 7 sygnałów</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section guide-cross">
+    <div class="wrap reveal-fade-up">
+      <div class="sec-head">
+        <span class="eyebrow">Tematy przekrojowe</span>
+        <h2>Ważne niezależnie od wieku</h2>
+      </div>
+      <ul class="cross-grid">
+        {crossTopics.map((topic) => (
+          <li>
+            <a class="cross-card" href={topic.path}>
+              <span class="cross-title">{topic.name}</span>
+              <span class="cross-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section guide-cta">
+    <div class="wrap reveal-fade-up">
+      <div class="cta-grid">
+        <a class="cta-tile" href="/materialy/">
+          <span class="cta-icon" aria-hidden="true">📄</span>
+          <h3>Materiały do druku</h3>
+          <p>Karty pracy, ćwiczonka na pory roku i zestawy do ćwiczeń głosek - bezpłatne PDF-y.</p>
+        </a>
+        <a class="cta-tile" href="/szkolenia/">
+          <span class="cta-icon" aria-hidden="true">🎓</span>
+          <h3>Szkolenia</h3>
+          <p>Opóźniony rozwój mowy krok po kroku - dla rodziców, nauczycieli i specjalistów.</p>
+        </a>
+        <a class="cta-tile" href="/kontakt/">
+          <span class="cta-icon" aria-hidden="true">💬</span>
+          <h3>Konsultacja</h3>
+          <p>Masz pytanie o wymowę swojego dziecka? Napisz - odpowiemy i podpowiemy, od czego zacząć.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .guide-hero {
+    padding-top: 120px;
+    background: linear-gradient(145deg, var(--cream) 0%, var(--cream-2) 100%);
+  }
+
+  .sec-head {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 32px;
+  }
+  .sec-head h1 {
+    font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+    margin: 16px 0 14px;
+  }
+  .sec-head h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+    margin: 14px 0 12px;
+  }
+  .sec-head p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .toc-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+    padding: 8px 18px;
+    background: #fff;
+    border: 1px solid rgba(62, 137, 176, 0.18);
+    border-radius: 999px;
+    color: var(--blue-deep);
+    font-weight: 800;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .toc-link:hover {
+      background: var(--blue-tint);
+      border-color: var(--blue);
+    }
+  }
+
+  .guide-stages {
+    background: var(--cream);
+    padding-top: 40px;
+  }
+
+  .stage {
+    max-width: 860px;
+    margin: 0 auto 56px;
+    scroll-margin-block-start: 6.5rem;
+  }
+
+  .stage-head {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .stage-badge {
+    display: inline-block;
+    background: var(--blue-deep);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .stage-head h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 10px;
+  }
+  .stage-head p {
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0 auto;
+  }
+
+  .stage-inner {
+    gap: 20px;
+  }
+  .stage-what {
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(62, 137, 176, 0.12);
+  }
+  .stage-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .stage-links a {
+    color: var(--blue-deep);
+    font-weight: 700;
+    font-size: 0.98rem;
+    transition: color 0.2s ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .stage-links a:hover {
+      color: var(--blue);
+    }
+  }
+
+  .guide-flags {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+  }
+  .flags-card {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .flags-inner {
+    gap: 24px;
+  }
+  .flags-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .flags-list li {
+    position: relative;
+    padding-left: 30px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .flags-list li::before {
+    content: "!";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--peach);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.75rem;
+  }
+  .flags-links {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .guide-cross {
+    background: var(--cream);
+  }
+  .cross-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    gap: 14px;
+  }
+  .cross-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: 100%;
+    background: #fff;
+    border: 1px solid rgba(62, 137, 176, 0.12);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    padding: 18px 20px;
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    transition: translate 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cross-arrow {
+    color: var(--blue);
+    font-weight: 800;
+    flex: none;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .cross-card:hover {
+      translate: 0 -2px;
+      box-shadow: var(--shadow);
+    }
+  }
+
+  .guide-cta {
+    background: linear-gradient(180deg, var(--cream-2), var(--cream));
+    padding-bottom: 120px;
+  }
+  .cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .cta-tile {
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px solid rgba(62, 137, 176, 0.1);
+    box-shadow: var(--shadow-sm);
+    padding: 30px 26px;
+    text-align: center;
+    transition: translate 0.25s ease, box-shadow 0.25s ease;
+  }
+  .cta-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .cta-tile h3 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  .cta-tile p {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .cta-tile:hover {
+      translate: 0 -4px;
+      box-shadow: var(--shadow);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .toc-link,
+    .cross-card,
+    .cta-tile {
+      transition: translate 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+  }
+
+  .guide-hero a:focus-visible,
+  .stage a:focus-visible,
+  .flags-card a:focus-visible,
+  .cross-card:focus-visible,
+  .cta-tile:focus-visible,
+  .toc-link:focus-visible {
+    outline: max(2px, 0.08em) solid currentColor;
+    outline-offset: 0.2em;
+  }
+
+  @media (max-width: 680px) {
+    .guide-hero {
+      padding-top: 90px;
+    }
+    .stage {
+      margin-bottom: 44px;
+    }
+    .flags-links .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
