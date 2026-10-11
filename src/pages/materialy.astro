@@ -7,18 +7,9 @@ const downloads = await getCollection('downloads');
 
 const groups = [
   {
-    id: 'wakacje',
-    nav: 'Wyzwania wakacyjne',
-    tint: false,
-    eyebrow: 'Lato i wakacje',
-    title: 'Wyzwania wakacyjne',
-    lead: 'Kreatywne aktywności na letnie dni - zabawy na świeżym powietrzu, eksperymenty i plastyka.',
-    items: downloads.filter(d => d.data.category === 'wakacje'),
-  },
-  {
     id: 'pory-roku',
     nav: 'Pory roku',
-    tint: true,
+    tint: false,
     eyebrow: 'Pory roku',
     title: 'Ćwiczonka na każdą porę roku',
     lead: 'Jesień, lato, wiosna i zima - słowa, oddech i zabawy dopasowane do pory roku. Znajdź i nazwij, kolorowanki i gra planszowa.',
@@ -27,7 +18,7 @@ const groups = [
   {
     id: 'artykulacja',
     nav: 'Artykulacja',
-    tint: false,
+    tint: true,
     eyebrow: 'Logopedia',
     title: 'Ćwiczenia artykulacji głosków',
     lead: 'Profesjonalne materiały do pracy nad prawidłową wymową. Szeregi głoskowe, kappacyzm, gammacyzm, rotacyzm, lambdacyzm.',
@@ -36,11 +27,20 @@ const groups = [
   {
     id: 'logopedia',
     nav: 'Dla specjalistów',
-    tint: true,
+    tint: false,
     eyebrow: 'Dla specjalistów',
     title: 'Materiały logopedyczne',
     lead: '',
     items: downloads.filter(d => d.data.category === 'logopedia'),
+  },
+  {
+    id: 'wakacje',
+    nav: 'Wyzwania wakacyjne',
+    tint: true,
+    eyebrow: 'Lato i wakacje',
+    title: 'Wyzwania wakacyjne',
+    lead: 'Kreatywne aktywności na letnie dni - zabawy na świeżym powietrzu, eksperymenty i plastyka.',
+    items: downloads.filter(d => d.data.category === 'wakacje'),
   },
   {
     id: 'dokumenty',

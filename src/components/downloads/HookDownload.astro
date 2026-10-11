@@ -4,14 +4,15 @@ interface Props {
   fileSize?: string;
   label?: string;
   ariaLabel?: string;
+  delayMs?: number;
 }
 
-const { href, fileSize, label = 'Pobierz PDF', ariaLabel } = Astro.props;
+const { href, fileSize, label = 'Pobierz PDF', ariaLabel, delayMs = 3000 } = Astro.props;
 const uid = Math.random().toString(36).slice(2, 8);
 const clipId = `delivery-clip-${uid}`;
 ---
 
-<div class="hook" data-hook>
+<div class="hook" data-hook data-delay={delayMs}>
   <div class="hook-scene">
     <svg class="hook-art" viewBox="0 0 640 380" fill="none" aria-hidden="true">
       <defs><clipPath id={clipId}><rect width="640" height="280"></rect></clipPath></defs>
@@ -371,6 +372,9 @@ const clipId = `delivery-clip-${uid}`;
     let audible = true;
     let previous = 0;
     let sceneTime = -1;
+    let downloaded = false;
+    let downloadTimer = 0;
+    const delayMs = Number(root.dataset.delay || 3000);
 
     const cape = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     cape.setAttribute('fill', '#ff565d');
@@ -603,7 +607,20 @@ const clipId = `delivery-clip-${uid}`;
       trigger.setAttribute('aria-busy', String(value));
     }
 
+    function startDownload() {
+      if (downloaded) return;
+      downloaded = true;
+      const link = document.createElement('a');
+      link.href = trigger.href;
+      link.download = trigger.getAttribute('download') ?? '';
+      document.body.append(link);
+      link.click();
+      link.remove();
+      live.textContent = 'Pobieranie rozpoczęte.';
+    }
+
     function finish() {
+      if (!downloaded) startDownload();
       setBusy(false);
       set(ground, 'opacity', 0);
       set(worker, 'opacity', 0);
@@ -612,14 +629,19 @@ const clipId = `delivery-clip-${uid}`;
       idle();
       label.textContent = 'Pobierz ponownie';
       caption.textContent = 'Udało się. W końcu! Kliknij, aby pobrać ponownie.';
-      live.textContent = 'Pobieranie rozpoczęte. Możesz pobrać plik ponownie.';
+      live.textContent = 'Animacja zakończona. Możesz pobrać plik ponownie.';
     }
 
     function play() {
       if (busy) return;
-      live.textContent = 'Pobieranie rozpoczęte.';
-      if (reduce.matches) return;
+      if (reduce.matches) {
+        live.textContent = 'Pobieranie rozpoczęte.';
+        return;
+      }
       setBusy(true);
+      downloaded = false;
+      live.textContent = 'Za chwilę rozpocznie się pobieranie.';
+      downloadTimer = window.setTimeout(startDownload, delayMs);
       if (audible) {
         try {
           foley.start();
@@ -648,7 +670,14 @@ const clipId = `delivery-clip-${uid}`;
       soundLabel.textContent = audible ? 'Dźwięk: włączony' : 'Dźwięk: wyłączony';
     }
 
-    trigger.addEventListener('click', () => play());
+    trigger.addEventListener('click', (event) => {
+      if (reduce.matches) {
+        live.textContent = 'Pobieranie rozpoczęte.';
+        return;
+      }
+      event.preventDefault();
+      play();
+    });
     sound.addEventListener('click', () => {
       audible = !audible;
       updateSound();
@@ -666,6 +695,9 @@ const clipId = `delivery-clip-${uid}`;
 
     updateSound();
     idle();
-    disposers.push(() => cancelAnimationFrame(raf));
+    disposers.push(() => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(downloadTimer);
+    });
   }
 </script>
