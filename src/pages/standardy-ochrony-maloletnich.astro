@@ -1,0 +1,360 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = [
+  { id: 'postanowienia', label: 'Postanowienia ogólne' },
+  { id: 'rekrutacja', label: 'Bezpieczna rekrutacja personelu' },
+  { id: 'relacje', label: 'Zasady relacji z dziećmi' },
+  { id: 'reagowanie', label: 'Reagowanie na krzywdzenie' },
+  { id: 'osoby', label: 'Zgłaszanie i osoby odpowiedzialne' },
+  { id: 'wizerunek', label: 'Wizerunek i media' },
+  { id: 'monitoring', label: 'Monitoring i aktualizacja' },
+  { id: 'wersja-dla-dzieci', label: 'Wersja dla dzieci' },
+];
+---
+
+<BaseLayout
+  title="Standardy ochrony małoletnich | Cudoteka"
+  description="Standardy ochrony małoletnich Cudoteki: zasady bezpiecznej rekrutacji, relacji z dziećmi, procedury zgłaszania i kontakt. Wersja zupełna oraz dla dzieci."
+  breadcrumb={[{ name: 'Strona główna', path: '/' }, { name: 'Standardy ochrony małoletnich', path: '/standardy-ochrony-maloletnich/' }]}
+>
+  <section class="section doc-hero">
+    <div class="wrap reveal-fade-up">
+      <div class="sec-head">
+        <span class="eyebrow">Bezpieczeństwo dzieci</span>
+        <h1>Standardy ochrony małoletnich</h1>
+        <p>
+          Dobro i bezpieczeństwo dzieci są dla nas najważniejsze. Poniżej publikujemy nasze Standardy ochrony
+          małoletnich - zasady pracy, weryfikacji personelu i procedury reagowania. Dokument przygotowany
+          zgodnie z ustawą z dnia 28 lipca 2023 r. (Dz. U. poz. 1606), tzw. ustawą Kamilka.
+        </p>
+        <p class="doc-meta">
+          Cudoteka (E-CUD - Centrum Edukacyjno-Eventowe) · ul. Skalbmierska 13, 01-848 Warszawa ·
+          wersja 1.0, obowiązuje od dnia publikacji (październik 2026)
+        </p>
+      </div>
+
+      <nav class="toc" aria-label="Skocz do sekcji">
+        {sections.map((section, index) => (
+          <a class="toc-link" href={`#${section.id}`}>{index + 1}. {section.label}</a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <article class="section doc">
+    <div class="wrap doc-wrap">
+      <section id="postanowienia" class="doc-section reveal-fade-up">
+        <h2>1. Postanowienia ogólne</h2>
+        <p>
+          Niniejsze Standardy ochrony małoletnich (dalej: <strong>Standardy</strong>) określają zasady zapewniania
+          bezpieczeństwa dzieciom uczestniczącym w działaniach Cudoteki oraz zasady reagowania w sytuacjach
+          podejrzenia krzywdzenia. Standardy wprowadza się w wykonaniu obowiązku wynikającego z ustawy z dnia
+          13 maja 2016 r. o przeciwdziałaniu zagrożeniom przestępczością na tle seksualnym i ochronie małoletnich,
+          w brzmieniu nadanym ustawą z dnia 28 lipca 2023 r. (Dz. U. poz. 1606).
+        </p>
+        <p>
+          Standardy dotyczą wszystkich osób działających na rzecz Cudoteki - pracowników, współpracowników,
+          animatorów, wolontariuszy i stażystów (dalej łącznie: <strong>Personel</strong>) - we wszystkich
+          działaniach: warsztatach, animacjach, imprezach urodzinowych, eventach, szkoleniach i opiece nad dziećmi.
+        </p>
+        <h3>Słownik</h3>
+        <ul>
+          <li><strong>Małoletni / dziecko</strong> - osoba, która nie ukończyła 18 lat.</li>
+          <li><strong>Personel</strong> - każda osoba wykonująca zadania na rzecz Cudoteki, niezależnie od podstawy współpracy.</li>
+          <li><strong>Opiekun</strong> - rodzic lub opiekun prawny małoletniego.</li>
+          <li><strong>Krzywdzenie</strong> - przemoc fizyczna, psychiczna lub seksualna, zaniedbanie oraz przemoc rówieśnicza. Żadna forma krzywdzenia nie jest akceptowana - również w formie żartu.</li>
+        </ul>
+      </section>
+
+      <section id="rekrutacja" class="doc-section reveal-fade-up">
+        <h2>2. Zasady bezpiecznej rekrutacji i weryfikacji personelu</h2>
+        <p>
+          Dostęp do pracy z dziećmi mają wyłącznie osoby, które dają gwarancję bezpieczeństwa. Dlatego:
+        </p>
+        <ul>
+          <li>każda osoba przed dopuszczeniem do pracy z dziećmi jest sprawdzana w <strong>Rejestrze Sprawców Przestępstw na Tle Seksualnym</strong> (zgodnie z przepisami ustawy z 13 maja 2016 r.);</li>
+          <li>osoba kandydata jest weryfikowana pod kątem doświadczenia i predyspozycji do pracy z dziećmi, a każda osoba składa oświadczenie o niekaralności i o toczących się postępowaniach;</li>
+          <li>każda osoba z Personelu zapoznaje się ze Standardami i składa pisemne zobowiązanie do ich przestrzegania;</li>
+          <li>Personel jest informowany, jak rozpoznawać krzywdzenie dziecka i jak reagować.</li>
+        </ul>
+        <p>
+          Współpraca z osobą, która nie spełnia powyższych warunków lub naruszyła Standardy, jest przerywana.
+        </p>
+      </section>
+
+      <section id="relacje" class="doc-section reveal-fade-up">
+        <h2>3. Zasady bezpiecznych relacji personelu z dziećmi</h2>
+        <p>Obowiązuje nas zasada: <strong>kontakt z dzieckiem jest otwarty, życzliwy i widoczny dla innych</strong>. W szczególności:</p>
+        <ul>
+          <li>zakazane jest stosowanie wobec dzieci jakiejkolwiek przemocy - fizycznej, słownej, psychicznej czy seksualnej - oraz straszenie i wyśmiewanie;</li>
+          <li>kontakt fizyczny ogranicza się do tego, co służy bezpieczeństwu i pomocy (np. pomoc w czynnościach samoobsługowych, pocieszenie); zawsze z poszanowaniem granic dziecka i jego oporu;</li>
+          <li>zajęcia prowadzimy w przestrzeniach otwartych lub widocznych dla innych osób z Personelu;</li>
+          <li>z dziećmi i opiekunami kontaktujemy się kanałami Cudoteki (telefon, e-mail, oficjalne social media). Prywatne kontakty poza działalnością są niedozwolone;</li>
+          <li>rywalizację, kłótnie i przemoc rówieśniczą między dziećmi przerywamy i wyjaśniamy na bieżąco;</li>
+          <li>dzieci traktujemy równo i z szacunkiem, z uwzględnieniem ich indywidualnych potrzeb.</li>
+        </ul>
+      </section>
+
+      <section id="reagowanie" class="doc-section reveal-fade-up">
+        <h2>4. Rozpoznawanie krzywdzenia i procedura reagowania</h2>
+        <p>
+          Każda osoba z Personelu, która zauważy podejrzenie krzywdzenia dziecka (sygnały fizyczne, emocjonalne,
+          zmiany w zachowaniu, słowa dziecka), ma obowiązek niezwłocznie zareagować:
+        </p>
+        <ol>
+          <li><strong>Zapewnienie bezpieczeństwa</strong> - w pierwszej kolejności dbamy o bezpieczeństwo dziecka i odseparowanie go od potencjalnego zagrożenia.</li>
+          <li><strong>Zgłoszenie wewnętrzne</strong> - o zdarzeniu informowana jest osoba odpowiedzialna za Standardy, tego samego dnia.</li>
+          <li><strong>Sytuacja zagrożenia życia lub zdrowia</strong> - dzwonimy pod numer <strong>112</strong> i podejmujemy działania adekwatnie do zagrożenia.</li>
+          <li><strong>Plan wsparcia</strong> - osoba odpowiedzialna ustala formy pomocy dziecku i rodzinie (kontakt z instytucjami wsparcia, zawiadomienia zgodnie z przepisami).</li>
+          <li><strong>Zawiadomienia</strong> - w przypadku podejrzenia przestępstwa ściganego z urzędu kierujemy zawiadomienie do organów (policja, prokuratura, sąd rodzinny), zgodnie z przepisami prawa.</li>
+          <li><strong>Dokumentacja</strong> - przebieg zdarzenia i podjęte działania są dokumentowane i przechowywane z zachowaniem poufności.</li>
+        </ol>
+        <p>
+          Osoba zgłaszająca podejrzenie w dobrej wierze jest chroniona - zakazane są działania odwetowe,
+          a dane zgłaszającego objęte są poufnością w zakresie możliwym do zachowania.
+        </p>
+      </section>
+
+      <section id="osoby" class="doc-section reveal-fade-up">
+        <h2>5. Osoby odpowiedzialne i zgłaszanie naruszeń</h2>
+        <p>
+          Osobą odpowiedzialną za wdrażanie i stosowanie Standardów w Cudotece jest
+          <strong>Aleksandra Dąbrowska</strong> - koordynuje przyjmowanie zgłoszeń, udziela wsparcia i prowadzi dokumentację.
+        </p>
+        <p>Naruszenia Standardów lub podejrzenia krzywdzenia można zgłaszać:</p>
+        <ul>
+          <li>osobiście - u osoby odpowiedzialnej lub któregokolwiek członka Personelu,</li>
+          <li>e-mailem: <a href="mailto:biuro@e-cud.waw.pl">biuro@e-cud.waw.pl</a>,</li>
+          <li>telefonicznie: <a href="tel:607370777">607 370 777</a>.</li>
+        </ul>
+        <p>
+          Zgłoszenia mogą składać również dzieci i opiekunowie - w tym anonimowo. Każde zgłoszenie jest rozpatrywane,
+          a w sytuacjach nagłych należy dzwonić pod numer alarmowy <strong>112</strong>.
+        </p>
+        <h3>Gdzie szukać pomocy</h3>
+        <ul>
+          <li><strong>116 111</strong> - Telefon zaufania dla Dzieci i Młodzieży (bezpłatnie, całą dobę);</li>
+          <li><strong>800 12 12 12</strong> - Dziecięcy Telefon Zaufania Rzecznika Praw Dziecka;</li>
+          <li><strong>112</strong> - numer alarmowy w sytuacji bezpośredniego zagrożenia.</li>
+        </ul>
+      </section>
+
+      <section id="wizerunek" class="doc-section reveal-fade-up">
+        <h2>6. Ochrona wizerunku i materiały zdjęciowe</h2>
+        <ul>
+          <li>zdjęcia i nagrania dzieci wykonujemy wyłącznie w kontekście działań Cudoteki i publikujemy je tylko za zgodą opiekunów;</li>
+          <li>dziecko zawsze może odmówić pozowania do zdjęć - jego decyzja jest respektowana;</li>
+          <li>materiały archiwalne udostępniamy wyłącznie osobom do tego upoważnionym;</li>
+          <li>nie publikujemy danych umożliwiających identyfikację dzieci bez zgody opiekunów.</li>
+        </ul>
+      </section>
+
+      <section id="monitoring" class="doc-section reveal-fade-up">
+        <h2>7. Monitoring i aktualizacja Standardów</h2>
+        <ul>
+          <li>Standardy podlegają przeglądowi nie rzadziej niż raz na dwa lata, a także każdorazowo w przypadku zmiany przepisów lub istotnych zdarzeń;</li>
+          <li>prowadzimy ewidencję zgłoszeń i podejmowanych działań;</li>
+          <li>Personel jest na bieżąco informowany o zasadach i ich zmianach;</li>
+          <li>obecna wersja Standardów (1.0) obowiązuje od dnia publikacji na stronie i jest dostępna w wersji zupełnej oraz skróconej.</li>
+        </ul>
+      </section>
+
+      <section id="wersja-dla-dzieci" class="doc-section reveal-fade-up">
+        <span class="doc-tag">Wersja skrócona - dla dzieci</span>
+        <h2>8. Jesteś u nas bezpieczny!</h2>
+        <div class="kids-card double-bezel-outer">
+          <div class="kids-inner double-bezel-inner">
+            <ol class="kids-list">
+              <li>Wszyscy dorośli w Cudotece dbają o Twoje bezpieczeństwo i szanują Twoje granice.</li>
+              <li>Nikt nie może Cię bić, straszyć, wyśmiewać ani zmuszać do niczego wbrew Tobie. To nie jest żart - to nigdy nie jest w porządku.</li>
+              <li>Jeśli coś jest nie tak - powiedz dorosłemu, któremu ufasz. Możesz powiedzieć nam albo komuś bliskiemu w domu.</li>
+              <li>Możesz też zadzwonić pod <strong>116 111</strong> - to bezpłatny telefon zaufania. Ktoś Cię wysłucha i pomoże.</li>
+            </ol>
+          </div>
+        </div>
+        <p class="doc-note">
+          Masz pytanie o Standardy? Napisz do nas:
+          <a href="mailto:biuro@e-cud.waw.pl">biuro@e-cud.waw.pl</a> lub zadzwoń
+          <a href="tel:607370777">607 370 777</a>. Na życzenie udostępniamy dokument w wersji do wydruku.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .doc-hero {
+    padding-top: 120px;
+    background: linear-gradient(145deg, var(--cream) 0%, var(--cream-2) 100%);
+    padding-bottom: 40px;
+  }
+
+  .sec-head {
+    text-align: center;
+    max-width: 52rem;
+    margin: 0 auto 32px;
+  }
+  .sec-head h1 {
+    font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+    margin: 16px 0 14px;
+  }
+  .sec-head p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+  .doc-meta {
+    margin-top: 14px;
+    font-size: 0.85rem !important;
+    color: var(--ink-soft);
+    opacity: 0.85;
+  }
+
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .toc-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+    padding: 8px 16px;
+    background: #fff;
+    border: 1px solid rgba(62, 137, 176, 0.18);
+    border-radius: 999px;
+    color: var(--blue-deep);
+    font-weight: 800;
+    font-size: 0.85rem;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .toc-link:hover {
+      background: var(--blue-tint);
+      border-color: var(--blue);
+    }
+  }
+
+  .doc {
+    background: var(--cream);
+    padding-top: 40px;
+    padding-bottom: 120px;
+  }
+  .doc-wrap {
+    max-width: 780px;
+  }
+
+  .doc-section {
+    margin-bottom: 56px;
+    scroll-margin-block-start: 6.5rem;
+  }
+  .doc-section h2 {
+    font-size: clamp(1.45rem, 3vw, 1.9rem);
+    margin-bottom: 18px;
+  }
+  .doc-section h3 {
+    font-size: 1.2rem;
+    margin: 26px 0 12px;
+  }
+  .doc-section p {
+    color: var(--ink-soft);
+    line-height: 1.75;
+    margin-bottom: 14px;
+    font-size: 1.02rem;
+  }
+  .doc-section ul,
+  .doc-section ol {
+    color: var(--ink-soft);
+    line-height: 1.75;
+    font-size: 1.02rem;
+    margin: 0 0 16px;
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .doc-section strong {
+    color: var(--ink);
+  }
+  .doc-section a {
+    color: var(--blue-deep);
+    font-weight: 700;
+  }
+  .doc-section a:focus-visible,
+  .toc-link:focus-visible {
+    outline: max(2px, 0.08em) solid currentColor;
+    outline-offset: 0.2em;
+  }
+
+  .doc-tag {
+    display: inline-block;
+    background: var(--peach);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  .kids-card {
+    margin: 20px 0;
+  }
+  .kids-inner {
+    gap: 14px;
+  }
+  .kids-list {
+    counter-reset: kid;
+    list-style: none;
+    padding-left: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0 !important;
+  }
+  .kids-list li {
+    position: relative;
+    padding-left: 46px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  .kids-list li::before {
+    counter-increment: kid;
+    content: counter(kid);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--blue-tint);
+    color: var(--blue-deep);
+    font-weight: 800;
+  }
+
+  .doc-note {
+    margin-top: 20px;
+    padding: 18px 22px;
+    background: #fff;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(62, 137, 176, 0.12);
+    box-shadow: var(--shadow-sm);
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 680px) {
+    .doc-hero {
+      padding-top: 90px;
+    }
+    .doc-section {
+      margin-bottom: 44px;
+    }
+  }
+</style>
