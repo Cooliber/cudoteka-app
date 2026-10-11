@@ -1,0 +1,368 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const downloads = await getCollection('downloads');
+  return downloads.map((item) => ({
+    params: { slug: item.data.slug },
+    props: { item, all: downloads },
+  }));
+}
+
+interface Props {
+  item: CollectionEntry<'downloads'>;
+  all: CollectionEntry<'downloads'>[];
+}
+
+const { item, all } = Astro.props;
+const { title, description, lead, file, fileSize, icon, category, howToUse, relatedPosts, updated } = item.data;
+
+const categoryLabels: Record<string, string> = {
+  wakacje: 'Wyzwania wakacyjne',
+  sezony: 'Pory roku',
+  artykulacja: 'Artykulacja',
+  logopedia: 'Logopedia',
+  inne: 'Inne',
+};
+
+const pageUrl = new URL(`/materialy/${item.data.slug}/`, Astro.site).toString();
+
+const relatedMaterials = all
+  .filter((d) => d.data.category === category && d.data.slug !== item.data.slug)
+  .slice(0, 3);
+
+const posts = await getCollection('posts');
+const relatedPostsData = (relatedPosts ?? [])
+  .map((slug) => posts.find((p) => p.data.slug === slug))
+  .filter((p): p is CollectionEntry<'posts'> => Boolean(p))
+  .slice(0, 3);
+
+const docSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'DigitalDocument',
+  name: title,
+  description,
+  url: pageUrl,
+  contentUrl: new URL(file, Astro.site).toString(),
+  encodingFormat: 'application/pdf',
+  inLanguage: 'pl-PL',
+  isAccessibleForFree: true,
+  ...(updated ? { dateModified: updated.toISOString() } : {}),
+  publisher: { '@id': 'https://cudoteka.pl/#organization' },
+};
+---
+
+<BaseLayout
+  title={item.data.metaTitle}
+  description={item.data.metaDescription}
+  schemas={[docSchema]}
+  breadcrumb={[
+    { name: 'Strona główna', path: '/' },
+    { name: 'Materiały do pobrania', path: '/materialy/' },
+    { name: title, path: `/materialy/${item.data.slug}/` },
+  ]}
+>
+  <article class="section mat-detail">
+    <div class="wrap reveal-fade-up">
+      <a href="/materialy/" class="back-link">← Wszystkie materiały</a>
+
+      <header class="mat-header">
+        <span class="mat-tag">{categoryLabels[category]}</span>
+        <h1>{title}</h1>
+        <p class="mat-meta">
+          PDF · {fileSize} · do druku (A4)
+          {updated && <span class="mat-updated"> · zaktualizowano {updated.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })}</span>}
+        </p>
+      </header>
+
+      <div class="download-box double-bezel-outer">
+        <div class="download-box-inner double-bezel-inner">
+          <span class="download-icon" aria-hidden="true">{icon}</span>
+          <p class="download-lead">{lead ?? description}</p>
+          <a class="btn btn-primary" href={file} download>Pobierz PDF ({fileSize})</a>
+          <p class="download-note">Bezpłatnie, bez rejestracji. Wydrukuj w domu albo w placówce.</p>
+        </div>
+      </div>
+
+      {howToUse && howToUse.length > 0 && (
+        <section class="mat-block">
+          <h2>Jak korzystać z materiału</h2>
+          <ol class="howto-list">
+            {howToUse.map((step) => (
+              <li>{step}</li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {relatedMaterials.length > 0 && (
+        <section class="mat-block">
+          <h2>Zobacz też inne materiały</h2>
+          <ul class="related-grid">
+            {relatedMaterials.map((rel) => (
+              <li>
+                <a class="related-card" href={`/materialy/${rel.data.slug}/`}>
+                  <span class="related-icon" aria-hidden="true">{rel.data.icon}</span>
+                  <span class="related-title">{rel.data.title}</span>
+                  <span class="related-sub">PDF · {rel.data.fileSize}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {relatedPostsData.length > 0 && (
+        <section class="mat-block">
+          <h2>Poczytaj przed ćwiczeniami</h2>
+          <ul class="related-grid">
+            {relatedPostsData.map((post) => (
+              <li>
+                <a class="related-card" href={`/blog/${post.data.slug}/`}>
+                  <span class="related-icon" aria-hidden="true">📖</span>
+                  <span class="related-title">{post.data.title}</span>
+                  <span class="related-sub">{post.data.category}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <div class="mat-cta">
+        <h3>Potrzebujesz wsparcia w ćwiczeniach?</h3>
+        <p>Prowadzimy zajęcia i konsultacje logopedyczne dla dzieci w Warszawie i okolicach. Napisz do nas - podpowiemy, od czego zacząć.</p>
+        <div class="cta-btns">
+          <a class="btn btn-primary" href="/kontakt/">Zapytaj o zajęcia</a>
+          <a class="btn btn-ghost" href="/materialy/">Wróć do materiałów</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .mat-detail {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+    min-height: 80vh;
+  }
+
+  .mat-detail a:focus-visible {
+    outline: max(2px, 0.08em) solid currentColor;
+    outline-offset: 0.2em;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--blue-deep);
+    font-weight: 700;
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+  }
+
+  .mat-header {
+    max-width: 780px;
+    margin: 0 auto 36px;
+    text-align: center;
+  }
+
+  .mat-tag {
+    display: inline-block;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.78rem;
+    color: var(--blue-deep);
+    margin-bottom: 12px;
+  }
+
+  .mat-header h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .mat-meta {
+    color: var(--ink-soft);
+    font-weight: 700;
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .download-box {
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+
+  .download-box-inner {
+    text-align: center;
+    align-items: center;
+    padding: 40px 32px;
+    gap: 18px;
+  }
+
+  .download-icon {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .download-lead {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 46ch;
+  }
+
+  .download-note {
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+  }
+
+  .mat-block {
+    max-width: 820px;
+    margin: 0 auto 48px;
+  }
+
+  .mat-block h2 {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .howto-list {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .howto-list li {
+    counter-increment: step;
+    position: relative;
+    background: #fff;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(62, 137, 176, 0.1);
+    box-shadow: var(--shadow-sm);
+    padding: 16px 20px 16px 62px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .howto-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    translate: 0 -50%;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--blue-tint);
+    color: var(--blue-deep);
+    font-weight: 800;
+    font-size: 0.9rem;
+  }
+
+  .related-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: 16px;
+  }
+
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    background: #fff;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(62, 137, 176, 0.1);
+    box-shadow: var(--shadow-sm);
+    padding: 20px;
+  }
+
+  .related-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  .related-title {
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .related-sub {
+    margin-top: auto;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mat-cta {
+    max-width: 740px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 36px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border: 1px solid rgba(62, 137, 176, 0.08);
+  }
+
+  .mat-cta h3 {
+    font-size: 1.45rem;
+    margin-bottom: 10px;
+  }
+
+  .mat-cta p {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    margin-bottom: 24px;
+  }
+
+  .cta-btns {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .related-card:hover {
+      translate: 0 -3px;
+      box-shadow: var(--shadow);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .related-card {
+      transition: translate 0.25s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+  }
+
+  @media (max-width: 680px) {
+    .download-box-inner {
+      padding: 28px 22px;
+    }
+    .mat-cta {
+      padding: 24px;
+    }
+    .cta-btns {
+      flex-direction: column;
+    }
+    .cta-btns .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

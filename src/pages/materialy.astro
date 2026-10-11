@@ -43,11 +43,29 @@ const groups = [
     items: downloads.filter(d => d.data.category === 'logopedia'),
   },
 ].filter(group => group.items.length > 0);
+
+const orderedItems = groups.flatMap((group) => group.items);
+
+// ItemList huba — pokazuje Google, że to strona-katalog materiałów,
+// a każda pozycja ma własną stronę docelową.
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Darmowe materiały do pobrania - Cudoteka',
+  numberOfItems: orderedItems.length,
+  itemListElement: orderedItems.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.data.title,
+    url: new URL(`/materialy/${item.data.slug}/`, Astro.site).toString(),
+  })),
+};
 ---
 
 <BaseLayout
   title="Materiały do pobrania - darmowe ćwiczenia i karty pracy | Cudoteka"
   description="Bezpłatne materiały PDF do pobrania: ćwiczonka na pory roku, wyzwania wakacyjne, ćwiczenia artykulacji głosków i materiały logopedyczne. Pobierz i korzystaj!"
+  schemas={[itemListSchema]}
   breadcrumb={[{ name: 'Strona główna', path: '/' }, { name: 'Materiały do pobrania', path: '/materialy/' }]}
 >
   <div class="mat-page">

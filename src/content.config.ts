@@ -99,6 +99,11 @@ const downloads = defineCollection({
     icon: z.string(),
     metaTitle: z.string(),
     metaDescription: z.string(),
+    // Rozbudowa strony materiału (/materialy/<slug>/)
+    lead: z.string().optional(),
+    howToUse: z.array(z.string()).optional(),
+    relatedPosts: z.array(z.string()).optional(),
+    updated: z.coerce.date().optional(),
   }),
 });
 

@@ -8,4 +8,16 @@ fileSize: "603 KB"
 icon: "🌷"
 metaTitle: "Wiosna - darmowe ćwiczonka logopedyczne PDF | Cudoteka"
 metaDescription: "Pobierz wiosenne ćwiczonka: znajdź i nazwij, zabawy oddechowe, dźwięki pory roku, kolorowanki i gra planszowa. Darmowy materiał do druku."
+lead: "Wiosenne ćwiczonka: słowa z łąki, zabawy oddechowe i dźwięki przyrody w jednym zestawie. Idealne na krótkie, codzienne sesje z dzieckiem."
+howToUse:
+  - "Strona 1: dziecko szuka i nazywa wiosenne słowa (kwiat, motyl, łąka)."
+  - "Strona 2: ćwiczenia oddechowe - dmuchanie jak wiosenny wietrzyk."
+  - "Strona 3: powtarzajcie słowa sylaba po sylabie."
+  - "Strona 4: gra planszowa i kolorowanki na wyciszenie."
+  - "Wydrukujcie w trybie EKO (białe tło) - wystarczy czarny tusz."
+relatedPosts:
+  - "karty-pracy-jak-wybrac-i-pracowac"
+  - "cwiczenia-oddechowe-dla-dzieci"
+  - "kolorowanie-ktore-wycisza"
+updated: 2026-10-11
 ---

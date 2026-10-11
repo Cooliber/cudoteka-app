@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { item } = Astro.props;
-const { title, description, file, fileSize, icon, category } = item.data;
+const { title, description, fileSize, icon, category, slug } = item.data;
 
 const categoryLabels: Record<string, string> = {
   wakacje: 'Wyzwania wakacyjne',
@@ -36,11 +36,10 @@ const categoryAccents: Record<string, string> = {
     <span class="card-size">PDF · {fileSize}</span>
     <a
       class="card-link"
-      href={file}
-      download
-      aria-label={`Pobierz: ${title} (PDF, ${fileSize})`}
+      href={`/materialy/${slug}/`}
+      aria-label={`Zobacz i pobierz: ${title} (PDF, ${fileSize})`}
     >
-      <span>Pobierz PDF</span>
+      <span>Zobacz i pobierz</span>
     </a>
   </footer>
 </article>
