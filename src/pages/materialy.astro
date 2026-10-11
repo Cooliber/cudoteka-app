@@ -3,213 +3,323 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import DownloadCard from '../components/downloads/DownloadCard.astro';
 
-const downloads = (await getCollection('downloads'));
+const downloads = await getCollection('downloads');
 
-const wakacje = downloads.filter(d => d.data.category === 'wakacje');
-const sezony = downloads.filter(d => d.data.category === 'sezony');
-const artykulacja = downloads.filter(d => d.data.category === 'artykulacja');
-const logopedia = downloads.filter(d => d.data.category === 'logopedia');
+const groups = [
+  {
+    id: 'wakacje',
+    nav: 'Wyzwania wakacyjne',
+    tint: false,
+    eyebrow: 'Lato i wakacje',
+    title: 'Wyzwania wakacyjne',
+    lead: 'Kreatywne aktywności na letnie dni - zabawy na świeżym powietrzu, eksperymenty i plastyka.',
+    items: downloads.filter(d => d.data.category === 'wakacje'),
+  },
+  {
+    id: 'pory-roku',
+    nav: 'Pory roku',
+    tint: true,
+    eyebrow: 'Pory roku',
+    title: 'Ćwiczonka na każdą porę roku',
+    lead: 'Jesień, lato, wiosna i zima - słowa, oddech i zabawy dopasowane do pory roku. Znajdź i nazwij, kolorowanki i gra planszowa.',
+    items: downloads.filter(d => d.data.category === 'sezony'),
+  },
+  {
+    id: 'artykulacja',
+    nav: 'Artykulacja',
+    tint: false,
+    eyebrow: 'Logopedia',
+    title: 'Ćwiczenia artykulacji głosków',
+    lead: 'Profesjonalne materiały do pracy nad prawidłową wymową. Szeregi głoskowe, kappacyzm, gammacyzm, rotacyzm, lambdacyzm.',
+    items: downloads.filter(d => d.data.category === 'artykulacja'),
+  },
+  {
+    id: 'logopedia',
+    nav: 'Dla specjalistów',
+    tint: true,
+    eyebrow: 'Dla specjalistów',
+    title: 'Materiały logopedyczne',
+    lead: '',
+    items: downloads.filter(d => d.data.category === 'logopedia'),
+  },
+].filter(group => group.items.length > 0);
 ---
 
 <BaseLayout
-  title="Materiały do pobrania - darmowe ćwiczenia i karty pracy | Cudoteka"
+  title="Materiały do pobrania - darmowe ćwiczenia i karty pracy | Cudoteka"
   description="Bezpłatne materiały PDF do pobrania: ćwiczonka na pory roku, wyzwania wakacyjne, ćwiczenia artykulacji głosków i materiały logopedyczne. Pobierz i korzystaj!"
   breadcrumb={[{ name: 'Strona główna', path: '/' }, { name: 'Materiały do pobrania', path: '/materialy/' }]}
 >
-  <section class="section hero-section">
-    <div class="wrap">
+  <div class="mat-page">
+    <section class="mat-section hero-section">
       <div class="reveal-fade-up sec-head">
         <span class="eyebrow">Materiały do pobrania</span>
-        <h1>Darmowe materiały dla dzieci i rodziców</h1>
+        <h1>Darmowe materiały dla dzieci i rodziców</h1>
         <p>Karty pracy, ćwiczonka na pory roku, ćwiczenia logopedyczne i kreatywne wyzwania gotowe do pobrania i wydrukowania.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="reveal-fade-up sec-head">
-        <span class="eyebrow">Lato i wakacje</span>
-        <h2>Wyzwania wakacyjne</h2>
-        <p>Kreatywne aktywności na letnie dni - zabawy na świeżym powietrzu, eksperymenty i plastyka.</p>
-      </div>
-      <div class="downloads-grid">
-        {wakacje.map(item => (
-          <DownloadCard item={item} />
+      <nav class="quick-nav reveal-fade-up" aria-label="Skocz do kategorii">
+        {groups.map(group => (
+          <a class="chip" href={`#${group.id}`}>
+            {group.nav}
+            <span class="chip-count">{group.items.length}</span>
+          </a>
         ))}
-      </div>
-    </div>
-  </section>
+      </nav>
+    </section>
 
-  <section class="section section-alt">
-    <div class="wrap">
-      <div class="reveal-fade-up sec-head">
-        <span class="eyebrow">Pory roku</span>
-        <h2>Ćwiczonka na każdą porę roku</h2>
-        <p>Jesień, lato, wiosna i zima - słowa, oddech i zabawy dopasowane do pory roku. Znajdź i nazwij, kolorowanki i gra planszowa.</p>
-      </div>
-      <div class="downloads-grid">
-        {sezony.map(item => (
-          <DownloadCard item={item} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="reveal-fade-up sec-head">
-        <span class="eyebrow">Logopedia</span>
-        <h2>Ćwiczenia artykulacji głosków</h2>
-        <p>Profesjonalne materiały do pracy nad prawidłową wymową. Szeregi głoskowe, kappacyzm, gammacyzm, rotacyzm, lambdacyzm.</p>
-      </div>
-      <div class="downloads-grid">
-        {artykulacja.map(item => (
-          <DownloadCard item={item} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  {logopedia.length > 0 && (
-    <section class="section section-alt">
-      <div class="wrap">
+    {groups.map(group => (
+      <section id={group.id} class:list={['mat-section', group.tint && 'section-tint']}>
         <div class="reveal-fade-up sec-head">
-          <span class="eyebrow">Dla specjalistów</span>
-          <h2>Materiały logopedyczne</h2>
+          <span class="eyebrow">{group.eyebrow}</span>
+          <h2>{group.title}</h2>
+          {group.lead && <p>{group.lead}</p>}
         </div>
         <div class="downloads-grid">
-          {logopedia.map(item => (
+          {group.items.map(item => (
             <DownloadCard item={item} />
           ))}
         </div>
+      </section>
+    ))}
+
+    <section class="mat-section cta-section">
+      <div class="cta-band">
+        <div class="cta-inner reveal-fade-up">
+          <h2>Bądź pierwszy, który pobierze materiały</h2>
+          <p>Zapisz się na listę - powiadomimy Cię, gdy pojawią się nowe karty pracy i ćwiczenia.</p>
+          <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <label class="visually-hidden" for="newsletter-email">Twój adres e-mail</label>
+            <input
+              id="newsletter-email"
+              class="newsletter-input"
+              type="email"
+              name="email"
+              placeholder="Twój adres e-mail"
+              autocomplete="email"
+              required
+            />
+            <button type="submit" class="btn btn-primary">Zapisz mnie</button>
+          </form>
+          <p class="newsletter-note">Nie wysyłamy spamu. Tylko powiadomienia o nowych materiałach.</p>
+        </div>
       </div>
     </section>
-  )}
-
-  <section class="section cta-section">
-    <div class="wrap text-center">
-      <div class="reveal-fade-up">
-        <h2>Bądź pierwszy, który pobierze materiały</h2>
-        <p>Zapisz się na listę - powiadomimy Cię, gdy pojawią się nowe karty pracy i ćwiczenia.</p>
-        <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <input type="email" name="email" placeholder="Twój adres e-mail" required class="newsletter-input" />
-          <button type="submit" class="btn btn-primary">Zapisz mnie</button>
-        </form>
-        <p class="newsletter-note">Nie wysyłamy spamu. Tylko powiadomienia o nowych materiałach.</p>
-      </div>
-    </div>
-  </section>
+  </div>
 </BaseLayout>
 
 <style>
+  /* The page grid: every section defines the content column; a child can go
+     full width with one class, so the blue band needs no negative margins. */
+  .mat-page {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --gutter: clamp(1rem, 5vw, 6rem);
+    --content: 74rem;
+    --breakout: 84rem;
+    --space-section: clamp(3.5rem, 2.43rem + 4.76vw, 6rem);
+  }
+
+  .mat-section {
+    display: grid;
+    grid-template-columns:
+      [full-width-start] minmax(var(--gutter), 1fr)
+      [breakout-start] minmax(0, calc((var(--breakout) - var(--content)) / 2))
+      [content-start] min(100% - var(--gutter) * 2, var(--content)) [content-end]
+      minmax(0, calc((var(--breakout) - var(--content)) / 2)) [breakout-end]
+      minmax(var(--gutter), 1fr) [full-width-end];
+    padding-block: var(--space-section);
+  }
+
+  .mat-section > * {
+    grid-column: content-start / content-end;
+  }
+
+  .mat-section[id] {
+    /* Keeps anchored sections clear of the sticky header pill. */
+    scroll-margin-block-start: 7rem;
+  }
+
   .hero-section {
-    padding-top: 120px;
-    padding-bottom: 40px;
+    padding-block-start: clamp(6rem, 4.5rem + 5vw, 8.5rem);
+    padding-block-end: clamp(1.5rem, 1rem + 2vw, 2.5rem);
     background: linear-gradient(145deg, var(--cream) 0%, var(--cream-2) 100%);
+  }
+
+  .section-tint {
+    background: linear-gradient(180deg, var(--cream), var(--cream-2));
   }
 
   .sec-head {
     text-align: center;
-    max-width: 46rem;
-    margin: 0 auto 40px;
+    max-inline-size: 48rem;
+    margin-inline: auto;
+    margin-block-end: clamp(2.25rem, 1.75rem + 2vw, 3.25rem);
+  }
+
+  .hero-section .sec-head {
+    margin-block-end: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);
   }
 
   .sec-head h1 {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    margin: 16px 0 14px;
+    font-size: clamp(2.1rem, 1.63rem + 2.1vw, 3.2rem);
+    margin-block: 0.9rem 0.65rem;
   }
 
   .sec-head h2 {
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    margin: 14px 0 12px;
+    font-size: clamp(1.6rem, 1.26rem + 1.52vw, 2.4rem);
+    margin-block: 0.85rem 0.6rem;
   }
 
   .sec-head p {
     color: var(--ink-soft);
     font-size: 1.05rem;
+    text-wrap: pretty;
   }
 
-  .section-alt {
-    background: linear-gradient(180deg, var(--cream), var(--cream-2));
+  .quick-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55em;
+    min-block-size: 2.75rem;
+    padding-block: 0.5rem;
+    padding-inline: 1.15rem;
+    border: 1px solid color-mix(in srgb, var(--blue-deep) 14%, transparent);
+    border-radius: 999px;
+    background: oklch(100% 0 none);
+    color: var(--blue-deep);
+    font-weight: 800;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 16px -12px color-mix(in srgb, var(--blue-deep) 45%, transparent);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .chip-count {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.82em;
+    color: var(--ink-soft);
+    background: color-mix(in srgb, var(--blue-tint) 80%, oklch(100% 0 none));
+    border-radius: 999px;
+    padding-block: 0.12em;
+    padding-inline: 0.55em;
+  }
+
+  .chip:active {
+    scale: 0.97;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .chip:hover {
+      background: color-mix(in srgb, var(--blue-tint) 70%, oklch(100% 0 none));
+      border-color: color-mix(in srgb, var(--blue-deep) 32%, transparent);
+      translate: 0 -2px;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .chip {
+      transition:
+        translate 0.2s var(--ease-out),
+        scale 0.16s var(--ease-out),
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+    }
+  }
+
+  .mat-page :is(a, button, input):focus-visible {
+    outline: max(2px, 0.08em) solid currentColor;
+    outline-offset: 0.2em;
   }
 
   .downloads-grid {
     display: grid;
-    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    gap: 1.5rem;
   }
 
   .cta-section {
+    padding-block: 0;
+  }
+
+  /* A band takes the full width of the section grid. The selector stays more
+     specific than `.mat-section > *`, which Astro compiles to (0,3,0). */
+  .cta-section > .cta-band {
+    grid-column: full-width-start / full-width-end;
+  }
+
+  .cta-band {
+    display: grid;
+    grid-template-columns: inherit;
     background: var(--blue-deep);
-    color: #fff;
-    border-radius: 2rem;
-    margin: 0 24px 96px;
-    padding: 64px 24px;
+    color: oklch(99% 0 none);
+    padding-block: clamp(4rem, 3rem + 5vw, 6rem);
+    margin-block-end: clamp(3rem, 2rem + 4vw, 5rem);
   }
 
-  .cta-section h2 {
-    color: #fff;
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    margin-bottom: 14px;
+  .cta-inner {
+    grid-column: content-start / content-end;
+    text-align: center;
   }
 
-  .cta-section p {
-    color: rgba(255, 255, 255, 0.85);
+  .cta-band h2 {
+    color: oklch(99% 0 none);
+    font-size: clamp(1.6rem, 1.26rem + 1.52vw, 2.4rem);
+    margin-block-end: 0.8rem;
+    text-wrap: balance;
+  }
+
+  .cta-band p {
+    color: color-mix(in srgb, oklch(99% 0 none) 82%, transparent);
     font-size: 1.05rem;
-    margin-bottom: 28px;
-    max-width: 48ch;
-    margin-left: auto;
-    margin-right: auto;
+    max-inline-size: 46ch;
+    margin-inline: auto;
+    margin-block-end: 1.75rem;
+    text-wrap: pretty;
   }
 
   .newsletter-form {
     display: flex;
-    gap: 10px;
-    max-width: 440px;
-    margin: 0 auto 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    max-inline-size: 29rem;
+    margin-inline: auto;
+    margin-block-end: 1rem;
   }
 
   .newsletter-input {
-    flex: 1;
-    padding: 12px 18px;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.2s;
+    flex: 1 1 15rem;
+    font: inherit;
+    padding-block: 0.75rem;
+    padding-inline: 1.15rem;
+    border: 2px solid color-mix(in srgb, oklch(99% 0 none) 30%, transparent);
+    border-radius: 1.1rem;
+    background: color-mix(in srgb, oklch(99% 0 none) 12%, transparent);
+    color: oklch(99% 0 none);
   }
 
   .newsletter-input::placeholder {
-    color: rgba(255, 255, 255, 0.55);
+    color: color-mix(in srgb, oklch(99% 0 none) 55%, transparent);
   }
 
-  .newsletter-input:focus {
-    border-color: rgba(255, 255, 255, 0.6);
+  .newsletter-input:user-invalid {
+    border-color: oklch(0.78 0.15 60);
   }
 
-  .newsletter-note {
-    font-size: 0.8rem !important;
-    color: rgba(255, 255, 255, 0.5) !important;
-    margin-bottom: 0 !important;
+  .newsletter-input:focus-visible {
+    outline: max(2px, 0.08em) solid oklch(99% 0 none);
+    outline-offset: 2px;
+    border-color: color-mix(in srgb, oklch(99% 0 none) 55%, transparent);
   }
 
-  @media (max-width: 480px) {
-    .newsletter-form {
-      flex-direction: column;
-    }
-  }
-
-  @media (min-width: 680px) {
-    .downloads-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 980px) {
-    .downloads-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  .cta-band .newsletter-note {
+    font-size: 0.8rem;
+    color: color-mix(in srgb, oklch(99% 0 none) 55%, transparent);
+    margin-block-end: 0;
   }
 </style>

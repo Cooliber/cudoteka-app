@@ -16,7 +16,7 @@ const categoryLabels: Record<string, string> = {
   inne: 'Inne',
 };
 
-const categoryColors: Record<string, string> = {
+const categoryAccents: Record<string, string> = {
   wakacje: 'var(--peach)',
   sezony: 'var(--gold)',
   artykulacja: 'var(--blue)',
@@ -25,86 +25,188 @@ const categoryColors: Record<string, string> = {
 };
 ---
 
-<div class="double-bezel-outer">
-  <div class="download-card double-bezel-inner">
-    <div class="download-icon">{icon}</div>
-    <div class="download-content">
-      <span class="download-tag" style={`color: ${categoryColors[category]}`}>
-        {categoryLabels[category]}
-      </span>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </div>
-    <div class="download-footer">
-      <span class="download-size">PDF · {fileSize}</span>
-      <a class="download-link" href={file} download>Pobierz PDF</a>
-    </div>
-  </div>
-</div>
+<article class="download-card" style={`--accent: ${categoryAccents[category]}`}>
+  <header class="card-head">
+    <span class="card-icon" aria-hidden="true">{icon}</span>
+    <span class="card-tag">{categoryLabels[category]}</span>
+  </header>
+  <h3 class="card-title">{title}</h3>
+  <p class="card-desc">{description}</p>
+  <footer class="card-foot">
+    <span class="card-size">PDF · {fileSize}</span>
+    <a
+      class="card-link"
+      href={file}
+      download
+      aria-label={`Pobierz: ${title} (PDF, ${fileSize})`}
+    >
+      <span>Pobierz PDF</span>
+    </a>
+  </footer>
+</article>
 
 <style>
+  /* The card is four subgrid rows: head, title, description, footer. Cards in
+     one row share the row sizes, so titles and footers line up whatever the
+     text length. */
   .download-card {
-    gap: 16px;
-    justify-content: space-between;
+    --accent: var(--gold);
+    --accent-ink: color-mix(in srgb, var(--accent), var(--ink) 55%);
+    --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    row-gap: 0.55rem;
+
+    padding: 1.5rem;
+    background: oklch(100% 0 none);
+    border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+    border-radius: 1.5rem;
   }
 
-  .download-icon {
-    font-size: 2.4rem;
-    margin-bottom: 4px;
+  /* Hover shadow as a separate layer: fading opacity repaints nothing. */
+  .download-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    box-shadow: 0 22px 40px -20px color-mix(in srgb, var(--blue-deep) 55%, transparent);
+    opacity: 0;
+    pointer-events: none;
   }
 
-  .download-content {
-    flex-grow: 1;
+  @media (hover: hover) and (pointer: fine) {
+    .download-card:hover {
+      translate: 0 -3px;
+    }
+
+    .download-card:hover::before {
+      opacity: 1;
+    }
   }
 
-  .download-tag {
+  @media (prefers-reduced-motion: no-preference) {
+    .download-card {
+      transition: translate 0.3s var(--ease-out, ease-out);
+    }
+
+    .download-card::before {
+      transition: opacity 0.3s var(--ease-out, ease-out);
+    }
+  }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .card-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    border-radius: 0.9rem;
+    background: var(--accent-soft);
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  .card-tag {
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     font-size: 0.72rem;
+    color: var(--accent-ink);
   }
 
-  .download-content h3 {
-    font-size: 1.15rem;
-    margin: 6px 0 8px;
+  .card-title {
+    font-size: 1.18rem;
+    margin-block-start: 0.35rem;
+    text-wrap: balance;
   }
 
-  .download-content p {
+  .card-desc {
     color: var(--ink-soft);
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     line-height: 1.6;
   }
 
-  .download-footer {
+  .card-foot {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-    padding-top: 14px;
-    margin-top: auto;
+    gap: 0.75rem;
+    margin-block-start: 0.5rem;
+    padding-block-start: 0.9rem;
+    border-block-start: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
   }
 
-  .download-size {
+  .card-size {
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
   }
 
-  .download-link {
+  .card-link {
     display: inline-flex;
     align-items: center;
-    padding: 8px 16px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #fff;
+    justify-content: center;
+    min-block-size: 2.75rem;
+    padding-block: 0.6rem;
+    padding-inline: 1.15rem;
+    border-radius: 999px;
     background: var(--blue-deep);
-    border-radius: var(--radius-sm);
-    letter-spacing: 0.02em;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    color: oklch(100% 0 none);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
   }
 
-  .download-link:hover {
-    background: var(--blue);
-    transform: translateY(-1px);
+  .card-link > span {
+    text-box: trim-both cap alphabetic;
+  }
+
+  .card-link:active {
+    scale: 0.97;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .card-link:hover {
+      background: var(--blue);
+      translate: 0 -1px;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card-link {
+      transition:
+        translate 0.2s var(--ease-out, ease-out),
+        scale 0.16s var(--ease-out, ease-out),
+        background-color 0.2s ease;
+    }
+  }
+
+  /* One link per card carries the destination; its overlay makes the whole
+     card clickable, and the ring is drawn on the card instead. */
+  .card-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .card-link:focus-visible {
+    outline: 2px solid transparent;
+  }
+
+  .download-card:has(.card-link:focus-visible) {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 </style>
