@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HookDownload from '../components/downloads/HookDownload.astro';
 
 const sections = [
   { id: 'postanowienia', label: 'Postanowienia ogólne' },
@@ -30,7 +31,7 @@ const sections = [
         </p>
         <p class="doc-meta">
           Cudoteka (E-CUD - Centrum Edukacyjno-Eventowe) · ul. Skalbmierska 13, 01-848 Warszawa ·
-          wersja 1.0, obowiązuje od dnia publikacji (październik 2026)
+          wersja 1.0, obowiązuje od 10 stycznia 2025 r.
         </p>
       </div>
 
@@ -156,7 +157,7 @@ const sections = [
           <li>Standardy podlegają przeglądowi nie rzadziej niż raz na dwa lata, a także każdorazowo w przypadku zmiany przepisów lub istotnych zdarzeń;</li>
           <li>prowadzimy ewidencję zgłoszeń i podejmowanych działań;</li>
           <li>Personel jest na bieżąco informowany o zasadach i ich zmianach;</li>
-          <li>obecna wersja Standardów (1.0) obowiązuje od dnia publikacji na stronie i jest dostępna w wersji zupełnej oraz skróconej.</li>
+          <li>obecna wersja Standardów (1.0) obowiązuje od 10 stycznia 2025 r. i jest dostępna w wersji zupełnej oraz skróconej.</li>
         </ul>
       </section>
 
@@ -178,6 +179,12 @@ const sections = [
           <a href="mailto:biuro@e-cud.waw.pl">biuro@e-cud.waw.pl</a> lub zadzwoń
           <a href="tel:607370777">607 370 777</a>. Na życzenie udostępniamy dokument w wersji do wydruku.
         </p>
+      </section>
+
+      <section id="pobierz" class="doc-section download-section reveal-fade-up">
+        <h2>Pobierz Standardy (PDF)</h2>
+        <p>Ten sam dokument w wersji do druku - dla placówek, dokumentacji współpracy i tablic ogłoszeń.</p>
+        <HookDownload href="/materialy/standardy-ochrony-maloletnich.pdf" label="Pobierz PDF" />
       </section>
     </div>
   </article>
@@ -357,4 +364,61 @@ const sections = [
       margin-bottom: 44px;
     }
   }
-</style>
+
+  .download-section {
+    padding: 28px 24px;
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px solid rgba(62, 137, 176, 0.1);
+    box-shadow: var(--shadow-sm);
+  }
+  .download-section h2 {
+    margin-bottom: 10px;
+  }
+  .download-section > p {
+    max-width: 52ch;
+    margin-inline: auto;
+  }
+  .download-section :global(.hook) {
+    max-width: 620px;
+    margin-inline: auto;
+  }
+
+  @page {
+    size: A4;
+    margin: 14mm 15mm;
+  }
+
+  @media print {
+    :global(header),
+    :global(footer) {
+      display: none !important;
+    }
+    :global(body) {
+      background: #fff;
+    }
+    :global(.reveal-fade-up) {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .doc-hero {
+      padding: 0 0 18px;
+      background: none;
+    }
+    .toc {
+      display: none;
+    }
+    .doc {
+      padding: 0;
+      background: #fff;
+    }
+    .doc-section h2,
+    .doc-section h3 {
+      break-after: avoid;
+    }
+    .kids-card,
+    .doc-note {
+      break-inside: avoid;
+    }
+  }</style>

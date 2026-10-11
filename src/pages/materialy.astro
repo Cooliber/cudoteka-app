@@ -42,6 +42,15 @@ const groups = [
     lead: '',
     items: downloads.filter(d => d.data.category === 'logopedia'),
   },
+  {
+    id: 'dokumenty',
+    nav: 'Dla organizacji',
+    tint: false,
+    eyebrow: 'Dla organizacji i rodziców',
+    title: 'Dokumenty',
+    lead: 'Standardy ochrony małoletnich i inne dokumenty Cudoteki dostępne do pobrania.',
+    items: downloads.filter(d => d.data.category === 'inne'),
+  },
 ].filter(group => group.items.length > 0);
 
 const orderedItems = groups.flatMap((group) => group.items);

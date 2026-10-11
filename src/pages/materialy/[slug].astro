@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import HookDownload from '../../components/downloads/HookDownload.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -80,7 +81,7 @@ const docSchema = {
         <div class="download-box-inner double-bezel-inner">
           <span class="download-icon" aria-hidden="true">{icon}</span>
           <p class="download-lead">{lead ?? description}</p>
-          <a class="btn btn-primary" href={file} download>Pobierz PDF ({fileSize})</a>
+          <HookDownload href={file} fileSize={fileSize} />
           <p class="download-note">Bezpłatnie, bez rejestracji. Wydrukuj w domu albo w placówce.</p>
         </div>
       </div>
