@@ -14,20 +14,20 @@
 
 Adres podnosi **Local SEO** (Google Maps, "warsztaty dla dzieci Warszawa") i trust (ludzie widzą, że firma istnieje). Niektóre firmy wolą ukrywać — decyzja Twoja.
 
-- [ ] **TAK** — pokaż adres na stronie
+- [x] **TAK** — pokaż adres na stronie (wdrożone 2026-10-11: stopka + LocalBusiness schema)
 - [ ] **NIE** — ukrywaj (schema.org i tak go użyje, ale stopka/kontakt bez adresu)
 
 Jeśli TAK, podaj:
 
 | Pole | Wartość |
 |------|---------|
-| Ulica i numer | `_____________________________________________` |
-| Kod pocztowy | `___-___` |
-| Miasto | `Warszawa` (potwierdź) |
-| Województwo | `mazowieckie` (potwierdź) |
+| Ulica i numer | `Skalbmierska 13` |
+| Kod pocztowy | `01-848` |
+| Miasto | `Warszawa` (potwierdzone) |
+| Województwo | `mazowieckie` (potwierdzone) |
 | Koordynaty GPS (opcjonalnie) | lat: `________`, lng: `________` |
 
-> Bez koordynatów użyję centrum Warszawy (52.2297, 21.0122). Jeśli masz dokładne — super.
+> Koordynaty GPS są opcjonalne — schema LocalBusiness działa poprawnie bez nich i nie wpisujemy wartości przybliżonych. Jeśli podasz dokładne współrzędne, dodamy je do `geo`.
 
 ### 1.2 Godziny otwarcia (schema.org OpeningHoursSpecification)
 

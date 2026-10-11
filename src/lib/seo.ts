@@ -111,9 +111,8 @@ export function websiteSchema() {
 }
 
 export function localBusinessSchema() {
-  // TODO(FOUNDER): fill in streetAddress, postalCode, geo coordinates and
-  // openingHoursSpecification. See docs/dane-dla-zalozycielki.md section 1
-  // for the request format.
+  // TODO(FOUNDER): fill in geo coordinates and openingHoursSpecification.
+  // See docs/dane-dla-zalozycielki.md section 1 for the request format.
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -137,10 +136,10 @@ export function localBusinessSchema() {
     },
     address: {
       '@type': 'PostalAddress',
-      // streetAddress: 'ul. ___________', // TODO(FOUNDER)
+      streetAddress: 'Skalbmierska 13',
       addressLocality: 'Warszawa',
       addressRegion: 'mazowieckie',
-      // postalCode: '00-000', // TODO(FOUNDER)
+      postalCode: '01-848',
       addressCountry: 'PL',
     },
     // geo: { // TODO(FOUNDER) — uncomment and provide lat/lng

@@ -13,7 +13,7 @@
 | # | Linia | Co wpisać | Status |
 |---|-------|-----------|--------|
 | 1 | 29 | `twitter:site` (handle po @, np. "@cudoteka") — patrz `dane-dla-zalozycielki.md` § 1.3 | [ ] |
-| 2 | 43-67 | `streetAddress`, `postalCode`, `geo` (lat/lng), `openingHoursSpecification` — patrz `dane-dla-zalozycielki.md` § 1.1, § 1.2 | [ ] |
+| 2 | 43-67 | `streetAddress` + `postalCode` ✅ (Skalbmierska 13, 01-848 — wdrożone 2026-10-11); do zrobienia: `geo` (lat/lng), `openingHoursSpecification` — patrz `dane-dla-zalozycielki.md` § 1.1, § 1.2 | [ ] |
 
 ### A2. `src/pages/o-nas.astro` (Person schema + bio)
 
@@ -140,7 +140,7 @@ Odpowiedzi w `src/pages/index.astro` (sekcja FAQ) — obecnie draft z istniejąc
 |---|-------|---------|--------|
 | E1 | Wielojęzyczność (EN) | TAK / NIE — patrz § 8.1 | [ ] |
 | E2 | Usunięcie nieużywanego Tailwind | TAK / NIE — patrz § 8.2 | [ ] |
-| E3 | Adres fizyczny w stopce | TAK / NIE — patrz § 1.1 | [ ] |
+| E3 | Adres fizyczny w stopce | ✅ TAK — Skalbmierska 13, 01-848 Warszawa (wdrożone 2026-10-11) | [x] |
 | E4 | Numer WhatsApp / Telegram | TAK / NIE — patrz § 5 | [ ] |
 
 ---
