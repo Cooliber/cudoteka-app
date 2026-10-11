@@ -62,9 +62,8 @@ export function breadcrumbs(
 }
 
 // Site-wide Organization entity (logo, contact) that LocalBusiness and
-// WebSite reference by @id. sameAs is intentionally omitted until the founder
-// provides real profiles (docs/dane-dla-zalozycielki.md) — never ship
-// placeholder URLs.
+// WebSite reference by @id. sameAs profiles verified 2026-10-11: Google
+// Business Profile (CID 1048077975271774269) and the Facebook page.
 export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
@@ -79,6 +78,10 @@ export function organizationSchema() {
     },
     email: 'biuro@e-cud.waw.pl',
     telephone: '+48607370777',
+    sameAs: [
+      'https://maps.google.com/?cid=1048077975271774269',
+      'https://www.facebook.com/p/Cudoteka-61573778519531/',
+    ],
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -121,6 +124,11 @@ export function localBusinessSchema() {
     alternateName: 'E-CUD',
     description: 'Twórcze warsztaty, sensoplastyka, animacje i eventy dla dzieci i dorosłych. Warszawa i okolice.',
     url: 'https://cudoteka.pl',
+    hasMap: 'https://maps.google.com/?cid=1048077975271774269',
+    sameAs: [
+      'https://maps.google.com/?cid=1048077975271774269',
+      'https://www.facebook.com/p/Cudoteka-61573778519531/',
+    ],
     telephone: '+48607370777',
     email: 'biuro@e-cud.waw.pl',
     parentOrganization: { '@id': 'https://cudoteka.pl/#organization' },
