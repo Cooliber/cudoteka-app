@@ -64,6 +64,13 @@ const itemListSchema = {
           </div>
         </div>
         <p class="lead-text">{category.data.description}</p>
+        {category.data.pageIntro && (
+          <div class="category-intro">
+            {category.data.pageIntro.split(/\n\s*\n/).map((paragraph) => (
+              <p>{paragraph.trim()}</p>
+            ))}
+          </div>
+        )}
       </div>
 
       <h2 class="section-title">Warsztaty w tej kategorii ({workshops.length})</h2>
@@ -155,6 +162,19 @@ const itemListSchema = {
     font-size: 1.8rem;
     margin-bottom: 30px;
     font-family: "Fraunces", serif;
+  }
+  .category-intro {
+    max-width: 44rem;
+    margin: -28px 0 48px;
+  }
+  .category-intro p {
+    color: var(--ink-soft);
+    font-size: 1.03rem;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .category-intro p:last-child {
+    margin-bottom: 0;
   }
   .workshop-grid {
     display: grid;

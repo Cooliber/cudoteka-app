@@ -6,7 +6,7 @@ category: "Porady dla rodziców"
 excerpt: "Kostka, pionki i 20 minut przy stole - to trening mowy, uwagi i radzenia sobie z przegraną. Sprawdź, jak grać z dzieckiem, żeby gra była skarbem, nie polem bitwy."
 image: "../../assets/images/blog/gry-planszowe-ucza-wiecej.webp"
 imageAlt: "Dzieci grające w grę planszową przy stoliku"
-metaTitle: "Gry planszowe dla dzieci - co rozwijają i jak grać | Cudoteka"
+metaTitle: "Gry planszowe - co rozwijają i jak grać | Cudoteka"
 metaDescription: "Gry planszowe rozwijają mowę, uwagę i emocje dziecka. Jak grać z przedszkolakiem? Zasady, pomysły na pierwsze gry i co robić z przegraną."
 usedConstellations:
   - "Gra planszowa jako trening mowy i uwagi"

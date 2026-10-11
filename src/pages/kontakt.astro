@@ -70,7 +70,7 @@ const workshops = await getCollection('workshops');
             <!-- Success Message Overlay -->
             <div class="success-message" id="success-msg">
               <span class="success-icon">✨</span>
-              <h4>Wiadomość wysłana!</h4>
+              <p class="success-heading">Wiadomość wysłana!</p>
               <p>Dziękujemy za kontakt. Odpowiemy na Twoją wiadomość najszybciej jak to możliwe.</p>
               <button class="btn btn-primary" id="reset-btn">Wyślij kolejną</button>
             </div>
@@ -297,7 +297,7 @@ const workshops = await getCollection('workshops');
     font-size: 3.5rem;
     margin-bottom: 16px;
   }
-  .success-message h4 {
+  .success-message .success-heading {
     font-family: "Fraunces", serif;
     font-size: 1.6rem;
     margin-bottom: 12px;

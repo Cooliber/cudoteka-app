@@ -175,30 +175,5 @@ export function localBusinessSchema() {
       'Ceramika artystyczna',
       'Pedagogika twórcza',
     ],
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Warsztaty i animacje Cudoteka',
-      itemListElement: [
-        {
-          '@type': 'OfferCatalog',
-          name: 'Warsztaty dla dzieci',
-          itemListElement: [
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sensoplastyka' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ceramika' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Eko-kosmetyki' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Warsztaty plastyczne' } },
-          ],
-        },
-        {
-          '@type': 'OfferCatalog',
-          name: 'Animacje eventowe',
-          itemListElement: [
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Animacje urodzinowe' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Animacje na eventy firmowe' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Pokazy baniek mydlanych' } },
-          ],
-        },
-      ],
-    },
   };
 }

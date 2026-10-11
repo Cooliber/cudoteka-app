@@ -6,7 +6,7 @@ category: "Strefa Malucha"
 excerpt: "Jak połączyć dwulatka, pięciolatka i ósmego rocznika przy jednej zabawie? Przepisy na sensoryczne aktywności, które angażują całą rodzinę."
 image: "../../assets/images/workshops/sensoplastyka.webp"
 imageAlt: "Rodzeństwo bawiące się razem masą sensoryczną na stole"
-metaTitle: "Zabawy sensoryczne dla rodzeństwa - sprawdzone pomysły | Cudoteka"
+metaTitle: "Zabawy sensoryczne dla rodzeństwa - pomysły | Cudoteka"
 metaDescription: "Jak bawić się sensorycznie z dziećmi w różnym wieku? Przepisy na masy, eksperymenty i zabawy angażujące całą rodzinę - od dwulatka do starszaka."
 ---
 

@@ -6,7 +6,7 @@ category: "Porady dla rodziców"
 excerpt: "\"Ja sam!\" - a potem woda na podłodze i mąka na szafce. Wiele rodziców odpuszcza (\"zrobię szybciej\"). A to właśnie te małe zadania budują odpowiedzialność i pewność siebie."
 image: "../../assets/images/blog/male-pomocniki-obowiazki-domowe.webp"
 imageAlt: "Dziecko pomagające w kuchni przy przygotowaniu posiłku"
-metaTitle: "Dziecko w domowych obowiązkach - jak włączać i po co | Cudoteka"
+metaTitle: "Dziecko w domowych obowiązkach - jak włączać? | Cudoteka"
 metaDescription: "Dlaczego warto włączać dziecko w domowe obowiązki? Jakie zadania dla 2-7 latka? Badania o wpływie obowiązków na samodzielność i pewność siebie."
 usedConstellations:
   - "Sprawczość i kompetencja dziecka"

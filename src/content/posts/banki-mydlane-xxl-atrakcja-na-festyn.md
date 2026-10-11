@@ -7,7 +7,7 @@ excerpt: "Gigantyczne bańki mydlane to atrakcja, która zatrzymuje w miejscu d
 image: "../../assets/images/gallery/gallery-3.webp"
 imageAlt: "Pokaz gigantycznych baniek mydlanych podczas animacji dla dzieci"
 metaTitle: "Bańki mydlane XXL na festyn i urodziny | Cudoteka Warszawa"
-metaDescription: "Pokaz baniek mydlanych XXL jako atrakcja na festyn, piknik i urodziny w Warszawie. Sprawdź, dla kogo i kiedy się sprawdza oraz jak zarezerwować termin."
+metaDescription: "Pokaz baniek mydlanych XXL na festyn, piknik i urodziny w Warszawie. Sprawdź, dla kogo się sprawdza i jak zarezerwować termin."
 ---
 
 Jest taka atrakcja, która działa zawsze i na każdego - niezależnie od wieku, pogody i miejsca. To **bańki mydlane XXL**. Tęczowe, ogromne, czasem wielkości dorosłego człowieka, a do tego można w nie… zamknąć dziecko. Nic dziwnego, że pokaz baniek to jeden z najczęściej zamawianych elementów animacji w Cudotece.

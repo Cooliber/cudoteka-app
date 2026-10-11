@@ -13,6 +13,8 @@ const categories = defineCollection({
     priceFrom: z.number().nonnegative().optional(),
     priceTo: z.number().nonnegative().optional(),
     priceNote: z.string().optional(),
+    // Optional longer intro for the category page (blank-line separated paragraphs).
+    pageIntro: z.string().optional(),
     metaTitle: z.string(),
     metaDescription: z.string(),
   }),

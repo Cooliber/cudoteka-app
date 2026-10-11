@@ -7,7 +7,7 @@ excerpt: "Nie czekaj, aż problem sam zniknie. Poznaj 7 konkretnych sygnałów, 
 image: "../../assets/images/about/about.webp"
 imageAlt: "Logopeda pracujący z dzieckiem przy stoliku z pomocami dydaktycznymi"
 metaTitle: "7 sygnałów, że dziecko potrzebuje logopedy | Cudoteka"
-metaDescription: "Kiedy zgłosić się z dzieckiem do logopedy? 7 konkretnych sygnałów alarmowych, które rodzice powinni znać. Wiek, mowa, zachowanie - praktyczny poradnik."
+metaDescription: "Kiedy zgłosić się z dzieckiem do logopedy? 7 sygnałów alarmowych, które każdy rodzic powinien znać. Wiek, mowa, zachowanie - poradnik."
 ---
 
 "Kiedyś samo zacznie mówić", "Nie martw się, dziadkowie też późno mówili", "To chłopiec, oni zawsze później" - ile razy słyszałeś te słowa? Tymczasem **wczesna reakcja jest kluczowa**. Nie chodzi o panikowanie, ale o świadomą obserwację i wiedzę, kiedy warto poprosić o pomoc specjalisty.
@@ -69,4 +69,4 @@ Chcesz dowiedzieć się więcej o rozwoju mowy dziecka? Sprawdź nasze [szkolen
 
 - [Opóźniony rozwój mowy - kiedy zareagować](/blog/opozniony-rozwoj-mowy-kiedy-zareagowac/) - szczegółowy przewodnik
 - [Jak rodzina może wspierać rozwój mowy dziecka](/blog/jak-rodzina-wspiera-rozwoj-mowy-dziecka/) - codzienne rytuały
-- [Wyzwania wakacyjne - materiały do pobrania](/warsztaty/wyzwania-wakacyjne/) - bezpłatne karty pracy
+- [Wyzwania wakacyjne - materiały do pobrania](/materialy/wyzwania-wakacyjne/) - bezpłatne karty pracy

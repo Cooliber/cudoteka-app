@@ -6,7 +6,7 @@ category: "Porady dla rodziców"
 excerpt: "Nie potrzebujesz kart ani aplikacji: potrzebujesz mówić. I to nie obok dziecka, a do dziecka. Sprawdź, co mówić na spacerze, w aucie i przy garach."
 image: "../../assets/images/blog/mow-do-dziecka-codziennie.webp"
 imageAlt: "Rodzic rozmawiający z małym dzieckiem podczas codziennych czynności"
-metaTitle: "Mów do dziecka - najprostszy sposób na rozwój mowy | Cudoteka"
+metaTitle: "Mów do dziecka - prosty sposób na rozwój mowy | Cudoteka"
 metaDescription: "Dlaczego mowa kierowana do dziecka działa lepiej niż mowa w tle? Co mówić na spacerze, w kąpieli i w kolejce? Praktyczny przewodnik dla rodziców."
 usedConstellations:
   - "Mowa kierowana do dziecka (motherese)"

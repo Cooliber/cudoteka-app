@@ -6,7 +6,7 @@ category: "Porady dla rodziców"
 excerpt: "Góra zabawek, a dziecko nudzi się po pięciu minutach? To nie paradoks - to przeciążenie. Sprawdź, dlaczego ograniczenia wyzwalają kreatywność i jak je wprowadzić w domu."
 image: "../../assets/images/blog/mniej-zabawek-wiecej-kreatywnosci.webp"
 imageAlt: "Dziecko lepiące z gliny na warsztatach ceramiki"
-metaTitle: "Mniej zabawek, więcej kreatywności - siła ograniczeń | Cudoteka"
+metaTitle: "Mniej zabawek, więcej kreatywności | Cudoteka"
 metaDescription: "Dlaczego mniej zabawek i jedna aktywność na raz rozwijają kreatywność? Rytuał, jeden cel, ochrona uwagi - praktyczne wskazówki dla rodziców."
 usedConstellations:
   - "Odejmowanie zamiast dodawania"

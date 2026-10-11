@@ -7,7 +7,7 @@ excerpt: "Zanim padnie pierwsze słowo, dziecko prowadzi z Tobą rozmowę. Mimi
 image: "../../assets/images/workshops/sensoplastyka.webp"
 imageAlt: "Niemowlę patrzące intensywnie w oczy opiekuna podczas wspólnej zabawy"
 metaTitle: "Komunikacja niewerbalna niemowlęcia - przewodnik | Cudoteka"
-metaDescription: "Jak niemowlę komunikuje się przed pierwszym słowem? Mimika, gesty, wokalizacje, kontakt wzrokowy. Naucz się czytać sygnały dziecka i odpowiadać na nie - rozwój językowy zaczyna się tu."
+metaDescription: "Jak niemowlę komunikuje się przed pierwszym słowem? Mimika, gesty, wokalizacje, kontakt wzrokowy - naucz się czytać sygnały dziecka."
 usedConstellations:
   - "Komunikacja prelingwistyczna niemowlęcia"
   - "Mimika i kontakt wzrokowy w pierwszych miesiącach życia"

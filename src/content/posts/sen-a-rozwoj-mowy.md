@@ -7,7 +7,7 @@ excerpt: "Dziecko nie uczy się mówić, gdy jest obudzone. Uczy się też, gdy 
 image: "../../assets/images/workshops/strefa-malucha.webp"
 imageAlt: "Dziecko śpiące spokojnie, z otulonym ciałem i wyrazem ukojenia na twarzy"
 metaTitle: "Sen a rozwój mowy dziecka - konsolidacja języka | Cudoteka"
-metaDescription: "Jak sen wpływa na rozwój mowy dziecka? Badania nad konsolidacją pamięci językowej podczas snu, higiena snu i konsekwencje chronicznych problemów ze snem dla rozwoju języka."
+metaDescription: "Jak sen wpływa na rozwój mowy dziecka? Badania nad konsolidacją pamięci językowej podczas snu i higiena snu w praktyce. Poradnik."
 usedConstellations:
   - "Konsolidacja językowa podczas snu"
   - "Higiena snu a rozwój mowy"

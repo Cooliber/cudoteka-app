@@ -7,7 +7,7 @@ excerpt: "Kiedy dziecko karmi Pluszowego Misia zupą z pustego kubeczka, nie ma
 image: "../../assets/images/workshops/plastyka-ekspresywna.webp"
 imageAlt: "Dziecko bawiące się w udawanie z lalkami i klockami"
 metaTitle: "Zabawa symboliczna a rozwój mowy dziecka | Cudoteka"
-metaDescription: "Dlaczego zabawa w udawanie jest kluczowa dla rozwoju języka? Jak pretend play buduje teorię umysłu, słownictwo i myślenie abstrakcyjne. Praktyczny przewodnik dla rodziców."
+metaDescription: "Dlaczego zabawa w udawanie jest kluczowa dla rozwoju języka? Jak pretend play buduje słownictwo i myślenie abstrakcyjne. Poradnik."
 usedConstellations:
   - "Zabawa symboliczna jako trening języka"
   - "Teoria umysłu rozwijana przez pretend play"

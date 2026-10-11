@@ -7,7 +7,7 @@ excerpt: "Dziecko nie uczy się mówić od terapeuty. Uczy się w relacji z op
 image: "../../assets/images/about/about.webp"
 imageAlt: "Matka trzymająca niemowlę w bliskim kontakcie twarzą w twarz"
 metaTitle: "Więź emocjonalna a rozwój mowy dziecka | Cudoteka"
-metaDescription: "Dlaczego bezpieczna więź z opiekunem to warunek rozwoju mowy? Jak styl przywiązania wpływa na język, komunikację i gotowość do dialogu. Wiedza oparta na badaniach."
+metaDescription: "Dlaczego bezpieczna więź z opiekunem to warunek rozwoju mowy? Jak styl przywiązania wpływa na język i gotowość do dialogu. Poradnik."
 usedConstellations:
   - "Wrażliwość opiekuna a rozwój językowy dziecka"
   - "Wczesna interwencja logopedyczna oparta na relacji"

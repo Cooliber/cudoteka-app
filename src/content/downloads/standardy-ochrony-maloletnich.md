@@ -7,7 +7,7 @@ file: "/materialy/standardy-ochrony-maloletnich.pdf"
 fileSize: "306 KB"
 icon: "🛡️"
 metaTitle: "Standardy ochrony małoletnich - PDF | Cudoteka"
-metaDescription: "Pobierz Standardy ochrony małoletnich Cudoteki: zasady bezpiecznej rekrutacji, relacje z dziećmi i procedury zgłaszania. Dokument zgodny z ustawą Kamilka."
+metaDescription: "Standardy ochrony małoletnich Cudoteki do pobrania: zasady bezpiecznej rekrutacji, relacje z dziećmi, procedury. Zgodne z ustawą Kamilka."
 lead: "Pełny tekst Standardów ochrony małoletnich stosowanych w Cudotece - do druku, dla placówek, rodziców i partnerów."
 howToUse:
   - "Wydrukuj dokument i zachowaj go w dokumentacji organizacji lub placówki."

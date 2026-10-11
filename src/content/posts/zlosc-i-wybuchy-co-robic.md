@@ -6,7 +6,7 @@ category: "Rozwój dziecka"
 excerpt: "\"Rzuca się na podłogę w sklepie\" - wybuchy to nie złe wychowanie, to niedojrzały układ nerwowy. Sprawdź plan krok po kroku: w trakcie burzy i po niej."
 image: "../../assets/images/blog/zlosc-i-wybuchy-co-robic.webp"
 imageAlt: "Rodzic towarzyszący dziecku w trudnej emocji przy stoliku"
-metaTitle: "Złość dziecka - co robić w trakcie wybuchu i po nim | Cudoteka"
+metaTitle: "Złość dziecka - co robić w trakcie wybuchu | Cudoteka"
 metaDescription: "Jak reagować na wybuchy złości dziecka? Plan 5 minut: nazwanie emocji, współregulacja, oddech i rozmowa po burzy. Bez krzyku, kar i zawstydzania."
 usedConstellations:
   - "Walidacja emocji dziecka"

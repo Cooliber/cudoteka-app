@@ -7,7 +7,7 @@ excerpt: "Dobry oddech to spokój, koncentracja i... mowa. Poznaj zabawy oddecho
 image: "../../assets/images/blog/cwiczenia-oddechowe-dla-dzieci.webp"
 imageAlt: "Dziecko wydmuchujące bańki mydlane podczas ćwiczeń oddechowych"
 metaTitle: "Ćwiczenia oddechowe dla dzieci - zabawa i spokój | Cudoteka"
-metaDescription: "Proste ćwiczenia oddechowe dla dzieci: dmuchanie, wiatraczki, bańki, 'świeczka'. Jak oddech uspokaja dziecko i wspiera rozwój mowy. Poradnik dla rodziców."
+metaDescription: "Proste ćwiczenia oddechowe dla dzieci: dmuchanie, wiatraczki, bańki, 'świeczka'. Jak oddech uspokaja dziecko i wspiera rozwój mowy."
 usedConstellations:
   - "Oddech jako fundament mowy (fonacja)"
   - "Rozgrzewka oddechowa przed ćwiczeniami"

@@ -6,7 +6,7 @@ category: "Porady dla rodziców"
 excerpt: "Wybór warsztatów dla dziecka to nie lada wyzwanie. Sprawdź, na co zwrócić uwagę, aby zajęcia były bezpieczne, rozwijające i naprawdę ciekawe."
 image: "../../assets/images/about/about.webp"
 imageAlt: "Dzieci biorące udział w kreatywnych warsztatach"
-metaTitle: "Jak wybrać warsztaty dla dziecka? Poradnik dla rodziców | Cudoteka"
+metaTitle: "Jak wybrać warsztaty dla dziecka? Poradnik | Cudoteka"
 metaDescription: "Wybierasz warsztaty dla dziecka? Sprawdź, na co zwrócić uwagę - bezpieczeństwo, grupa, prowadzący i format zajęć. Praktyczny poradnik."
 ---
 

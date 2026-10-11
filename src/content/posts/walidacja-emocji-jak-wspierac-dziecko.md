@@ -7,7 +7,7 @@ excerpt: "Walidacja to nie zgoda na zachowanie. To uznanie, że emocja jest praw
 image: "../../assets/images/workshops/plastyka-ekspresywna.webp"
 imageAlt: "Rodzic klękający na wysokości dziecka i słuchający go z uwagą"
 metaTitle: "Walidacja emocji dziecka - jak naprawdę wspierać? | Cudoteka"
-metaDescription: "Co to jest walidacja emocji u dziecka? Dlaczego \"nie płacz\" szkodzi i jak rozmawiać tak, by dziecko czuło się zrozumiane. Konkretne techniki oparte na badaniach."
+metaDescription: "Co to jest walidacja emocji u dziecka? Dlaczego odbieranie uczuć szkodzi i jak rozmawiać, by dziecko czuło się zrozumiane. Konkretne techniki."
 usedConstellations:
   - "Walidacja emocjonalna dziecka"
   - "Ko-regulacja w relacji opiekun-dziecko"

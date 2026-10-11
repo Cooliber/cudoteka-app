@@ -7,7 +7,7 @@ excerpt: "Jak mówić dzieciom o ekologii, żeby naprawdę je to wciągnęło? 
 image: "../../assets/images/gallery/gallery-5.webp"
 imageAlt: "Dzieci tworzące podczas ekologicznych warsztatów plastycznych"
 metaTitle: "Eko-warsztaty dla przedszkoli i szkół | Cudoteka Warszawa"
-metaDescription: "Ekologiczne warsztaty dla przedszkoli i szkół w Warszawie - eko-torby, kosmetyki, las w słoiku. Nauka ekologii przez zabawę. Zapytaj o ofertę dla placówki."
+metaDescription: "Ekologiczne warsztaty dla przedszkoli i szkół w Warszawie - eko-torby, kosmetyki, las w słoiku. Nauka ekologii przez zabawę. Zapytaj o ofertę."
 ---
 
 Edukacja ekologiczna działa najlepiej wtedy, gdy dziecko nie tyle *słucha* o ochronie środowiska, co samo **coś tworzy własnymi rękami**. Pomalowana eko-torba, własnoręcznie zrobione mydełko czy mały las zamknięty w słoiku zostają z dzieckiem na długo - a wraz z nimi nawyk myślenia o tym, co po sobie zostawiamy.

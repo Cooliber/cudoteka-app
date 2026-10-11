@@ -6,7 +6,7 @@ category: "Rozwój dziecka"
 excerpt: "Ta sama głoska, a raz wychodzi łatwo, raz wcale. Podpowiadamy, jak to działa i jak w 10 minut dziennie ćwiczyć wymowę z dzieckiem w domu - bez presji i łez."
 image: "../../assets/images/blog/cwiczenia-wymowy-w-domu.webp"
 imageAlt: "Dziecko przy stoliku pochylone nad kolorową kartą pracy"
-metaTitle: "Ćwiczenia wymowy w domu - od czego zacząć z dzieckiem | Cudoteka"
+metaTitle: "Ćwiczenia wymowy w domu - od czego zacząć | Cudoteka"
 metaDescription: "Dlaczego jedne słowa wychodzą łatwo, a inne nie? Proste ćwiczenia wymowy w domu: 10 minut dziennie, lustro, przedłużanie głoski i zabawa w słowa."
 usedConstellations:
   - "Pozycje głoski P/S/K w terapii"
@@ -89,7 +89,7 @@ W Cudotece wierzymy, że najlepiej ćwiczy się przez zabawę. Dlatego nasze [ma
 ## Zobacz również
 
 - [7 sygnałów, że dziecko potrzebuje logopedy](/blog/7-sygnalow-ze-dziecko-potrzebuje-logopedy/)
-- [Motoryka mała i oralna](/blog/motyka-mala-i-oralna/) - dlaczego ręce wspierają mowę
+- [Motoryka mała i oralna](/blog/motoryka-mala-i-oralna/) - dlaczego ręce wspierają mowę
 - [Krótko i często: jak ćwiczyć z dzieckiem](/blog/krotko-i-czesto-jak-cwiczyc-z-dzieckiem/)
 
 ## Źródła i dane

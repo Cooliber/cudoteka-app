@@ -45,19 +45,19 @@ const postalCode = '01-848';
         <p class="desc">Twórcze warsztaty, sensoplastyka i animacje dla dzieci i dorosłych. Dawniej E-CUD - Centrum Edukacyjno-Eventowe.</p>
       </div>
       <div class="foot-nav">
-        <h5>Oferta</h5>
+        <h2>Oferta</h2>
         {offerLinks.map(link => (
           <a href={link.href}>{link.label}</a>
         ))}
       </div>
       <div class="foot-nav">
-        <h5>Pomocne</h5>
+        <h2>Pomocne</h2>
         {resourceLinks.map(link => (
           <a href={link.href}>{link.label}</a>
         ))}
       </div>
       <div class="foot-contact">
-        <h5>Kontakt</h5>
+        <h2>Kontakt</h2>
         {contactLinks.map(link => (
           <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>
             {link.label}
@@ -138,7 +138,7 @@ const postalCode = '01-848';
     max-width: 320px;
     line-height: 1.6;
   }
-  footer h5 {
+  footer h2 {
     font-family: "Fraunces", Georgia, serif;
     font-size: 1.15rem;
     color: #fff;

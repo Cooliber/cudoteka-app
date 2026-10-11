@@ -7,7 +7,7 @@ excerpt: "Dziecko, które nie ćwiczy precyzyjnych ruchów rąk, często ma też
 image: "../../assets/images/workshops/sensoplastyka.webp"
 imageAlt: "Dziecko precyzyjnie manipulujące małymi przedmiotami podczas ćwiczeń manualnych"
 metaTitle: "Motoryka mała a rozwój mowy dziecka | Cudoteka"
-metaDescription: "Jak ręce dziecka są połączone z jego mową? Konkretne ćwiczenia motoryki małej, które wspierają artykulację i logopedię. Przewodnik dla rodziców i terapeutów."
+metaDescription: "Jak ręce dziecka są połączone z jego mową? Konkretne ćwiczenia motoryki małej, które wspierają artykulację. Przewodnik dla rodziców."
 usedConstellations:
   - "Motoryka mała a artykulacja"
   - "Oralne ćwiczenia artykulacyjne"

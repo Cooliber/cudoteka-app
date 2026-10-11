@@ -6,7 +6,7 @@ category: "Porady dla rodziców"
 excerpt: "\"Załóż buty!\", \"Jedz!\", \"Skończ to!\" - im więcej rozkazów, tym więcej oporu. Sprawdź, jak małe wybory oddają dziecku kontrolę i rozbrajają codzienne bitwy."
 image: "../../assets/images/blog/wybor-zamiast-rozkazu.webp"
 imageAlt: "Rodzic i dziecko wspólnie wybierający zadanie przy stoliku"
-metaTitle: "Wybór zamiast rozkazu - sprawczość dziecka w praktyce | Cudoteka"
+metaTitle: "Wybór zamiast rozkazu - sprawczość w praktyce | Cudoteka"
 metaDescription: "Dlaczego dzieci się buntują przy poleceniach? Jak dawać wybór, budować sprawczość i ustawiać granice bez walki. Praktyczne przykłady dla rodziców."
 usedConstellations:
   - "Autonomia, kompetencja, relacja (potrzeby dziecka)"

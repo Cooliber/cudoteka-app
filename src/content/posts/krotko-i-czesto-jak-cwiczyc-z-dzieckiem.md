@@ -6,7 +6,7 @@ category: "Rozwój dziecka"
 excerpt: "Dziecko raz umie, raz nie? To normalne. Podpowiadamy, jak rozłożyć ćwiczenia w czasie, żeby słowa zostały w głowie na dłużej niż do wieczora."
 image: "../../assets/images/blog/krotko-i-czesto-jak-cwiczyc-z-dzieckiem.webp"
 imageAlt: "Dziecko ćwiczące przy stole z kolorowymi materiałami"
-metaTitle: "Krótko i często - jak ćwiczyć z dzieckiem, żeby pamiętało | Cudoteka"
+metaTitle: "Krótko i często - jak ćwiczyć z dzieckiem | Cudoteka"
 metaDescription: "Dlaczego 10 minut dziennie działa lepiej niż godzinne maratony? Prosty system powtórek dla dzieci: przypomnienie, odświeżanie słów i plan tygodnia."
 usedConstellations:
   - "Praktyka rozłożona w czasie zamiast masowanej"

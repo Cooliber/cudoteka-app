@@ -12,5 +12,5 @@ image: "../../assets/images/workshops/strefa-malucha.webp"
 imageAlt: "Strefa malucha - warsztaty w Cudotece"
 featured: true
 metaTitle: "Zajęcia sensoryczne Strefa Malucha Warszawa | Cudoteka"
-metaDescription: "Spokojne, bezpieczne warsztaty sensoryczne dla dzieci do 4 lat z opiekunami. Zapisz się!"
+metaDescription: "Spokojne, bezpieczne warsztaty sensoryczne dla dzieci do 4 lat z opiekunami. Zapisz się!"
 ---

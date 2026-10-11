@@ -7,7 +7,7 @@ excerpt: "Czy dwujęzyczność opóźnia mowę? Czy mieszanie języków to probl
 image: "../../assets/images/about/about.webp"
 imageAlt: "Rodzina z dzieckiem rozmawiająca w dwóch językach podczas wspólnej zabawy"
 metaTitle: "Dwujęzyczność dziecka - mity, fakty, strategie | Cudoteka"
-metaDescription: "Czy dwujęzyczność opóźnia rozwój mowy? Czy mieszanie języków to problem? Co mówią badania i jak mądrze wspierać dziecko w rodzinie wielojęzycznej. Praktyczny przewodnik."
+metaDescription: "Czy dwujęzyczność opóźnia rozwój mowy? Co mówią badania i jak mądrze wspierać dziecko w rodzinie wielojęzycznej? Praktyczny przewodnik dla rodziców."
 usedConstellations:
   - "Dwujęzyczność jako norma rozwojowa"
   - "Mity o dwujęzyczności w polskich rodzinach"

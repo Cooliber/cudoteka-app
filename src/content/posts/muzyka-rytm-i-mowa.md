@@ -7,7 +7,7 @@ excerpt: "Kołysanka to nie tylko uspokajanie - to trening słuchowy, który prz
 image: "../../assets/images/workshops/warsztaty-kulinarne.webp"
 imageAlt: "Matka śpiewająca kołysankę niemowlęciu w przytulnym otoczeniu"
 metaTitle: "Muzyka i rytm a rozwój mowy dziecka | Cudoteka"
-metaDescription: "Jak muzyka, śpiew i rytm wpływają na rozwój mowy dziecka? Badania nad kołysankami, wczesną stymulacją słuchową i powiązaniem melodii z fonologią. Praktyczny przewodnik."
+metaDescription: "Jak muzyka, śpiew i rytm wpływają na rozwój mowy dziecka? Badania nad kołysankami i powiązaniem melodii z fonologią. Praktyczny przewodnik."
 usedConstellations:
   - "Muzyka jako kanał rozwoju mowy"
   - "Rytm i prozodia w nabywaniu języka"

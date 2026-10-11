@@ -1,7 +1,6 @@
 ---
 import '../styles/pages/index.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { websiteSchema } from '../lib/seo';
 import { getCollection } from 'astro:content';
 import { Image, Picture } from 'astro:assets';
 import heroPhoto from '../assets/images/hero/hero.webp';
@@ -61,14 +60,12 @@ const faqSchema = {
   })),
 };
 
-// WebSite entity — the name/url source Google uses to pick the site name.
-const siteSchema = websiteSchema();
 ---
 
 <BaseLayout
-  title='Cudoteka - twórcze warsztaty i animacje dla dzieci | Warszawa'
+  title='Cudoteka - warsztaty i animacje dla dzieci | Warszawa'
   description='Cudoteka to warsztaty rozwojowe i artystyczne, sensoplastyka, animacje i atrakcje dla dzieci i dorosłych. Warszawa i okolice.'
-  schemas={[faqSchema, siteSchema]}
+  schemas={[faqSchema]}
 >
   {/*
     Critical home-page responsive overrides — inlined for instant first paint

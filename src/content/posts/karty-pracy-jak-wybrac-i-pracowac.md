@@ -7,7 +7,7 @@ excerpt: "Pobierasz karty w internecie, drukujesz... i dziecko po dwóch minutac
 image: "../../assets/images/blog/karty-pracy-jak-wybrac-i-pracowac.webp"
 imageAlt: "Dziecko odrabiające kartę pracy przy stole, obok kredki"
 metaTitle: "Karty pracy dla dzieci - jak wybrać i jak używać | Cudoteka"
-metaDescription: "Jak wybrać dobre karty pracy dla dziecka i jak z nich korzystać? Proste zasady: jeden cel, maks. 8 słów, dużo miejsca, 10 minut dziennie. Praktyczny poradnik."
+metaDescription: "Jak wybrać dobre karty pracy dla dziecka i jak z nich korzystać? Proste zasady: jeden cel, maks. 8 słów, 10 minut dziennie."
 usedConstellations:
   - "Limit materiału na sesję (8 słów)"
   - "Biała przestrzeń w materiałach dla dzieci"

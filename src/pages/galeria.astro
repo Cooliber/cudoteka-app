@@ -47,6 +47,29 @@ const categories = ['Wszystkie', ...new Set(galleryItems.map(item => item.data.c
           </div>
         ))}
       </div>
+
+      <div class="gallery-notes reveal-fade-up">
+        <h2>Zobacz, jak wygląda zabawa w Cudotece</h2>
+        <p>
+          Każde zdjęcie w tej galerii powstało podczas prawdziwych zajęć - warsztatów sensorycznych, plastycznych
+          i kulinarnych, urodzin, festynów oraz wydarzeń dla przedszkoli i szkół. Pokazujemy na nich to, co dla nas
+          najważniejsze: skupienie podczas tworzenia, uśmiechy po pierwszych próbach i dumę z własnoręcznie wykonanej
+          pracy. Znajdziesz tu kadry z sensoplastyki dla maluchów, warsztatów ceramiki i eksperymentów, a także z pokazów
+          baniek mydlanych XXL i animacji na świeżym powietrzu.
+        </p>
+        <p>
+          Zajęcia prowadzimy w Warszawie i okolicach (do 30 km), a przy większych wydarzeniach dojeżdżamy w całą Polskę -
+          zawsze z własnymi materiałami i scenariuszem dopasowanym do wieku uczestników. Najmłodsze dzieci zapraszamy do
+          strefy malucha (od 1,5 roku), starszaków na warsztaty kreatywne i kulinarne, a starsze grupy na zajęcia
+          integracyjne i sportowe. Filtr nad galerią pozwala szybko zawęzić zdjęcia do interesującej Cię kategorii.
+        </p>
+        <p>
+          Szukasz inspiracji na urodziny, festyn szkolny albo dzień integracji? Przejrzyj zdjęcia, zajrzyj do
+          <a href="/warsztaty/">pełnej oferty warsztatów</a> i sprawdź
+          <a href="/materialy/">bezpłatne materiały do pobrania</a>. A jeśli masz pytania o termin lub scenariusz
+          wydarzenia - <a href="/kontakt/">napisz do nas</a> lub zadzwoń: 607 370 777.
+        </p>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -173,6 +196,32 @@ const categories = ['Wszystkie', ...new Set(galleryItems.map(item => item.data.c
     padding: 0;
     margin: 0;
     border: none;
+  }
+
+  .gallery-notes {
+    max-width: 760px;
+    margin: 56px auto 0;
+  }
+  .gallery-notes h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 18px;
+  }
+  .gallery-notes p {
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin-bottom: 18px;
+    font-size: 1.03rem;
+  }
+  .gallery-notes a {
+    color: var(--blue-deep);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--blue-soft);
+    text-underline-offset: 3px;
+  }
+  .gallery-notes a:hover {
+    color: var(--blue);
   }
 
   @media (max-width: 980px) {

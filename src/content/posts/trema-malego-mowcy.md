@@ -6,7 +6,7 @@ category: "Rozwój dziecka"
 excerpt: "W domu mówi dużo, ale u lekarza, na występach czy przy obcych - cisza. To nie zawsze nieśmiałość. Sprawdź, jak wspierać dziecko, które boi się mówić."
 image: "../../assets/images/blog/trema-malego-mowcy.webp"
 imageAlt: "Dziecko rozmawiające z dorosłym podczas zajęć grupowych"
-metaTitle: "Trema małego mówcy - jak wspierać dziecko, które unika mówienia | Cudoteka"
+metaTitle: "Trema małego mówcy - jak wspierać dziecko | Cudoteka"
 metaDescription: "Dziecko nie mówi przy obcych albo unika ćwiczeń z mowy? Sprawdź, jak pomóc bez presji: małe kroki, bezpieczeństwo, regulacja emocji i mądre wsparcie."
 usedConstellations:
   - "Unikanie mówienia a lęk"

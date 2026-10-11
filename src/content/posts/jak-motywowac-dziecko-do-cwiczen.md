@@ -6,7 +6,7 @@ category: "Rozwój dziecka"
 excerpt: "Dziecko odmawia ćwiczeń? Zwykle problem nie tkwi w dziecku, tylko w formie. Sprawdź sprawdzone sposoby na motywację bez przekupstwa i bez awantur."
 image: "../../assets/images/blog/jak-motywowac-dziecko-do-cwiczen.webp"
 imageAlt: "Dzieci wspólnie bawiące się przy stoliku z kolorowymi materiałami"
-metaTitle: "Jak zmotywować dziecko do ćwiczeń - naklejki, misje, XP | Cudoteka"
+metaTitle: "Jak zmotywować dziecko do ćwiczeń - misje i XP | Cudoteka"
 metaDescription: "Motywacja dziecka bez przekupstwa: misje, gwiazdki, naklejki i samoocena. Sprawdzone sposoby, żeby ćwiczenia z dzieckiem nie kończyły się awanturą."
 usedConstellations:
   - "Grywalizacja w nauce dziecka (XP, misje, naklejki)"

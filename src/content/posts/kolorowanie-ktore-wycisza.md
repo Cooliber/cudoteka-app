@@ -6,7 +6,7 @@ category: "Porady dla rodziców"
 excerpt: "Mandala to nie ozdoba z kolorowanki. To narzędzie: uspokaja, uczy uwagi i daje dziecku chwilę oddechu po trudnym zadaniu. Sprawdź, jak ją mądrze podawać."
 image: "../../assets/images/blog/kolorowanie-ktore-wycisza.webp"
 imageAlt: "Dziecko kolorujące okrągły wzór mandali przy stoliku"
-metaTitle: "Mandala dla dzieci - kolorowanie, które wycisza i uczy uwagi | Cudoteka"
+metaTitle: "Mandala dla dzieci - kolorowanie, które wycisza | Cudoteka"
 metaDescription: "Dlaczego kolorowanie mandali uspokaja dziecko i wspiera uwagę? Jak używać mandali przed nauką i po wysiłku? Praktyczny przewodnik dla rodziców."
 usedConstellations:
   - "Mandala jako trening uwagi"

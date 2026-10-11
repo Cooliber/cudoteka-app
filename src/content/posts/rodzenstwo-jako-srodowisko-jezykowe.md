@@ -7,7 +7,7 @@ excerpt: "Młodsze dziecko w rodzeństwie uczy się szybciej - ale pod warunkie
 image: "../../assets/images/workshops/integracja-dzieci.webp"
 imageAlt: "Starsze rodzeństwo opowiadające coś młodszemu dziecku podczas wspólnej zabawy"
 metaTitle: "Rodzeństwo a rozwój mowy dziecka | Cudoteka"
-metaDescription: "Jak rodzeństwo wpływa na rozwój mowy? Badania nad child-directed speech od rodzeństwa, różnice między jedynakiem a dzieckiem z rodzeństwem, praktyczne wskazówki dla rodziców."
+metaDescription: "Jak rodzeństwo wpływa na rozwój mowy? Badania nad mową kierowaną do dziecka ze strony starszego rodzeństwa i praktyczne wskazówki dla rodziców."
 usedConstellations:
   - "Mowa skierowana do dziecka od rodzeństwa"
   - "Child-directed speech a rozwój słownictwa"

@@ -7,7 +7,7 @@ excerpt: "Telewizor w tle, tablet przy jedzeniu, bajki przed snem - sprawdź, j
 image: "../../assets/images/workshops/sensoplastyka.webp"
 imageAlt: "Rodzic i dziecko bawiący się razem bez ekranów, z drewnianymi klockami"
 metaTitle: "Ekrany a rozwój mowy dziecka - co wiemy? | Cudoteka"
-metaDescription: "Jak ekrany wpływają na rozwój mowy dziecka? Zalecenia WHO, różnica między pasywnym oglądaniem a interaktywnym użyciem, praktyczne alternatywy i strategie dla rodziców."
+metaDescription: "Jak ekrany wpływają na rozwój mowy dziecka? Zalecenia WHO, różnica między pasywnym a interaktywnym użyciem i praktyczne wskazówki dla rodziców."
 usedConstellations:
   - "Ekrany a prelingwistyka"
   - "Zalecenia WHO i towarzystw pediatrycznych"

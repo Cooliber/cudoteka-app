@@ -7,7 +7,7 @@ excerpt: "Dlaczego logopeda każe ćwiczyć sylaby, skoro dziecko umie już sło
 image: "../../assets/images/blog/od-sluchania-do-opowiadania-etapy.webp"
 imageAlt: "Dziecko ćwiczące mowę przy stoliku z materiałami edukacyjnymi"
 metaTitle: "Etapy nauki wymowy - od słuchu do opowieści | Cudoteka"
-metaDescription: "Sześć stopni nauki wymowy: słuchanie, głoska, sylaba, słowo, zdanie, opowieść. Co robić na każdym etapie i jak poznać, że dziecko jest gotowe na następny?"
+metaDescription: "Sześć stopni nauki wymowy: słuchanie, głoska, sylaba, słowo, zdanie, opowieść. Co robić na każdym etapie? Praktyczny przewodnik."
 usedConstellations:
   - "Sześć etapów terapii z bramkami"
   - "Kolejność: ucho przed buzią"

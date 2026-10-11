@@ -6,7 +6,7 @@ category: "Porady dla rodziców"
 excerpt: "Marchewka, skórka chleba i słomka to nie tylko posiłek - to trening mięśni, które potem mówią. Sprawdź, jak mądrze wspierać mowę przy stole."
 image: "../../assets/images/blog/jak-jedzenie-wspiera-mowe.webp"
 imageAlt: "Dziecko jedzące chrupiące warzywa przy stole"
-metaTitle: "Jedzenie a rozwój mowy - chrupanie, słomka, gryzienie | Cudoteka"
+metaTitle: "Jedzenie a rozwój mowy - chrupanie i słomka | Cudoteka"
 metaDescription: "Jak jedzenie wspiera rozwój mowy? Gryzienie twardych pokarmów, picie przez słomkę i masaż artykulacyjny przy stole - praktyczny poradnik dla rodziców."
 usedConstellations:
   - "Etap przygotowawczy terapii - usprawnianie narządów mowy"
@@ -77,7 +77,7 @@ Praktyka przy stole to jedno z ulubionych miejsc treningu buzi: na [warsztatach 
 
 ## Zobacz również
 
-- [Motoryka mała i oralna](/blog/motyka-mala-i-oralna/) - ręce i usta rosną razem
+- [Motoryka mała i oralna](/blog/motoryka-mala-i-oralna/) - ręce i usta rosną razem
 - [Ćwiczenia oddechowe dla dzieci](/blog/cwiczenia-oddechowe-dla-dzieci/)
 - [Dziecko myli głoski - zabawy słuchowe](/blog/dziecko-myli-gloski-zabawy-sluchowe/)
 
