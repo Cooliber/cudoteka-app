@@ -1,8 +1,9 @@
 ---
 import '../styles/pages/index.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { websiteSchema } from '../lib/seo';
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 import heroPhoto from '../assets/images/hero/hero.webp';
 import aboutPhoto from '../assets/images/about/about.webp';
 import { BOOKING_URL } from '../lib/booking';
@@ -59,12 +60,15 @@ const faqSchema = {
     },
   })),
 };
+
+// WebSite entity — the name/url source Google uses to pick the site name.
+const siteSchema = websiteSchema();
 ---
 
 <BaseLayout
   title='Cudoteka - twórcze warsztaty i animacje dla dzieci | Warszawa'
   description='Cudoteka to warsztaty rozwojowe i artystyczne, sensoplastyka, animacje i atrakcje dla dzieci i dorosłych. Warszawa i okolice.'
-  schemas={[faqSchema]}
+  schemas={[faqSchema, siteSchema]}
 >
   {/*
     Critical home-page responsive overrides — inlined for instant first paint
@@ -110,7 +114,7 @@ const faqSchema = {
 
       <div class='reveal-fade-up hero-visual'>
         <div class='hero-shell'>
-          <Image formats={['avif', 'webp']} src={heroPhoto} alt='Dzieci bawiące się podczas warsztatów twórczych w Cudotece' width={720} height={560} widths={[480, 720, 960, 1200]} sizes="(max-width: 680px) 100vw, (max-width: 980px) 50vw, 720px" loading='eager' decoding='async' />
+          <Picture formats={['avif', 'webp']} fallbackFormat='webp' src={heroPhoto} alt='Dzieci bawiące się podczas warsztatów twórczych w Cudotece' width={720} height={560} widths={[480, 720, 960, 1200]} sizes="(max-width: 680px) 100vw, (max-width: 980px) 50vw, 720px" loading='eager' fetchpriority='high' decoding='async' />
         </div>
         <div class='mini-pill pill-one'>23 rodzaje warsztatów</div>
         <div class='mini-pill pill-two'>Urodziny • Festyny • Szkoły</div>

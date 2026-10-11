@@ -61,6 +61,9 @@ const posts = defineCollection({
     title: z.string(),
     slug: z.string(),
     pubDate: z.coerce.date(),
+    // Optional last-modified date. Used by the sitemap `lastmod` (astro.config.mjs)
+    // only when actually provided — never derived from file mtimes.
+    updated: z.coerce.date().optional(),
     category: z.string(),
     excerpt: z.string(),
     image: image().optional(),

@@ -7,7 +7,8 @@ const categories = await getCollection('categories');
 
 <BaseLayout
   title="Oferta warsztatów i animacji"
-  description="Poznaj ofertę Cudoteki - sensoplastyka, warsztaty plastyczne, eksperymenty, strefa malucha i animacje na wydarzenia w Warszawie i okolicach."
+  description="Poznaj ofertę Cudoteki - sensoplastyka, warsztaty plastyczne, eksperymenty, strefa malucha i animacje na wydarzenia w Warszawie i okolicach."
+  breadcrumb={[{ name: 'Strona główna', path: '/' }, { name: 'Oferta', path: '/oferta/' }]}
 >
   <section class="section offer-intro">
     <div class="wrap reveal-fade-up">

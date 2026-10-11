@@ -6,7 +6,7 @@ category: "Sport i aktywność"
 excerpt: "Piłka nożna to nie tylko zabawa - to nauka pracy zespołowej, dyscypliny i zdrowej rywalizacji. Sprawdź, co oferują nasze warsztaty piłkarskie."
 image: "../../assets/images/workshops/warsztaty-pilkarskie.svg"
 imageAlt: "Dzieci na treningu piłkarskim"
-metaTitle: "Warsztaty piłkarskie dla dzieci Warszawa | Cudoteka"
+metaTitle: "Warsztaty piłkarskie dla dzieci - dlaczego warto? | Cudoteka"
 metaDescription: "Warsztaty piłkarskie dla dzieci w Warszawie. Profesjonalny trener, zabawa i nauka. Sprawdź, dlaczego warto!"
 ---
 

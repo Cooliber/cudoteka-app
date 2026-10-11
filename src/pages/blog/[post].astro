@@ -15,7 +15,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const pageUrl = new URL(`/blog/${post.data.slug}/`, Astro.site).toString();
-const postImage = post.data.image ? new URL(post.data.image, Astro.site).toString() : undefined;
+const postImage = post.data.image ? new URL(post.data.image.src, Astro.site).toString() : undefined;
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -34,8 +34,19 @@ const articleSchema = {
   articleSection: post.data.category,
   inLanguage: 'pl-PL',
   mainEntityOfPage: pageUrl,
-  author: { '@type': 'Organization', name: 'Cudoteka' },
-  publisher: { '@type': 'Organization', name: 'Cudoteka' },
+  author: {
+    '@type': 'Person',
+    '@id': 'https://cudoteka.pl/o-nas/#aleksandra',
+    name: 'Aleksandra Dąbrowska',
+    jobTitle: 'pedagog, logopeda',
+    url: 'https://cudoteka.pl/o-nas/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    '@id': 'https://cudoteka.pl/#organization',
+    name: 'Cudoteka',
+    logo: { '@type': 'ImageObject', url: 'https://cudoteka.pl/favicon.svg' },
+  },
   ...(postImage ? { image: postImage } : {}),
 };
 ---

@@ -64,9 +64,13 @@ const postalCode = '';     // np. '02-100'
           </a>
         ))}
         <address class="location" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-          <span itemprop="streetAddress">{streetAddress || 'ul. ___________'}</span>
-          <br />
-          <span itemprop="postalCode">{postalCode || '__-___'}</span>{' '}
+          {streetAddress && (
+            <>
+              <span itemprop="streetAddress">{streetAddress}</span>
+              <br />
+            </>
+          )}
+          {postalCode && <span itemprop="postalCode">{postalCode}</span>}{' '}
           <span itemprop="addressLocality">Warszawa</span>
           <br />
           <span itemprop="addressCountry">Polska</span>

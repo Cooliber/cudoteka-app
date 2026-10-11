@@ -8,7 +8,9 @@ interface SeoProps {
 
 export function seo({ title, description, image, canonical, type = 'website' }: SeoProps) {
   const siteTitle = 'Cudoteka';
-  const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
+  // Content metaTitles often already carry the "| Cudoteka" suffix — appending
+  // it again produced titles like "… | Cudoteka | Cudoteka" on 95/104 pages.
+  const fullTitle = title.includes(siteTitle) ? title : `${title} | ${siteTitle}`;
   const ogImage = image || 'https://cudoteka.pl/images/og-default.webp';
   const meta = [
     { name: 'description', content: description },
@@ -39,10 +41,79 @@ export function seo({ title, description, image, canonical, type = 'website' }: 
   };
 }
 
+// BreadcrumbList for static pages. Dynamic routes (blog posts, workshops,
+// offer categories) build their own inline — they also need the item names
+// from content.
+export function breadcrumbs(
+  items: { name: string; path: string }[],
+  base: URL | string = 'https://cudoteka.pl',
+) {
+  const origin = typeof base === 'string' ? new URL(base) : base;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: new URL(item.path, origin).toString(),
+    })),
+  };
+}
+
+// Site-wide Organization entity (logo, contact) that LocalBusiness and
+// WebSite reference by @id. sameAs is intentionally omitted until the founder
+// provides real profiles (docs/dane-dla-zalozycielki.md) — never ship
+// placeholder URLs.
+export function organizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://cudoteka.pl/#organization',
+    name: 'Cudoteka',
+    alternateName: 'E-CUD - Centrum Edukacyjno-Eventowe',
+    url: 'https://cudoteka.pl',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://cudoteka.pl/favicon.svg',
+    },
+    email: 'biuro@e-cud.waw.pl',
+    telephone: '+48607370777',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+48607370777',
+        email: 'biuro@e-cud.waw.pl',
+        contactType: 'customer service',
+        availableLanguage: ['Polish'],
+      },
+    ],
+    founder: {
+      '@type': 'Person',
+      '@id': 'https://cudoteka.pl/o-nas/#aleksandra',
+      name: 'Aleksandra Dąbrowska',
+    },
+  };
+}
+
+// WebSite entity for the homepage — the name/url pair Google uses for site
+// names (developers.google.com/search/docs/appearance/site-names).
+export function websiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://cudoteka.pl/#website',
+    name: 'Cudoteka',
+    url: 'https://cudoteka.pl',
+    inLanguage: 'pl-PL',
+    publisher: { '@id': 'https://cudoteka.pl/#organization' },
+  };
+}
+
 export function localBusinessSchema() {
-  // TODO(FOUNDER): fill in streetAddress, postalCode, geo coordinates,
-  // openingHoursSpecification, and sameAs (social URLs). See
-  // docs/dane-dla-zalozycielki.md section 1 for the request format.
+  // TODO(FOUNDER): fill in streetAddress, postalCode, geo coordinates and
+  // openingHoursSpecification. See docs/dane-dla-zalozycielki.md section 1
+  // for the request format.
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -51,8 +122,9 @@ export function localBusinessSchema() {
     alternateName: 'E-CUD',
     description: 'Twórcze warsztaty, sensoplastyka, animacje i eventy dla dzieci i dorosłych. Warszawa i okolice.',
     url: 'https://cudoteka.pl',
-    telephone: '+48-607-370-777',
+    telephone: '+48607370777',
     email: 'biuro@e-cud.waw.pl',
+    parentOrganization: { '@id': 'https://cudoteka.pl/#organization' },
     areaServed: [
       { '@type': 'City', name: 'Warszawa' },
       { '@type': 'AdministrativeArea', name: 'Mazowieckie' },
@@ -82,10 +154,6 @@ export function localBusinessSchema() {
     //   opens: '09:00',
     //   closes: '18:00',
     // }],
-    // sameAs: [ // TODO(FOUNDER) — uncomment and add social URLs
-    //   'https://www.facebook.com/cudoteka',
-    //   'https://www.instagram.com/cudoteka',
-    // ],
     founder: {
       '@type': 'Person',
       name: 'Aleksandra Dąbrowska',

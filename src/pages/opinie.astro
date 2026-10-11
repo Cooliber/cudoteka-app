@@ -7,7 +7,8 @@ const testimonials = await getCollection('testimonials');
 
 <BaseLayout
   title="Opinie naszych klientów"
-  description="Przeczytaj opinie rodziców, dyrektorów przedszkoli i organizatorów wydarzeń o warsztatach i animacjach Cudoteki w Warszawie."
+  description="Przeczytaj opinie rodziców, dyrektorów przedszkoli i organizatorów wydarzeń o warsztatach i animacjach Cudoteki w Warszawie."
+  breadcrumb={[{ name: 'Strona główna', path: '/' }, { name: 'Opinie', path: '/opinie/' }]}
 >
   <section class="section testimonials-page">
     <div class="wrap reveal-fade-up">

@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/utilities.css';
-import { seo, localBusinessSchema } from '../lib/seo';
+import { seo, localBusinessSchema, organizationSchema, breadcrumbs } from '../lib/seo';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 
@@ -12,14 +12,17 @@ interface Props {
   canonical?: string;
   type?: string;
   schemas?: Record<string, unknown>[];
+  breadcrumb?: { name: string; path: string }[];
 }
 
-const { title, description, image, canonical, type, schemas = [] } = Astro.props;
+const { title, description, image, canonical, type, schemas = [], breadcrumb } = Astro.props;
 
 // Always emit an absolute canonical URL derived from the current route unless one is passed explicitly.
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
 const seoData = seo({ title, description, image, canonical: canonicalURL, type });
 const schema = localBusinessSchema();
+const orgSchema = organizationSchema();
+const breadcrumbSchema = breadcrumb ? breadcrumbs(breadcrumb, Astro.site ?? 'https://cudoteka.pl') : undefined;
 ---
 
 <!DOCTYPE html>
@@ -66,8 +69,7 @@ const schema = localBusinessSchema();
     />
   </noscript>
 
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-  {schemas.map((s) => (
+  {[schema, orgSchema, ...(breadcrumbSchema ? [breadcrumbSchema] : []), ...schemas].map((s) => (
     <script type="application/ld+json" set:html={JSON.stringify(s)} />
   ))}
 </head>

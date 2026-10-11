@@ -10,7 +10,9 @@ import aboutPhoto from '../assets/images/about/about.webp';
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': 'https://cudoteka.pl/o-nas/#aleksandra',
   name: 'Aleksandra Dąbrowska',
+  url: 'https://cudoteka.pl/o-nas/',
   givenName: 'Aleksandra',
   familyName: 'Dąbrowska',
   jobTitle: 'Założycielka Cudoteki, pedagog, logopeda',
@@ -55,6 +57,7 @@ const personSchema = {
   title="O nas - Aleksandra Dąbrowska"
   description="Poznaj historię Cudoteki (dawniej E-CUD) i jej założycielki, Aleksandry Dąbrowskiej. Dowiedz się więcej o naszej misji i wartościach."
   schemas={[personSchema]}
+  breadcrumb={[{ name: 'Strona główna', path: '/' }, { name: 'O nas', path: '/o-nas/' }]}
 >
   <section class="section about-page">
     <div class="wrap reveal-fade-up">
