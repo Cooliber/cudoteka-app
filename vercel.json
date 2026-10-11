@@ -28,11 +28,11 @@
   ],
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         { "type": "host", "value": "www\\.cudoteka\\.pl" }
       ],
-      "destination": "https://cudoteka.pl/:path*",
+      "destination": "https://cudoteka.pl/$1",
       "permanent": true
     }
   ]
