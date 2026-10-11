@@ -1,7 +1,7 @@
 ---
 title: "Ekrany bez wojny - rodzinny plan, który da się utrzymać dłużej niż tydzień"
 slug: "ekrany-bez-wojny"
-pubDate: 2026-10-13
+pubDate: 2026-09-19
 category: "Porady dla rodziców"
 excerpt: "\"Jeszcze pięć minut!\" - i wojna domowa. Zamiast liczyć minuty, lepiej mieć plan: strefy bez ekranu, wspólne oglądanie i zasady, które nie zależą od nastroju."
 image: "../../assets/images/blog/ekrany-bez-wojny.webp"

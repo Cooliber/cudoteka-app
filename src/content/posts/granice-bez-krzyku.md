@@ -1,7 +1,7 @@
 ---
 title: "Granice bez krzyku - jak mówić \"nie\", żeby naprawdę działało"
 slug: "granice-bez-krzyku"
-pubDate: 2026-10-12
+pubDate: 2026-09-19
 category: "Porady dla rodziców"
 excerpt: "Dziecko potrzebuje granic jak ścian w domu - inaczej świat jest nieprzewidywalny. Sprawdź, jak stawiać je spokojnie, konsekwentnie i bez wojny domowej."
 image: "../../assets/images/blog/granice-bez-krzyku.webp"

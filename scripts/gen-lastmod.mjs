@@ -27,6 +27,18 @@ function frontmatterDate(rel, key) {
   return raw.match(new RegExp(`^${key}:\\s*['"]?(\\d{4}-\\d{2}-\\d{2})`, 'm'))?.[1] ?? null;
 }
 
+// A future frontmatter date is a typo or a "planned" value we cannot honour —
+// it is ignored (and reported) so it never reaches the sitemap.
+function saneDate(rel, key) {
+  const date = frontmatterDate(rel, key);
+  if (!date) return null;
+  if (date > today) {
+    console.warn(`  ! ${rel}: ${key}=${date} is in the future — ignored`);
+    return null;
+  }
+  return date;
+}
+
 const map = {};
 
 for (const entry of readdirSync(join(repo, 'src/pages'), { withFileTypes: true })) {
@@ -37,8 +49,8 @@ for (const entry of readdirSync(join(repo, 'src/pages'), { withFileTypes: true }
 }
 
 const collections = [
-  { dir: 'posts', url: (slug) => `/blog/${slug}/`, date: (rel) => frontmatterDate(rel, 'updated') ?? frontmatterDate(rel, 'pubDate') ?? lastChanged(rel) },
-  { dir: 'downloads', url: (slug) => `/materialy/${slug}/`, date: (rel) => frontmatterDate(rel, 'updated') ?? lastChanged(rel) },
+  { dir: 'posts', url: (slug) => `/blog/${slug}/`, date: (rel) => saneDate(rel, 'updated') ?? saneDate(rel, 'pubDate') ?? lastChanged(rel) },
+  { dir: 'downloads', url: (slug) => `/materialy/${slug}/`, date: (rel) => saneDate(rel, 'updated') ?? lastChanged(rel) },
   { dir: 'workshops', url: (slug) => `/warsztaty/${slug}/`, date: (rel) => lastChanged(rel) },
   { dir: 'categories', url: (slug) => `/oferta/${slug}/`, date: (rel) => lastChanged(rel) },
 ];
