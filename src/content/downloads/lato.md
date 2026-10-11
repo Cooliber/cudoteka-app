@@ -16,8 +16,8 @@ howToUse:
   - "Strona 4: gra planszowa i kolorowanki na wyciszenie."
   - "Wydrukujcie w trybie EKO (białe tło) - wystarczy czarny tusz."
 relatedPosts:
+  - "gimnastyka-buzi-i-jezyka-cwiczenia"
   - "karty-pracy-jak-wybrac-i-pracowac"
   - "cwiczenia-oddechowe-dla-dzieci"
-  - "kolorowanie-ktore-wycisza"
 updated: 2026-10-11
 ---

@@ -16,8 +16,8 @@ howToUse:
   - "Na koniec zagrajcie w grę z ostatniej strony i pokolorujcie obrazki."
   - "Ćwicz krótko, ale codziennie - 10 minut wystarczy, żeby trening był skuteczny."
 relatedPosts:
-  - "karty-pracy-jak-wybrac-i-pracowac"
+  - "jak-nauczyc-dziecko-mowic-r"
   - "cwiczenia-wymowy-w-domu"
-  - "krotko-i-czesto-jak-cwiczyc-z-dzieckiem"
+  - "karty-pracy-jak-wybrac-i-pracowac"
 updated: 2026-10-11
 ---

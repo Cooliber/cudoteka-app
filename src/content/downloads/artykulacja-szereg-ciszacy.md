@@ -16,8 +16,8 @@ howToUse:
   - "Strona 4: gra planszowa, a na koniec kolorowanki jako wyciszenie."
   - "Ćwiczcie krótko, ale codziennie - najlepiej o stałej porze."
 relatedPosts:
+  - "gloski-s-sz-s-od-czego-zaczac"
   - "dziecko-myli-gloski-zabawy-sluchowe"
   - "karty-pracy-jak-wybrac-i-pracowac"
-  - "krotko-i-czesto-jak-cwiczyc-z-dzieckiem"
 updated: 2026-10-11
 ---

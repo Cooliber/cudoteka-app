@@ -16,8 +16,8 @@ howToUse:
   - "Zagrajcie w grę planszową: przy każdym polu nazwijcie słowo z K."
   - "Wracajcie do zestawu codziennie po 10 minut - regularnie znaczy skutecznie."
 relatedPosts:
+  - "gimnastyka-buzi-i-jezyka-cwiczenia"
   - "karty-pracy-jak-wybrac-i-pracowac"
   - "cwiczenia-wymowy-w-domu"
-  - "krotko-i-czesto-jak-cwiczyc-z-dzieckiem"
 updated: 2026-10-11
 ---
