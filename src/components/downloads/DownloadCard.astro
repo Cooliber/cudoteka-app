@@ -9,18 +9,18 @@ const { item } = Astro.props;
 const { title, description, fileSize, icon, category, slug } = item.data;
 
 const categoryLabels: Record<string, string> = {
-  wakacje: 'Wyzwania wakacyjne',
   sezony: 'Pory roku',
   artykulacja: 'Artykulacja',
   logopedia: 'Logopedia',
+  wakacje: 'Wyzwania wakacyjne',
   inne: 'Inne',
 };
 
 const categoryAccents: Record<string, string> = {
-  wakacje: 'var(--peach)',
   sezony: 'var(--gold)',
   artykulacja: 'var(--blue)',
   logopedia: 'var(--mint)',
+  wakacje: 'var(--peach)',
   inne: 'var(--gold)',
 };
 ---
