@@ -4,6 +4,8 @@ slug: "wrozby-andrzejkowe-dla-dzieci"
 pubDate: 2026-10-11
 category: "Zabawy i animacje"
 excerpt: "Buty ustawione do drzwi, cienie i losowanie symboli. Przygotuj dziecięce andrzejki z polskimi zwyczajami, prostymi zabawami i wróżką Serafiną."
+image: "../../assets/images/blog/wrozby-andrzejkowe-dla-dzieci.webp"
+imageAlt: "Ilustracja: lis leje wosk do miski z wodą, obok papuga i świece; pod stołem rząd kolorowych butów"
 metaTitle: "Wróżby andrzejkowe dla dzieci i zabawy | Cudoteka"
 metaDescription: "Jak zorganizować andrzejki dla dzieci? Polskie zwyczaje, 5 zabaw, plan imprezy i oferta wróżki Serafiny w Warszawie. Animacje od 400 zł/h."
 ---

@@ -4,6 +4,8 @@ slug: "halloween-dla-dzieci"
 pubDate: 2026-10-11
 category: "Zabawy i animacje"
 excerpt: "Dyniowe dekoracje, kocie makijaże i poszukiwanie jesiennego skarbu. Pomysły na dziecięce Halloween oraz wyjaśnienie, jak ma się ono do polskich zwyczajów."
+image: "../../assets/images/blog/halloween-dla-dzieci.webp"
+imageAlt: "Ilustracja: lis w kapeluszu czarodzieja i papuga w kostiumach wśród dyń, duszka i jesiennych liści"
 metaTitle: "Halloween dla dzieci: zabawy i animacje | Cudoteka"
 metaDescription: "Zorganizuj Halloween dla dzieci: malowanie twarzy, dynie, 5 pomysłów na zabawy i plan imprezy. Sprawdź ofertę Cudoteki w Warszawie od 400 zł/h."
 ---
