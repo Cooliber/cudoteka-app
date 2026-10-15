@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { workshop } = Astro.props;
+const isVisit = workshop.data.format === 'visit';
 const category = await getEntry(workshop.data.category);
 
 // Get related workshops from same category (excluding current)
@@ -140,7 +141,7 @@ const serviceSchema = {
 
           <!-- Description -->
           <div class="description-section">
-            <h2>Opis zajęć</h2>
+            <h2>{isVisit ? 'Jak wygląda wizyta Mikołaja' : 'Opis zajęć'}</h2>
             <p class="description-text">{workshop.data.fullDescription}</p>
           </div>
 
@@ -157,29 +158,37 @@ const serviceSchema = {
           )}
 
           <!-- What kids take home -->
-          <div class="outcomes-section">
+          {!isVisit && <div class="outcomes-section">
             <h2>Co dzieci zabierają po zajęciach</h2>
             <p>
               {/* TODO(FOUNDER): uzupełnij opis efektów — docs/dane-dla-zalozycielki.md sekcja 4 (FAQ Pytanie 6) */}
               Każde dziecko zabiera własnoręcznie wykonaną pracę oraz pozytywne emocje związane ze wspólnym tworzeniem. W przypadku warsztatów kulinarnych — własne wypieki do domu.
             </p>
-          </div>
+          </div>}
 
           <!-- Travel & setup -->
           <div class="logistics-section">
             <h2>Logistyka i dojazd</h2>
-            <ul class="logistics-list">
+            {isVisit ? (
+              <ul class="logistics-list">
+                <li><strong>Miejsce:</strong> dom, przedszkole, szkoła lub firma w Warszawie i okolicach.</li>
+                <li><strong>Wigilia w domu:</strong> 24 grudnia, 15 minut, 400 zł.</li>
+                <li><strong>Prezenty:</strong> przygotowuje organizator; przekazanie Mikołajowi ustalamy przed wizytą.</li>
+                <li><strong>Rezerwacja:</strong> potwierdzamy dostępność godziny i dojazdu pod wskazany adres.</li>
+                <li><strong>Grupy i inne terminy:</strong> czas i cenę ustalamy indywidualnie.</li>
+              </ul>
+            ) : <ul class="logistics-list">
               <li>📍 <strong>Obszar:</strong> Warszawa i okolice (do 30 km) — dojazd GRATIS</li>
               <li>🚗 <strong>Wyjazdy:</strong> cała Polska — wycena indywidualna</li>
               <li>⏰ <strong>Przyjazd animatora:</strong> 30 min przed rozpoczęciem</li>
               <li>🎨 <strong>Materiały:</strong> wszystko przywozimy ze sobą</li>
               <li>🪑 <strong>Potrzebujesz:</strong> tylko stoły, krzesła i dostęp do wody</li>
-            </ul>
+            </ul>}
           </div>
 
           <!-- Call to Action -->
           <div class="cta-actions">
-            <a href={`/kontakt/?workshop=${workshop.data.slug}`} class="btn btn-primary">Zarezerwuj ten warsztat</a>
+            <a href={`/kontakt/?workshop=${workshop.data.slug}`} class="btn btn-primary">{isVisit ? 'Zapytaj o termin wizyty Mikołaja' : 'Zarezerwuj ten warsztat'}</a>
             <a href="tel:607370777" class="btn btn-ghost">Zadzwoń: 607 370 777</a>
           </div>
         </div>

@@ -25,6 +25,7 @@ const workshops = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     slug: z.string(),
+    format: z.enum(['workshop', 'visit']).default('workshop'),
     category: reference('categories'),
     shortDescription: z.string(),
     fullDescription: z.string(),

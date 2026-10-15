@@ -1,13 +1,14 @@
 ---
 import '../styles/pages/index.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import { Image, Picture } from 'astro:assets';
 import heroPhoto from '../assets/images/hero/hero.webp';
 import aboutPhoto from '../assets/images/about/about.webp';
 import { BOOKING_URL } from '../lib/booking';
 
 const categories = (await getCollection('categories')).slice(0, 6);
+const santaVisit = await getEntry('workshops', 'wizyta-mikolaja');
 const featuredWorkshops = (await getCollection('workshops'))
   .filter((workshop) => workshop.data.featured)
   .slice(0, 3);
@@ -198,6 +199,31 @@ const faqSchema = {
       </div>
     </div>
   </section>
+
+  {santaVisit && (
+    <section class='section'>
+      <div class='wrap about-grid'>
+        <div class='reveal-fade-up about-visual'>
+          {santaVisit.data.image && (
+            <div class='about-shell'>
+              <Image src={santaVisit.data.image} alt={santaVisit.data.imageAlt || santaVisit.data.title}
+                widths={[400, 640, 900]} sizes="(max-width: 980px) 100vw, 50vw"
+                loading='lazy' decoding='async' />
+            </div>
+          )}
+        </div>
+        <div class='reveal-fade-up about-copy'>
+          <span class='eyebrow'>Świąteczne spotkania z Mikołajem</span>
+          <h2>Zaproś Mikołaja do domu lub przedszkola</h2>
+          <p>Wizyta domowa w Wigilię, 24 grudnia: <strong>15 minut za 400 zł</strong>.
+            Rozmowa z dziećmi, wręczenie przygotowanych przez Ciebie prezentów i czas na wspólne zdjęcie.</p>
+          <p>Organizujemy także spotkania w przedszkolach, szkołach i firmach w Warszawie i okolicach.
+            Czas i cenę wizyt grupowych oraz innych terminów ustalamy indywidualnie.</p>
+          <a href={`/warsztaty/${santaVisit.data.slug}/`} class='btn btn-primary'>Sprawdź ofertę wizyty Mikołaja</a>
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class='section featured-section'>
     <div class='wrap'>
